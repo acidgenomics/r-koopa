@@ -155,72 +155,20 @@ checkSystem <- function() {
     )
     ## Shells ==================================================================
     h2("Shells")
-    checkVersion(
-        name = "Bash",
-        whichName = "bash",
-        current = currentVersion("bash"),
-        expected = expectedVersion("bash")
-    )
-    checkVersion(
-        name = "Zsh",
-        whichName = "zsh",
-        current = currentVersion("zsh"),
-        expected = expectedVersion("zsh")
-    )
-    if (!isTRUE(docker)) {
-        checkVersion(
-            name = "Fish",
-            whichName = "fish",
-            current = currentVersion("fish"),
-            expected = expectedVersion("fish")
-        )
-    }
+    checkVersion(name = "bash", nameFancy = "Bash")
+    checkVersion(name = "zsh", nameFancy = "Zsh")
+    checkVersion(name = "fish", nameFancy = "Fish")
     ## Core packages ===========================================================
     h2("Core packages")
-    checkVersion(
-        name = "GNU autoconf",
-        whichName = "autoconf",
-        current = currentVersion("autoconf"),
-        expected = expectedVersion("autoconf")
-    )
-    checkVersion(
-        name = "GNU automake",
-        whichName = "automake",
-        current = currentVersion("automake"),
-        expected = expectedVersion("automake")
-    )
+    checkVersion(name = "autoconf", nameFancy = "GNU autoconf")
+    checkVersion(name = "automake", nameFancy = "GNU automake")
     if (isTRUE(linux)) {
-        checkVersion(
-            name = "GNU binutils",
-            whichName = "ld",
-            current = currentVersion("binutils"),
-            expected = expectedVersion("binutils")
-        )
+        checkVersion(name = "binutils", nameFancy = "GNU binutils")
     }
-    checkVersion(
-        name = "GNU coreutils",
-        whichName = "env",
-        current = currentVersion("coreutils"),
-        expected = expectedVersion("coreutils")
-    )
-    checkVersion(
-        name = "GNU findutils",
-        whichName = "find",
-        current = currentVersion("findutils"),
-        expected = expectedVersion("findutils")
-    )
-    checkVersion(
-        name = "GNU gawk",
-        whichName = "gawk",
-        current = currentVersion("gawk"),
-        expected = expectedVersion("gawk")
-    )
-    ## > checkVersion(
-    ## >     name = "GNU gcc",
-    ## >     whichName = "gcc",
-    ## >     current = currentMajorVersion("gcc"),
-    ## >     expected = expectedMajorVersion("gcc")
-    ## > )
+    checkVersion(name = "coreutils", nameFancy = "GNU coreutils")
+    checkVersion(name = "findutils", nameFancy = "GNU findutils")
+    checkVersion(name = "gawk", nameFancy = "GNU gawk")
+    ## > checkVersion(name = "gcc", nameFancy = "GNU gcc")
     checkVersion(
         name = "GNU grep",
         whichName = "grep",
@@ -311,20 +259,18 @@ checkSystem <- function() {
     )
     ## Editors =================================================================
     h2("Editors")
-    if (!isTRUE(docker)) {
-        checkVersion(
-            name = "Emacs",
-            whichName = "emacs",
-            current = currentVersion("emacs"),
-            expected = expectedVersion("emacs")
-        )
-        checkVersion(
-            name = "Neovim",
-            whichName = "nvim",
-            current = currentVersion("neovim"),
-            expected = expectedVersion("neovim")
-        )
-    }
+    checkVersion(
+        name = "Emacs",
+        whichName = "emacs",
+        current = currentVersion("emacs"),
+        expected = expectedVersion("emacs")
+    )
+    checkVersion(
+        name = "Neovim",
+        whichName = "nvim",
+        current = currentVersion("neovim"),
+        expected = expectedVersion("neovim")
+    )
     checkVersion(
         name = "Tmux",
         whichName = "tmux",
@@ -350,7 +296,6 @@ checkSystem <- function() {
         current = currentVersion("r"),
         expected = expectedVersion("r")
     )
-
     h2("Secondary languages")
     if (!isTRUE(docker)) {
         checkVersion(
