@@ -24,7 +24,6 @@ Depends: R (>= 4.0)
 Imports:
     BiocManager,
     acidbase (>= 0.1.13),
-    acidgenerics (>= 0.3.9),
     bb8 (>= 0.2.24),
     cli (>= 2.0.2),
     crayon (>= 1.3.4),
@@ -36,8 +35,6 @@ Suggests:
     testthat
 Remotes:
     acidgenomics/acidbase,
-    acidgenomics/acidgenerics,
-    acidgenomics/acidtest,
     acidgenomics/bb8,
     acidgenomics/goalie,
     acidgenomics/syntactic

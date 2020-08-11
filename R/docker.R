@@ -33,6 +33,7 @@ dockerBuildAllTags <- function(
         isNumber(days),
         isFlag(force)
     )
+    koopaPrefix <- .koopaPrefix()
     if (!any(grepl(pattern = "/", x = images)))
         images <- file.path("acidgenomics", images)
     cli_alert(sprintf("Building all tags: %s.", toString(images)))
