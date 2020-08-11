@@ -1,5 +1,12 @@
-#' @importFrom acidbase realpath requireNamespaces sanitizeVersion shell
-#' @importFrom cli cli_div cli_end cli_ul
+#' @importFrom acidbase majorVersion minorVersion realpath requireNamespaces
+#'   sanitizeVersion shell
+#' @importFrom bb8 install
+#' @importFrom cli cli_alert cli_alert_info cli_alert_success cli_div cli_end
+#'   cli_ul
 #' @importFrom crayon green magenta red yellow
-#' @importFrom goalie isFlag isInstalled isString
+#' @importFrom goalie allAreSystemCommands assert hasGitHubPAT isADir isAFile
+#'   isASymlink isCharacter isFile isFlag isInstalled isNumber isPackageVersion
+#'   isString
+#' @importFrom syntactic kebabCase
+#' @importFrom utils install.packages
 NULL
