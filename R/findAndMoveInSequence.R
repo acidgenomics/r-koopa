@@ -1,8 +1,3 @@
-## FIXME Move to Rscript.
-## posArgs <- positionalArgs()
-## sourceDir <- realpath(posArgs[[1L]])
-## targetDir <- realpath(posArgs[[2L]])
-
 #' Find and move files in sequence
 #'
 #' @export
@@ -10,7 +5,7 @@
 #'
 #' @examples
 #' ## > findAndMoveInSequence(sourceDir, targetDir)
-findAndMoveInSequence <- function() {
+findAndMoveInSequence <- function(sourceDir, targetDir) {
     assert(
         isADir(sourceDir),
         isADir(targetDir),

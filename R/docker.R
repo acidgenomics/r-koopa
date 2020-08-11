@@ -65,7 +65,7 @@ dockerBuildAllTags <- function(
                 MoreArgs = list(image = image),
                 FUN = function(image, tag) {
                     path <- file.path(imageDir, tag)
-                    if (isSymlink(path)) {
+                    if (isASymlink(path)) {
                         sourceTag <- basename(realpath(path))
                         destTag <- tag
                         shell(

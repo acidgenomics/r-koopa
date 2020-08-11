@@ -15,6 +15,7 @@
 checkSystem <- function() {
     assert(isVanilla())
     h1("Checking koopa installation.")
+    koopa <- .koopa()
     macos <- isMacOS()
     linux <- !macos
     host <- shell(command = koopa, args = "host-id", stdout = TRUE)

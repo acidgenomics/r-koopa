@@ -1,13 +1,13 @@
 #' Prune the cellar
 #'
 #' @export
-#' @note Updated 2020-08-09.
+#' @note Updated 2020-08-11.
 #'
 #' @examples
 #' ## > pruneCellar()
 pruneCellar <- function() {
     prefix <- shell(
-        command = koopa,
+        command = .koopa(),
         args = "cellar-prefix",
         stdout = TRUE
     )
@@ -54,7 +54,7 @@ pruneCellar <- function() {
     unlink(prunePaths, recursive = TRUE)
     shell(
         command = file.path(
-            koopaPrefix,
+            .koopaPrefix(),
             "os",
             "linux",
             "bin",

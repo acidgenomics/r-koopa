@@ -9,6 +9,7 @@
 #' @examples
 #' ## > unlinkCellar(c("vim", "tmux"))
 unlinkCellar <- function(apps) {
+    koopa <- .koopa()
     invisible(lapply(
         X = apps,
         FUN = function(app) {

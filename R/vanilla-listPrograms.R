@@ -17,14 +17,14 @@ listPrograms <- function() {
 }
 
 .printPrograms <- function(path) {
-    if (!isDir(path)) return()
+    if (!isADir(path)) return()
     path <- realpath(path)
     files <- sort(list.files(path = path, all.files = FALSE, full.names = TRUE))
     # Ignore directories.
     keep <- !file.info(files)[["isdir"]]
     files <- files[keep]
     # Ignore exported scripts in `opt`.
-    keep <- !grepl(file.path(koopaPrefix, "opt"), files)
+    keep <- !grepl(file.path(.koopaPrefix(), "opt"), files)
     files <- files[keep]
     if (!hasLength(files)) return()
     h1(path)

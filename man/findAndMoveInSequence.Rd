@@ -4,7 +4,7 @@
 \alias{findAndMoveInSequence}
 \title{Find and move files in sequence}
 \usage{
-findAndMoveInSequence()
+findAndMoveInSequence(sourceDir, targetDir)
 }
 \description{
 Find and move files in sequence
