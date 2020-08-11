@@ -1,41 +1,46 @@
-#' Build all tags for a specific image
-#' @note Updated 2020-08-09.
-#' @noRd
-dockerBuildAllTags <- function() {
-    days <- 2L
-    dockerDir <- file.path("~", ".config", "koopa", "docker")
-    args <- parseArgs(
-        optionalArgs = c("days", "dir"),
-        flags = "force",
-        positional = TRUE
-    )
-    force <- "force" %in% args[["flags"]]
-    optionalArgs <- args[["optionalArgs"]]
-    if (!is.null(optionalArgs)) {
-        if (isSubset("days", names(optionalArgs))) {
-            days <- as.numeric(optionalArgs[["days"]])
-        }
-        if (isSubset("dir", names(optionalArgs))) {
-            dockerDir <- optionalArgs[["dir"]]
-        }
-    }
+#' Manage Docker images
+#'
+#' @name docker
+#' @note Updated 2020-08-11.
+#'
+#' @param images `character`.
+#'   Docker image names.
+#' @param dir `character(1)`.
+#'   Docker image repository.
+#' @param days `numeric(1)`.
+#'   Number of days to allow since last build.
+#' @param force `logical(1)`.
+#'   Force rebuild.
+#'
+#' @examples
+#' ## > dockerBuildAllTags()
+#' ## > isDockerBuildRecent("acidgenomics/debian")
+NULL
+
+
+
+#' @describeIn docker Build all tags for a specific image.
+#' @export
+dockerBuildAllTags <- function(
+    images,
+    dir = file.path("~", ".config", "koopa", "docker"),
+    days = 2L,
+    force = FALSE
+) {
     assert(
+        isCharacter(images),
+        isADir(dir),
         isNumber(days),
-        isADir(dockerDir),
         isFlag(force)
     )
-    images <- args[["positionalArgs"]]
     if (!any(grepl(pattern = "/", x = images)))
         images <- file.path("acidgenomics", images)
-    message(sprintf("Building all tags: %s", toString(images)))
+    cli_alert(sprintf("Building all tags: %s.", toString(images)))
     invisible(lapply(
         X = images,
         FUN = function(image) {
-            imageDir <- file.path(dockerDir, image)
-            assert(
-                is.character(image),
-                dir.exists(imageDir)
-            )
+            imageDir <- file.path(dir, image)
+            assert(isADir(imageDir))
             ## Build tags in desired order, using "build.txt" file.
             buildFile <- file.path(imageDir, "build.txt")
             if (file.exists(buildFile)) {
@@ -76,7 +81,7 @@ dockerBuildAllTags <- function() {
                             if (isTRUE(
                                 isDockerBuildRecent(image, days = days)
                             )) {
-                                message(sprintf(
+                                cli_alert_info(sprintf(
                                     "'%s:%s' was built recently. Skipping.",
                                     image, tag
                                 ))
@@ -110,7 +115,7 @@ dockerBuildAllTags <- function() {
                 }
                 assert(isString(sourceTag))
                 destTag <- "latest"
-                print(sprintf(
+                cli_alert(sprintf(
                     "Tagging %s '%s' as '%s'.",
                     image, sourceTag, destTag
                 ))
@@ -123,10 +128,15 @@ dockerBuildAllTags <- function() {
     ))
 }
 
-#' Has the requested Docker image been built recently?
-#' @note Updated 2020-08-07.
-#' @noRd
+
+
+#' @describeIn docker Has the requested Docker image been built recently?
+#' @export
 isDockerBuildRecent <- function(image, days = 2L) {
+    assert(
+        isString(image),
+        isNumber(days)
+    )
     shell(
         command = "docker",
         args = c("pull", image),
