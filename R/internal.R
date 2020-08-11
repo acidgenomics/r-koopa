@@ -29,8 +29,6 @@
 
 
 
-## FIXME REALPATH IS BREAKING HERE...NEED TO UPDATE IN ACIDBASE.
-
 #' Koopa installation prefix
 #'
 #' @note Updated 2020-08-11.

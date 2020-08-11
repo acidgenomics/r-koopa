@@ -1,12 +1,21 @@
+## FIXME Move to Rscript.
+## posArgs <- positionalArgs()
+## sourceDir <- realpath(posArgs[[1L]])
+## targetDir <- realpath(posArgs[[2L]])
+
 #' Find and move files in sequence
-#' @note Updated 2020-08-09.
-#' @noRd
+#'
+#' @export
+#' @note Updated 2020-08-11.
+#'
+#' @examples
+#' ## > findAndMoveInSequence(sourceDir, targetDir)
 findAndMoveInSequence <- function() {
-    requireNamespaces("syntactic")
-    posArgs <- positionalArgs()
-    sourceDir <- realpath(posArgs[[1L]])
-    targetDir <- realpath(posArgs[[2L]])
-    assert(!identical(sourceDir, targetDir))
+    assert(
+        isADir(sourceDir),
+        isADir(targetDir),
+        !identical(sourceDir, targetDir)
+    )
     sourceFiles <- sort(list.files(
         path = sourceDir,
         all.files = FALSE,
@@ -18,7 +27,7 @@ findAndMoveInSequence <- function() {
         targetDir,
         paste0(
             strtrim(
-                syntactic::kebabCase(
+                kebabCase(
                     paste(
                         autopadZeros(seq_along(sourceFiles)),
                         basenameSansExt(sourceFiles),
@@ -36,11 +45,11 @@ findAndMoveInSequence <- function() {
         from = sourceFiles,
         to = targetFiles,
         FUN = function(from, to) {
-            message(sprintf("Renaming '%s' to '%s'.", from, to))
+            cli_alert(sprintf("Renaming '%s' to '%s'.", from, to))
             file.rename(from = from, to = to)
         }
     ))
-    message(sprintf(
+    cli_alert_info(sprintf(
         "Successfully renamed %d files.",
         length(sourceFiles)
     ))

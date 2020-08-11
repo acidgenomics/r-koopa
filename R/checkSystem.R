@@ -1,3 +1,5 @@
+## FIXME Need to simplify `checkVersion` calls below.
+
 #' Check system
 #'
 #' @export
