@@ -1,0 +1,38 @@
+Package: koopa
+Title: Shell Bootloader for Bioinformatics
+Description: Shell bootloader for bioinformatics.
+Version: 0.0.1
+Date: 2020-08-11
+Authors@R: c(
+    person(
+        "Michael", "Steinbaugh",
+        email = "mike@steinbaugh.com",
+        role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-2403-2221")
+    ),
+    person(
+        given = "Acid Genomics",
+        role = c("cph", "fnd")
+    ))
+URL:
+    https://koopa.acidgenomics.com/
+    https://github.com/acidgenomics/koopa/
+BugReports: https://github.com/acidgenomics/koopa/issues/
+License: GPL-3
+Encoding: UTF-8
+Depends: R (>= 4.0)
+Imports:
+    acidbase (>= 0.1.12),
+    acidgenerics (>= 0.3.9),
+    goalie (>= 0.4.6),
+    syntactic (>= 0.4.2)
+Suggests:
+    testthat
+Remotes:
+    acidgenomics/acidbase,
+    acidgenomics/acidgenerics,
+    acidgenomics/acidtest,
+    acidgenomics/goalie,
+    acidgenomics/syntactic
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
