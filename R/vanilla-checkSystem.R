@@ -13,6 +13,7 @@
 #' @examples
 #' ## > checkSystem()
 checkSystem <- function() {
+    assert(isVanilla())
     h1("Checking koopa installation.")
     macos <- isMacOS()
     linux <- !macos
