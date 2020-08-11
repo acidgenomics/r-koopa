@@ -25,7 +25,7 @@
 
 
 
-.koopaEmoji <- "🐢"
+.koopaEmoji <- "\U1F422"
 
 
 
