@@ -49,9 +49,10 @@ parseArgs <- function(
     positionalArgs = FALSE
 ) {
     assert(
-        !hasLength(intersect(requiredArgs, optionalArgs)),
-        !hasLength(intersect(requiredArgs, flags)),
-        !hasLength(intersect(optionalArgs, flags))
+        areDisjointSets(requiredArgs, optionalArgs),
+        areDisjointSets(requiredArgs, optionalArgs),
+        areDisjointSets(requiredArgs, flags),
+        areDisjointSets(optionalArgs, flags)
     )
     cmdArgs <- commandArgs(trailingOnly = TRUE)
     out <- list(
@@ -83,7 +84,7 @@ parseArgs <- function(
         names(args) <- sub(pattern = argPattern, replacement = "\\1", x = args)
         args <- sub(pattern = argPattern, replacement = "\\2", x = args)
         if (!is.null(requiredArgs)) {
-            ok <- requiredArgs %in% names(args)
+            ok <- isSubset(requiredArgs, names(args))
             if (!all(ok)) {
                 fail <- requiredArgs[!ok]
                 stop(sprintf(
