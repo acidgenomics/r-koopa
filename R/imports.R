@@ -5,8 +5,8 @@
 #'   cli_ul
 #' @importFrom crayon green magenta red yellow
 #' @importFrom goalie allAreSystemCommands assert hasGitHubPAT isADir isAFile
-#'   isASymlink isCharacter isFile isFlag isInstalled isNumber isPackageVersion
-#'   isString
+#'   isASymlink isCharacter isDocker isFile isFlag isInstalled isNumber
+#'   isPackageVersion isString
 #' @importFrom syntactic kebabCase
 #' @importFrom utils install.packages
 NULL
