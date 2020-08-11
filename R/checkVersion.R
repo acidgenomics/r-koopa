@@ -7,25 +7,27 @@
 #' checkVersion("tmux")
 checkVersion <- function(
     name,
-    whichName = NULL,
+    nameFancy = NULL,
     current = currentVersion(name),
     expected = expectedVersion(name),
+    whichName,
     eval = c("==", ">="),
     required = TRUE
 ) {
-    if (is.null(whichName)) {
-        whichName <- name
-    }
-    if (identical(current, character())) {
+    if (is.null(nameFancy))
+        nameFancy <- name
+    if (identical(current, character()))
         current <- NA_character_
-    }
+    if (missing(whichName))
+        whichName <- name
     assert(
         isString(name),
-        isString(whichName) || is.na(whichName),
+        isString(nameFancy),
         is(current, "numeric_version") ||
             isString(current) || is.na(current),
         is(expected, "numeric_version") ||
             isString(expected) || is.na(expected),
+        isString(whichName) || is.na(whichName),
         isFlag(required)
     )
     eval <- match.arg(eval)
@@ -37,12 +39,10 @@ checkVersion <- function(
     }
     ## Check to see if program is installed.
     if (is.na(current)) {
-        if (isTRUE(required)) {
-            .checkFail()
-        }
+        if (isTRUE(required)) .checkFail()
         message(sprintf(
             fmt = "  %s | %s is not installed.",
-            fail, name
+            fail, nameFancy
         ))
         return(invisible(FALSE))
     }
@@ -80,7 +80,7 @@ checkVersion <- function(
     }
     msg <- sprintf(
         fmt = "  %s | %s (%s %s %s)",
-        status, name,
+        status, nameFancy,
         current, eval, expected
     )
     if (!is.na(which)) {
