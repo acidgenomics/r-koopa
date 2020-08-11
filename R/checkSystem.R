@@ -19,7 +19,7 @@ checkSystem <- function() {
     docker <- isDocker()
     ## Basic dependencies ======================================================
     h2("Basic dependencies")
-    installed(
+    checkInstalled(
         which = c(
             ## "[",
             ## "basenc",
@@ -426,9 +426,9 @@ checkSystem <- function() {
         !identical(os, "opensuse-leap-15")
     ) {
         h2("Cloud APIs")
-        installed("aws")
+        checkInstalled("aws")
         if (!isTRUE(docker)) {
-            installed(c("az", "gcloud"))
+            checkInstalled(c("az", "gcloud"))
         }
     }
     ## Tools ===================================================================
@@ -486,7 +486,7 @@ checkSystem <- function() {
         current = currentVersion("shellcheck"),
         expected = expectedVersion("shellcheck")
     )
-    installed("shunit2")
+    checkInstalled("shunit2")
     ## Heavy dependencies ======================================================
     if (!isTRUE(docker)) {
         h2("Heavy dependencies")
@@ -547,7 +547,7 @@ checkSystem <- function() {
             current = currentMinorVersion("sqlite"),
             expected = expectedMinorVersion("sqlite")
         )
-        installed(
+        checkInstalled(
             which = c(
                 "pandoc",
                 "pandoc-citeproc",
@@ -596,7 +596,7 @@ checkSystem <- function() {
         }
     } else if (isTRUE(macos)) {
         h2("macOS specific")
-        installed(
+        checkInstalled(
             which = c(
                 "brew",
                 "clang",
@@ -636,7 +636,7 @@ checkSystem <- function() {
         ## >     current = currentVersion("bcbio-nextgen"),
         ## >     expected = expectedVersion("bcbio-nextgen")
         ## > )
-        ## > installed("bcbio_vm.py", required = FALSE)
+        ## > checkInstalled("bcbio_vm.py", required = FALSE)
         ## > checkVersion(
         ## >     name = "bcl2fastq",
         ## >     current = currentVersion("bcl2fastq"),
@@ -670,7 +670,7 @@ checkSystem <- function() {
     }
     ## Python packages =========================================================
     h2("Python packages")
-    installed(
+    checkInstalled(
         which = c(
             "black",
             "flake8",
@@ -683,7 +683,7 @@ checkSystem <- function() {
     ## Rust cargo crates =======================================================
     if (!isTRUE(docker)) {
         h2("Rust cargo crates")
-        installed(
+        checkInstalled(
             which = c(
                 "broot",
                 "cargo",
@@ -697,7 +697,7 @@ checkSystem <- function() {
     ## Ruby gems ===============================================================
     if (!isTRUE(docker)) {
         h2("Ruby gems")
-        installed(
+        checkInstalled(
             which = c(
                 "gem",
                 "bundle",
@@ -706,6 +706,6 @@ checkSystem <- function() {
         )
     }
     if (Sys.getenv("KOOPA_CHECK_FAIL") == 1L) {
-        stop("System failed checks.")
+        stop("System failed checks.", call. = FALSE)
     }
 }
