@@ -16,12 +16,12 @@ checkSystem <- function() {
     koopa <- .koopa()
     macos <- isMacOS()
     linux <- !macos
-    ## FIXME Remove this?
+    docker <- isDocker()
     os <- shell(command = koopa, args = "os-string", stdout = TRUE)
     ## Basic dependencies ======================================================
     h2("Basic dependencies")
     checkInstalled(
-        which = c(
+        name = c(
             ## "[",
             ## "basenc",
             ## "chsh",  # lchsh on Fedora
@@ -199,7 +199,7 @@ checkSystem <- function() {
     ## Languages ===============================================================
     h2("Primary languages")
     checkVersion("python")
-    checkVersion("r", which = "R")
+    checkVersion("r")
     h2("Secondary languages")
     checkVersion("go")
     checkVersion("openjdk", nameFancy = "Java : OpenJDK")
@@ -251,7 +251,7 @@ checkSystem <- function() {
     )
     checkVersion("sqlite", nameFancy = "SQLite")
     checkInstalled(
-        which = c(
+        name = c(
             "pandoc",
             "pandoc-citeproc",
             "tex"
@@ -272,7 +272,7 @@ checkSystem <- function() {
     } else if (isTRUE(macos)) {
         h2("macOS specific")
         checkInstalled(
-            which = c(
+            name = c(
                 "brew",
                 "clang",
                 "gcc"
@@ -299,7 +299,7 @@ checkSystem <- function() {
     ## Python packages =========================================================
     h2("Python packages")
     checkInstalled(
-        which = c(
+        name = c(
             "black",
             "flake8",
             "pip3",
@@ -312,7 +312,7 @@ checkSystem <- function() {
     if (!isTRUE(docker)) {
         h2("Rust cargo crates")
         checkInstalled(
-            which = c(
+            name = c(
                 "broot",
                 "cargo",
                 "dust",
@@ -326,7 +326,7 @@ checkSystem <- function() {
     if (!isTRUE(docker)) {
         h2("Ruby gems")
         checkInstalled(
-            which = c(
+            name = c(
                 "gem",
                 "bundle",
                 "ronn"

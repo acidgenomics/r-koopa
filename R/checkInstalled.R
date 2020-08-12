@@ -1,22 +1,36 @@
 #' Check if program is installed
 #'
+#' @export
 #' @note Updated 2020-08-11.
-#' @noRd
+#'
+#' @param name `character`.
+#'   Program name.
+#' @param required `logical(1)`.
+#'   Is the program required or optional?
+#' @param path `logical(1)`.
+#'   Display the path to program.
+#'   Calls `Sys.which()` internally.
+#'
+#' @return `logical`.
+#'
+#' @examples
+#' checkInstalled("bash")
 checkInstalled <- function(
-    which,
+    name,
     required = TRUE,
     path = FALSE
 ) {
     assert(
-        isCharacter(which),
+        isCharacter(name),
         isFlag(required),
         isFlag(path)
     )
     statusList <- .status()
     invisible(vapply(
-        X = which,
-        FUN = function(which) {
-            ok <- nzchar(Sys.which(which))
+        X = name,
+        FUN = function(name) {
+            which <- Sys.which(name)
+            ok <- nzchar(which)
             if (!isTRUE(ok)) {
                 if (isTRUE(required)) {
                     .checkFail()
@@ -26,15 +40,15 @@ checkInstalled <- function(
                 }
                 message(sprintf(
                     fmt = "  %s | %s missing.",
-                    status, which
+                    status, name
                 ))
             } else {
                 status <- statusList[["ok"]]
-                msg <- sprintf("  %s | %s", status, which)
+                msg <- sprintf("  %s | %s", status, name)
                 if (isTRUE(path)) {
                     msg <- paste0(
                         msg, "\n",
-                        sprintf("       |   %.69s", Sys.which(which))
+                        sprintf("       |   %.69s", which)
                     )
                 }
                 message(msg)
