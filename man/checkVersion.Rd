@@ -12,7 +12,6 @@ checkVersion(
   nameFancy = capitalize(gsub("-", " ", name)),
   current = currentVersion(name),
   expected = expectedVersion(name),
-  which = name,
   op = c("==", ">="),
   required = TRUE
 )

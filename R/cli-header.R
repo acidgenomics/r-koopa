@@ -3,7 +3,7 @@
 #' @name header
 #' @note Updated 2020-08-11.
 #'
-#' @param `character`.
+#' @param x `character`.
 #'   Text to display as header.
 #'
 #' @examples

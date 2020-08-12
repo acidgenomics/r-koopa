@@ -26,7 +26,8 @@ h6(x)
 h7(x)
 }
 \arguments{
-\item{`character`.}{Text to display as header.}
+\item{x}{\code{character}.
+Text to display as header.}
 }
 \description{
 Header level

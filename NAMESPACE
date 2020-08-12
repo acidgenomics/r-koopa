@@ -3,6 +3,7 @@
 export(assert)
 export(checkGNUVersion)
 export(checkHomebrewCaskVersion)
+export(checkInstalled)
 export(checkMacOSAppVersion)
 export(checkSystem)
 export(checkVersion)
