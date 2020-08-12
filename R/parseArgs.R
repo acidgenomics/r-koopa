@@ -66,9 +66,9 @@ parseArgs <- function(
             replacement = "\\1",
             x = flagArgs
         )
-        ok <- flags %in% flagNames
+        ok <- flagNames %in% flags
         if (!all(ok)) {
-            fail <- flags[!ok]
+            fail <- flagNames[!ok]
             stop(sprintf(
                 "Invalid flags requested: %s.",
                 toString(fail, width = 200L)
