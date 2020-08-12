@@ -1,10 +1,10 @@
 #' List user-accessible programs exported in PATH
 #'
 #' @export
-#' @note Updated 2020-08-09.
+#' @note Updated 2020-08-11.
 #'
 #' @examples
-#' listPrograms()
+#' ## > listPrograms()
 listPrograms <- function() {
     assert(isVanilla())
     path <- Sys.getenv("PATH")

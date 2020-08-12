@@ -5,17 +5,12 @@
 \alias{positionalArgs}
 \title{Parse command line argument flags}
 \usage{
-parseArgs(
-  requiredArgs = NULL,
-  optionalArgs = NULL,
-  flags = NULL,
-  positionalArgs = FALSE
-)
+parseArgs(required = NULL, optional = NULL, flags = NULL, positional = FALSE)
 
 positionalArgs()
 }
 \arguments{
-\item{requiredArgs, optionalArgs}{\code{character} or \code{NULL}.
+\item{required, optional}{\code{character} or \code{NULL}.
 Valid key-value pair argument names.
 For example, \code{aaa} for \code{--aaa=AAA} or \verb{--aaa AAA}.
 Note that \verb{--aaa AAA}-style arguments (note lack of \code{=}) are not currently
@@ -26,17 +21,17 @@ Valid long flag names.
 For example, \code{aaa} for \code{--aaa}.
 Short flags, such as \code{-r}, are intentionally not supported.}
 
-\item{positionalArgs}{\code{logical(1)}.
+\item{positional}{\code{logical(1)}.
 Require positional arguments to be defined.}
 }
 \value{
 \code{list}.
 Named list containing arguments, organized by type:
 \itemize{
-\item \code{requiredArgs}
-\item \code{optionalArgs}
+\item \code{required}
+\item \code{optional}
 \item \code{flags}
-\item \code{positionalArgs}
+\item \code{positional}
 }
 }
 \description{
@@ -46,20 +41,16 @@ Parse command line argument flags
 Updated 2020-08-09.
 }
 \examples{
-command <- system.file("scripts", "parse-args", package = "acidbase")
-args <- c(
-    ## Required args:
-    "--aaa=AAA", "--bbb=BBB",
-    ## Optional args:
-    "--ccc=CCC", "--ddd=DDD",
-    ## Flags:
-    "--eee", "--fff",
-    ## Positional args:
-    "GGG", "HHH"
-)
-readLines(command)
-out <- shell(command = command, args = args, stdout = TRUE)
-print(out)
+## Inside Rscript:
+## > args <- parseArgs(
+## >     required = c("aaa", "bbb"),
+## >     optional = c("ccc", "ddd"),
+## >     flags = "force",
+## >     positional = TRUE
+## > )
+## > aaa <- args[["required"]][["aaa"]]
+## > force <- "force" \%in\% args[["flags"]]
+## > posArgs <- args[["positional"]]
 }
 \seealso{
 \itemize{
