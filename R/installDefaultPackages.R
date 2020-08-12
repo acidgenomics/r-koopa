@@ -132,7 +132,7 @@ installDefaultPackages <- function(all = FALSE) {
         reinstall = FALSE
     )
     if (!isTRUE(all)) {
-        return()
+        return(invisible())
     }
     h1("Install additional R packages ({.arg --all} mode)")
     h2("CRAN")
