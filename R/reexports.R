@@ -1,3 +1,7 @@
+#' @importFrom acidbase shell
+#' @export
+acidbase::shell
+
 #' @importFrom bb8 install
 #' @export
 bb8::install
