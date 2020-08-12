@@ -1,7 +1,7 @@
 #' Current version of installed program
 #'
 #' @name currentVersion
-#' @note Updated 2020-08-11.
+#' @note Updated 2020-08-12.
 #'
 #' @param x `character`.
 #'   Program names.
@@ -39,7 +39,7 @@ currentVersion <- function(x, .fun = "get-version") {
         FUN = function(x, .fun) {
             tryCatch(
                 expr = shell(
-                    command = .koopa(),
+                    command = koopa(),
                     args = c(.fun, paste0("'", x, "'")),
                     stdout = TRUE,
                     stderr = FALSE

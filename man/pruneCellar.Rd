@@ -10,7 +10,7 @@ pruneCellar()
 Prune the cellar
 }
 \note{
-Updated 2020-08-11.
+Updated 2020-08-12.
 }
 \examples{
 ## > pruneCellar()

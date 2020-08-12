@@ -13,7 +13,7 @@ Check system
 If you see this error, reinstall ruby, rbenv, and emacs:
 }
 \note{
-Updated 2020-08-11.
+Updated 2020-08-12.
 }
 \section{Ignoring commonmarker-0.17.13 because its extensions are not built.}{
 Try: gem pristine commonmarker --version 0.17.13

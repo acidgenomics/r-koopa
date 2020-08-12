@@ -14,7 +14,7 @@ Application names.}
 Unlink cellar files
 }
 \note{
-Updated 2020-08-09.
+Updated 2020-08-12.
 }
 \examples{
 ## > unlinkCellar(c("vim", "tmux"))

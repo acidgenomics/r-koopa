@@ -1,7 +1,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2020-08-11.
+#' @note Updated 2020-08-12.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -13,7 +13,7 @@
 checkSystem <- function() {
     assert(isVanilla())
     h1("Checking koopa installation.")
-    koopa <- .koopa()
+    koopa <- koopa()
     macos <- isMacOS()
     linux <- !macos
     docker <- isDocker()

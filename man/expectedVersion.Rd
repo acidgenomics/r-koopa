@@ -39,7 +39,7 @@ Expected version
 }}
 
 \note{
-Updated 2020-08-11.
+Updated 2020-08-12.
 }
 \examples{
 apps <- c("vim", "tmux")

@@ -6,7 +6,8 @@
 #' @importFrom crayon green magenta red yellow
 #' @importFrom goalie allAreSystemCommands areDisjointSets assert hasGitHubPAT
 #'   hasLength isADir isAFile isASymlink isCharacter isDocker isFile isFlag
-#'   isInstalled isMacOS isNumber isPackageVersion isString isSubset isVanilla
+#'   isInstalled isLinux isMacOS isNumber isPackageVersion isString isSubset
+#'   isVanilla
 #' @importFrom methods is
 #' @importFrom syntactic autopadZeros capitalize kebabCase
 #' @importFrom utils install.packages tail

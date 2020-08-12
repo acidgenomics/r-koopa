@@ -13,29 +13,7 @@
 
 
 
-#' Koopa program path.
-#'
-#' @note Updated 2020-08-11.
-#' @noRd
-.koopa <- function() {
-    x <- Sys.which("koopa")
-    x <- realpath(x)
-    x
-}
-
-
-
 .koopaEmoji <- "\U1F422"
-
-
-
-#' Koopa installation prefix
-#'
-#' @note Updated 2020-08-11.
-#' @noRd
-.koopaPrefix <- function() {
-    realpath(file.path(.koopa(), "..", ".."))
-}
 
 
 

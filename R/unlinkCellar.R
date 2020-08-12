@@ -1,7 +1,7 @@
 #' Unlink cellar files
 #'
 #' @export
-#' @note Updated 2020-08-09.
+#' @note Updated 2020-08-12.
 #'
 #' @param apps `character.`
 #'   Application names.
@@ -9,7 +9,8 @@
 #' @examples
 #' ## > unlinkCellar(c("vim", "tmux"))
 unlinkCellar <- function(apps) {
-    koopa <- .koopa()
+    assert(isLinux())
+    koopa <- koopa()
     invisible(lapply(
         X = apps,
         FUN = function(app) {

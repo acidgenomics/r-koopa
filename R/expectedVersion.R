@@ -1,7 +1,7 @@
 #' Expected version
 #'
 #' @name expectedVersion
-#' @note Updated 2020-08-11.
+#' @note Updated 2020-08-12.
 #'
 #' @param x `character`.
 #'   Program name.
@@ -19,7 +19,7 @@ NULL
 #' @export
 expectedVersion <- function(x) {
     variablesFile <- file.path(
-        .koopaPrefix(),
+        koopaPrefix(),
         "include",
         "variables.txt"
     )
