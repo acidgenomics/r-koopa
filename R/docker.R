@@ -3,8 +3,8 @@
 #' @name docker
 #' @note Updated 2020-08-11.
 #'
-#' @param images `character`.
-#'   Docker image names.
+#' @param images,image `character`.
+#'   Docker image name.
 #' @param dir `character(1)`.
 #'   Docker image repository.
 #' @param days `numeric(1)`.

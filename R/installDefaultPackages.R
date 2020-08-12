@@ -10,6 +10,9 @@
 #' @export
 #' @note Updated 2020-08-11.
 #'
+#' @param all `logical(1)`.
+#'   Install additional extra packages.
+#'
 #' @seealso
 #' - https://www.bioconductor.org/packages/release/BiocViews.html#___Software
 #'

@@ -3,6 +3,9 @@
 #' @name expectedVersion
 #' @note Updated 2020-08-11.
 #'
+#' @param x `character`.
+#'   Program name.
+#'
 #' @examples
 #' apps <- c("vim", "tmux")
 #' expectedVersion(apps)

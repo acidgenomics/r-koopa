@@ -12,13 +12,40 @@ checkVersion(
   current = currentVersion(name),
   expected = expectedVersion(name),
   whichName,
-  eval = c("==", ">="),
+  op = c("==", ">="),
   required = TRUE
 )
 
 checkMacOSAppVersion(name)
 
 checkHomebrewCaskVersion(name)
+}
+\arguments{
+\item{name}{\code{character(1)}.
+Program name.
+\code{current} and \code{expected} arguments use this value for version checks when
+they are left unset.}
+
+\item{nameFancy}{\code{character(1)} or \code{NULL}..
+Fancy name for use in check messages.
+Inherits \code{name} when left \code{NULL}.}
+
+\item{current, expected}{\code{character(1)}.
+Current or expected version number.}
+
+\item{whichName}{\code{character(1)}, \code{missing}, or \code{NULL}.
+Program name to check in \code{PATH}.
+Inherits from \code{name} when left unset.
+Set \code{NULL} to skip any additional \code{PATH} checks.}
+
+\item{op}{\code{character(1)}.
+Operator to use for evaluation.}
+
+\item{required}{\code{logical(1)}.
+Is the program required or optional?}
+}
+\value{
+Invisible \code{logical}.
 }
 \description{
 Check version
@@ -31,7 +58,7 @@ Check version
 }}
 
 \note{
-Updated 2020-08-09.
+Updated 2020-08-11.
 }
 \examples{
 checkVersion("tmux")

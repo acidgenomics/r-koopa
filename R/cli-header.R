@@ -3,6 +3,9 @@
 #' @name header
 #' @note Updated 2020-08-11.
 #'
+#' @param `character`.
+#'   Text to display as header.
+#'
 #' @examples
 #' h1("Level 1")
 #' h2("Level 2")
@@ -12,7 +15,12 @@ NULL
 
 .h <- function(x, level) {
     arrow <- magenta(paste0(paste0(rep("=", level), collapse = ""), ">"))
-    cat(paste0(.koopaEmoji, " ", arrow, " ", x, "\n"))
+    lapply(
+        X = x,
+        FUN = function(x) {
+            cat(paste0(.koopaEmoji, " ", arrow, " ", x, "\n"))
+        }
+    )
     invisible(x)
 }
 

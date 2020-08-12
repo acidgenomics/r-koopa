@@ -3,6 +3,9 @@
 #' @export
 #' @note Updated 2020-08-11.
 #'
+#' @param x `character(1)`.
+#'   Text to be displayed as list items.
+#'
 #' @examples
 #' ul(c("Item 1", "Item 2"))
 ul <- function(x) {

@@ -18,6 +18,10 @@ expectedMajorVersion(x)
 
 expectedMinorVersion(x)
 }
+\arguments{
+\item{x}{\code{character}.
+Program name.}
+}
 \description{
 Expected version
 }

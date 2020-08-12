@@ -6,6 +6,13 @@
 \usage{
 findAndMoveInSequence(sourceDir, targetDir)
 }
+\arguments{
+\item{sourceDir}{\code{character(1)}.
+Source directory.}
+
+\item{targetDir}{\code{character(1)}.
+Target directory.}
+}
 \description{
 Find and move files in sequence
 }

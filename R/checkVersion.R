@@ -1,7 +1,27 @@
 #' Check version
 #'
 #' @export
-#' @note Updated 2020-08-09.
+#' @note Updated 2020-08-11.
+#'
+#' @param name `character(1)`.
+#'   Program name.
+#'   `current` and `expected` arguments use this value for version checks when
+#'   they are left unset.
+#' @param nameFancy `character(1)` or `NULL`..
+#'   Fancy name for use in check messages.
+#'   Inherits `name` when left `NULL`.
+#' @param current,expected `character(1)`.
+#'   Current or expected version number.
+#' @param whichName `character(1)`, `missing`, or `NULL`.
+#'   Program name to check in `PATH`.
+#'   Inherits from `name` when left unset.
+#'   Set `NULL` to skip any additional `PATH` checks.
+#' @param op `character(1)`.
+#'   Operator to use for evaluation.
+#' @param required `logical(1)`.
+#'   Is the program required or optional?
+#'
+#' @return Invisible `logical`.
 #'
 #' @examples
 #' checkVersion("tmux")
@@ -11,7 +31,7 @@ checkVersion <- function(
     current = currentVersion(name),
     expected = expectedVersion(name),
     whichName,
-    eval = c("==", ">="),
+    op = c("==", ">="),
     required = TRUE
 ) {
     if (is.null(nameFancy))
@@ -30,7 +50,7 @@ checkVersion <- function(
         isString(whichName) || is.na(whichName),
         isFlag(required)
     )
-    eval <- match.arg(eval)
+    op <- match.arg(op)
     statusList <- .status()
     if (isTRUE(required)) {
         fail <- statusList[["fail"]]
@@ -54,7 +74,7 @@ checkVersion <- function(
         assert(isCharacter(which))
     }
     ## Sanitize the version for non-identical (e.g. GTE) comparisons.
-    if (!identical(eval, "==")) {
+    if (!identical(op, "==")) {
         if (grepl("\\.", current)) {
             current <- sanitizeVersion(current)
             current <- package_version(current)
@@ -65,9 +85,9 @@ checkVersion <- function(
         }
     }
     ## Compare current to expected version.
-    if (eval == ">=") {
+    if (op == ">=") {
         ok <- current >= expected
-    } else if (eval == "==") {
+    } else if (op == "==") {
         ok <- current == expected
     }
     if (isTRUE(ok)) {
@@ -81,7 +101,7 @@ checkVersion <- function(
     msg <- sprintf(
         fmt = "  %s | %s (%s %s %s)",
         status, nameFancy,
-        current, eval, expected
+        current, op, expected
     )
     if (!is.na(which)) {
         msg <- paste(

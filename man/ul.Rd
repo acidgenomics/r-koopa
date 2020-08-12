@@ -6,6 +6,10 @@
 \usage{
 ul(x)
 }
+\arguments{
+\item{x}{\code{character(1)}.
+Text to be displayed as list items.}
+}
 \description{
 Unordered list
 }

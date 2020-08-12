@@ -16,8 +16,8 @@ dockerBuildAllTags(
 isDockerBuildRecent(image, days = 2L)
 }
 \arguments{
-\item{images}{\code{character}.
-Docker image names.}
+\item{images, image}{\code{character}.
+Docker image name.}
 
 \item{dir}{\code{character(1)}.
 Docker image repository.}

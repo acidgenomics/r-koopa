@@ -3,6 +3,11 @@
 #' @export
 #' @note Updated 2020-08-11.
 #'
+#' @param sourceDir `character(1)`.
+#'   Source directory.
+#' @param targetDir `character(1)`.
+#'   Target directory.
+#'
 #' @examples
 #' ## > findAndMoveInSequence(sourceDir, targetDir)
 findAndMoveInSequence <- function(sourceDir, targetDir) {

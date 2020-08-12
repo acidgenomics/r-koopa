@@ -6,6 +6,10 @@
 \usage{
 installDefaultPackages(all = FALSE)
 }
+\arguments{
+\item{all}{\code{logical(1)}.
+Install additional extra packages.}
+}
 \description{
 Install recommended default R packages
 }
