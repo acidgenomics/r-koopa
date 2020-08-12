@@ -8,6 +8,6 @@
 #'   hasLength isADir isAFile isASymlink isCharacter isDocker isFile isFlag
 #'   isInstalled isMacOS isNumber isPackageVersion isString isSubset isVanilla
 #' @importFrom methods is
-#' @importFrom syntactic autopadZeros kebabCase
+#' @importFrom syntactic autopadZeros capitalize kebabCase
 #' @importFrom utils install.packages tail
 NULL

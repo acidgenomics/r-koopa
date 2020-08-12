@@ -2,23 +2,26 @@
 % Please edit documentation in R/checkVersion.R
 \name{checkVersion}
 \alias{checkVersion}
+\alias{checkGNUVersion}
 \alias{checkMacOSAppVersion}
 \alias{checkHomebrewCaskVersion}
 \title{Check version}
 \usage{
 checkVersion(
   name,
-  nameFancy = NULL,
+  nameFancy = capitalize(gsub("-", " ", name)),
   current = currentVersion(name),
   expected = expectedVersion(name),
-  whichName,
+  which = name,
   op = c("==", ">="),
   required = TRUE
 )
 
-checkMacOSAppVersion(name)
+checkGNUVersion(name, ...)
 
-checkHomebrewCaskVersion(name)
+checkMacOSAppVersion(name, ...)
+
+checkHomebrewCaskVersion(name, ...)
 }
 \arguments{
 \item{name}{\code{character(1)}.
@@ -27,22 +30,18 @@ Program name.
 they are left unset.}
 
 \item{nameFancy}{\code{character(1)} or \code{NULL}..
-Fancy name for use in check messages.
-Inherits \code{name} when left \code{NULL}.}
+Fancy name for use in check messages.}
 
 \item{current, expected}{\code{character(1)}.
 Current or expected version number.}
-
-\item{whichName}{\code{character(1)}, \code{missing}, or \code{NULL}.
-Program name to check in \code{PATH}.
-Inherits from \code{name} when left unset.
-Set \code{NULL} to skip any additional \code{PATH} checks.}
 
 \item{op}{\code{character(1)}.
 Operator to use for evaluation.}
 
 \item{required}{\code{logical(1)}.
 Is the program required or optional?}
+
+\item{...}{Passthrough to \code{checkVersion()}.}
 }
 \value{
 Invisible \code{logical}.
@@ -52,6 +51,8 @@ Check version
 }
 \section{Functions}{
 \itemize{
+\item \code{checkGNUVersion}: Check GNU package version.
+
 \item \code{checkMacOSAppVersion}: Check macOS app version.
 
 \item \code{checkHomebrewCaskVersion}: Check Homebrew Cask version.

@@ -5,7 +5,7 @@
 checkInstalled <- function(
     which,
     required = TRUE,
-    path = TRUE
+    path = FALSE
 ) {
     assert(
         isCharacter(which),
