@@ -26,6 +26,10 @@ goalie::hasLength
 #' @export
 goalie::isCleanSystemLibrary
 
+#' @importFrom goalie isSubset
+#' @export
+goalie::isSubset
+
 #' @importFrom syntactic camelCase
 #' @export
 syntactic::camelCase

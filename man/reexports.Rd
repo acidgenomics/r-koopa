@@ -10,6 +10,7 @@
 \alias{assert}
 \alias{hasLength}
 \alias{isCleanSystemLibrary}
+\alias{isSubset}
 \alias{camelCase}
 \alias{kebabCase}
 \alias{snakeCase}
@@ -24,7 +25,7 @@ below to see their documentation.
 
   \item{bb8}{\code{\link[bb8]{install}}, \code{\link[bb8]{uninstall}}, \code{\link[bb8]{updatePackages}}}
 
-  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie:check-scalar-hasLength]{hasLength}}, \code{\link[goalie:check-scalar-isCleanSystemLibrary]{isCleanSystemLibrary}}}
+  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie:check-scalar-hasLength]{hasLength}}, \code{\link[goalie:check-scalar-isCleanSystemLibrary]{isCleanSystemLibrary}}, \code{\link[goalie:check-scalar-sets]{isSubset}}}
 
   \item{syntactic}{\code{\link[syntactic]{camelCase}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{snakeCase}}}
 }}
