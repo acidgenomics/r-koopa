@@ -1,7 +1,7 @@
 #' Parse command line argument flags
 #'
 #' @export
-#' @note Updated 2020-08-09.
+#' @note Updated 2020-08-12.
 #'
 #' @param required,optional `character` or `NULL`.
 #'   Valid key-value pair argument names.
@@ -70,7 +70,7 @@ parseArgs <- function(
         if (!all(ok)) {
             fail <- flagNames[!ok]
             stop(sprintf(
-                "Invalid flags requested: %s.",
+                "Invalid flags detected: %s.",
                 toString(fail, width = 200L)
             ))
         }
@@ -83,7 +83,7 @@ parseArgs <- function(
         names(args) <- sub(pattern = argPattern, replacement = "\\1", x = args)
         args <- sub(pattern = argPattern, replacement = "\\2", x = args)
         if (!is.null(required)) {
-            ok <- isSubset(required, names(args))
+            ok <- required %in% names(args)
             if (!all(ok)) {
                 fail <- required[!ok]
                 stop(sprintf(
