@@ -13,3 +13,15 @@ bb8::updatePackages
 #' @importFrom goalie assert
 #' @export
 goalie::assert
+
+#' @importFrom syntactic camelCase
+#' @export
+syntactic::camelCase
+
+#' @importFrom syntactic kebabCase
+#' @export
+syntactic::kebabCase
+
+#' @importFrom syntactic snakeCase
+#' @export
+syntactic::snakeCase

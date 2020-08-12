@@ -7,6 +7,9 @@
 \alias{uninstall}
 \alias{updatePackages}
 \alias{assert}
+\alias{camelCase}
+\alias{kebabCase}
+\alias{snakeCase}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -17,5 +20,7 @@ below to see their documentation.
   \item{bb8}{\code{\link[bb8]{install}}, \code{\link[bb8]{uninstall}}, \code{\link[bb8]{updatePackages}}}
 
   \item{goalie}{\code{\link[goalie]{assert}}}
+
+  \item{syntactic}{\code{\link[syntactic]{camelCase}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{snakeCase}}}
 }}
 
