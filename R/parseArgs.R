@@ -3,7 +3,7 @@
 #' @export
 #' @note Updated 2020-08-09.
 #'
-#' @param requiredArgs,optionalArgs `character` or `NULL`.
+#' @param required,optional `character` or `NULL`.
 #'   Valid key-value pair argument names.
 #'   For example, `aaa` for `--aaa=AAA` or `--aaa AAA`.
 #'   Note that `--aaa AAA`-style arguments (note lack of `=`) are not currently
@@ -12,15 +12,15 @@
 #'   Valid long flag names.
 #'   For example, `aaa` for `--aaa`.
 #'   Short flags, such as `-r`, are intentionally not supported.
-#' @param positionalArgs `logical(1)`.
+#' @param positional `logical(1)`.
 #'   Require positional arguments to be defined.
 #'
 #' @return `list`.
 #'   Named list containing arguments, organized by type:
-#'   - `requiredArgs`
-#'   - `optionalArgs`
+#'   - `required`
+#'   - `optional`
 #'   - `flags`
-#'   - `positionalArgs`
+#'   - `positional`
 #'
 #' @seealso
 #' - argparse Python package.
@@ -28,75 +28,74 @@
 #' - optparse R package.
 #'
 #' @examples
-#' command <- system.file("scripts", "parse-args", package = "acidbase")
-#' args <- c(
-#'     ## Required args:
-#'     "--aaa=AAA", "--bbb=BBB",
-#'     ## Optional args:
-#'     "--ccc=CCC", "--ddd=DDD",
-#'     ## Flags:
-#'     "--eee", "--fff",
-#'     ## Positional args:
-#'     "GGG", "HHH"
-#' )
-#' readLines(command)
-#' out <- shell(command = command, args = args, stdout = TRUE)
-#' print(out)
+#' ## Inside Rscript:
+#' ## > args <- parseArgs(
+#' ## >     required = c("aaa", "bbb"),
+#' ## >     optional = c("ccc", "ddd"),
+#' ## >     flags = "force",
+#' ## >     positional = TRUE
+#' ## > )
+#' ## > aaa <- args[["required"]][["aaa"]]
+#' ## > force <- "force" %in% args[["flags"]]
+#' ## > posArgs <- args[["positional"]]
 parseArgs <- function(
-    requiredArgs = NULL,
-    optionalArgs = NULL,
+    required = NULL,
+    optional = NULL,
     flags = NULL,
-    positionalArgs = FALSE
+    positional = FALSE
 ) {
     assert(
-        areDisjointSets(requiredArgs, optionalArgs),
-        areDisjointSets(requiredArgs, optionalArgs),
-        areDisjointSets(requiredArgs, flags),
-        areDisjointSets(optionalArgs, flags)
+        areDisjointSets(required, optional),
+        areDisjointSets(required, flags),
+        areDisjointSets(optional, flags),
+        isFlag(positional)
     )
     cmdArgs <- commandArgs(trailingOnly = TRUE)
     out <- list(
-        requiredArgs = NULL,
-        optionalArgs = NULL,
+        required = NULL,
+        optional = NULL,
         flags = NULL,
-        positionalArgs = NULL
+        positional = NULL
     )
     if (!is.null(flags)) {
-        optionalFlags <- flags
         flagPattern <- "^--([^=[:space:]]+)$"
-        flags <- grep(pattern = flagPattern, x = cmdArgs, value = TRUE)
-        cmdArgs <- setdiff(cmdArgs, flags)
-        flags <- sub(pattern = flagPattern, replacement = "\\1", x = flags)
-        ok <- flags %in% optionalFlags
+        flagArgs <- grep(pattern = flagPattern, x = cmdArgs, value = TRUE)
+        cmdArgs <- setdiff(cmdArgs, flagArgs)
+        flagNames <- sub(
+            pattern = flagPattern,
+            replacement = "\\1",
+            x = flagArgs
+        )
+        ok <- flags %in% flagNames
         if (!all(ok)) {
             fail <- flags[!ok]
             stop(sprintf(
-                "Invalid flags detected: %s.",
+                "Invalid flags requested: %s.",
                 toString(fail, width = 200L)
             ))
         }
-        out[["flags"]] <- flags
+        out[["flags"]] <- flagNames
     }
-    if (!is.null(requiredArgs) || !is.null(optionalArgs)) {
+    if (!is.null(required) || !is.null(optional)) {
         argPattern <- "^--([^=[:space:]]+)=([^[:space:]]+)$"
         args <- grep(pattern = argPattern, x = cmdArgs, value = TRUE)
         cmdArgs <- setdiff(cmdArgs, args)
         names(args) <- sub(pattern = argPattern, replacement = "\\1", x = args)
         args <- sub(pattern = argPattern, replacement = "\\2", x = args)
-        if (!is.null(requiredArgs)) {
-            ok <- isSubset(requiredArgs, names(args))
+        if (!is.null(required)) {
+            ok <- isSubset(required, names(args))
             if (!all(ok)) {
-                fail <- requiredArgs[!ok]
+                fail <- required[!ok]
                 stop(sprintf(
                     "Missing required args: %s.",
                     toString(fail, width = 200L)
                 ))
             }
-            out[["requiredArgs"]] <- args[requiredArgs]
-            args <- args[!names(args) %in% requiredArgs]
+            out[["required"]] <- args[required]
+            args <- args[!names(args) %in% required]
         }
-        if (!is.null(optionalArgs) && hasLength(args)) {
-            match <- match(x = names(args), table = optionalArgs)
+        if (!is.null(optional) && hasLength(args)) {
+            match <- match(x = names(args), table = optional)
             if (any(is.na(match))) {
                 fail <- names(args)[is.na(match)]
                 stop(sprintf(
@@ -104,14 +103,14 @@ parseArgs <- function(
                     toString(fail, width = 200L)
                 ))
             }
-            out[["optionalArgs"]] <- args
+            out[["optional"]] <- args
         }
     }
-    if (isTRUE(positionalArgs)) {
+    if (isTRUE(positional)) {
         if (!hasLength(cmdArgs) || any(grepl(pattern = "^--", x = cmdArgs))) {
             stop("Positional arguments are required but missing.")
         }
-        out[["positionalArgs"]] <- cmdArgs
+        out[["positional"]] <- cmdArgs
     } else {
         if (hasLength(cmdArgs)) {
             stop(sprintf(
@@ -129,10 +128,10 @@ parseArgs <- function(
 #' @export
 positionalArgs <- function() {
     x <- parseArgs(
-        requiredArgs = NULL,
-        optionalArgs = NULL,
+        required = NULL,
+        optional = NULL,
         flags = NULL,
-        positionalArgs = TRUE
+        positional = TRUE
     )
-    x[["positionalArgs"]]
+    x[["positional"]]
 }
