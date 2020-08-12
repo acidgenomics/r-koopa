@@ -7,6 +7,7 @@
 \alias{uninstall}
 \alias{updatePackages}
 \alias{assert}
+\alias{isCleanSystemLibrary}
 \alias{camelCase}
 \alias{kebabCase}
 \alias{snakeCase}
@@ -19,7 +20,7 @@ below to see their documentation.
 \describe{
   \item{bb8}{\code{\link[bb8]{install}}, \code{\link[bb8]{uninstall}}, \code{\link[bb8]{updatePackages}}}
 
-  \item{goalie}{\code{\link[goalie]{assert}}}
+  \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie:check-scalar-isCleanSystemLibrary]{isCleanSystemLibrary}}}
 
   \item{syntactic}{\code{\link[syntactic]{camelCase}}, \code{\link[syntactic]{kebabCase}}, \code{\link[syntactic]{snakeCase}}}
 }}

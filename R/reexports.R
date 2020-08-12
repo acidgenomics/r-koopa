@@ -14,6 +14,10 @@ bb8::updatePackages
 #' @export
 goalie::assert
 
+#' @importFrom goalie isCleanSystemLibrary
+#' @export
+goalie::isCleanSystemLibrary
+
 #' @importFrom syntactic camelCase
 #' @export
 syntactic::camelCase
