@@ -18,6 +18,10 @@ bb8::updatePackages
 #' @export
 goalie::assert
 
+#' @importFrom goalie hasLength
+#' @export
+goalie::hasLength
+
 #' @importFrom goalie isCleanSystemLibrary
 #' @export
 goalie::isCleanSystemLibrary
