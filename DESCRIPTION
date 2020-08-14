@@ -2,7 +2,7 @@ Package: koopa
 Title: Shell Bootloader for Bioinformatics
 Description: Shell bootloader for bioinformatics.
 Version: 0.0.1
-Date: 2020-08-12
+Date: 2020-08-14
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",

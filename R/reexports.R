@@ -22,6 +22,14 @@ goalie::assert
 #' @export
 goalie::hasLength
 
+#' @importFrom goalie isADir
+#' @export
+goalie::isADir
+
+#' @importFrom goalie isAFile
+#' @export
+goalie::isAFile
+
 #' @importFrom goalie isCleanSystemLibrary
 #' @export
 goalie::isCleanSystemLibrary
