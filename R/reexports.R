@@ -1,3 +1,7 @@
+#' @importFrom acidbase initDir
+#' @export
+acidbase::initDir
+
 #' @importFrom acidbase shell
 #' @export
 acidbase::shell
