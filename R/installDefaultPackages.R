@@ -8,7 +8,7 @@
 #'   See https://github.com/tidyverse/tidyr/issues/1024 for details.
 #'
 #' @export
-#' @note Updated 2020-08-13.
+#' @note Updated 2020-08-17.
 #'
 #' @param all `logical(1)`.
 #'   Install additional extra packages.
@@ -20,8 +20,7 @@
 #' ## > installDefaultPackages()
 installDefaultPackages <- function(all = FALSE) {
     assert(isFlag(all))
-    cran <- getOption("repos")[["CRAN"]]
-    cranArchive <- paste0(cran, "/src/contrib/Archive/")
+    cranArchive <- "https://cloud.r-project.org/src/contrib/Archive/"
     ## These dependencies are required to install sf, etc.
     assert(allAreSystemCommands(c("gdal-config", "geos-config")))
     ## Check for GitHub PAT, if necessary.
@@ -35,11 +34,17 @@ installDefaultPackages <- function(all = FALSE) {
         BiocManager::install(update = FALSE, ask = FALSE, version = biocVersion)
     }
     h1("Install R packages")
+    ## > h2("Pinned versions")
+    ## > install(
+    ## >     pkgs = c(
+    ## >         paste0(cranArchive, "cpp11/cpp11_0.1.0.tar.gz"),
+    ## >         paste0(cranArchive, "rgdal/rgdal_1.5-12.tar.gz"),
+    ## >     ),
+    ## >     reinstall = FALSE
+    ## > )
     h2("Tricky packages")
     install(
         pkgs = c(
-            ## > paste0(cranArchive, "cpp11/cpp11_0.1.0.tar.gz"),
-            ## > paste0(cranArchive, "rgdal/rgdal_1.5-12.tar.gz"),
             "Rcpp",
             "RcppArmadillo",
             "RcppAnnoy",
@@ -288,30 +293,35 @@ installDefaultPackages <- function(all = FALSE) {
         ),
         reinstall = FALSE
     )
-    ## GitHub packages.
+    h2("Acid Genomics")
+    install(
+        pkgs = c(
+            "bb8",                                      # Infrastructure
+            "acidroxygen",                              # Infrastructure
+            "acidtest",                                 # Infrastructure
+            "basejump",                                 # Infrastructure
+            "acidplots",                                # Visualization
+            "EggNOG",                                   # Annotation
+            "PANTHER",                                  # Annotation
+            "WormBase",                                 # Annotation
+            "DESeqAnalysis",                            # RNASeq
+            "acidgsea",                                 # RNASeq
+            "Chromium",                                 # SingleCell
+            "pointillism",                              # SingleCell
+            "bcbioRNASeq",                              # RNASeq
+            "bcbioSingleCell"                           # SingleCell
+        ),
+        reinstall = FALSE
+    )
     h2("GitHub")
     install(
         pkgs = c(
-            "acidgenomics/bb8",                         # Infrastructure
-            "acidgenomics/acidroxygen",                 # Infrastructure
-            "acidgenomics/acidtest",                    # Infrastructure
-            "acidgenomics/basejump",                    # Infrastructure
-            "acidgenomics/acidplots",                   # Visualization
-            "acidgenomics/EggNOG",                      # Annotation
-            "acidgenomics/PANTHER",                     # Annotation
-            "acidgenomics/WormBase",                    # Annotation
-            "acidgenomics/DESeqAnalysis",               # RNASeq
-            "acidgenomics/acidgsea",                    # RNASeq
-            "acidgenomics/Chromium",                    # SingleCell
-            "acidgenomics/pointillism",                 # SingleCell
-            "hbc/bcbioRNASeq",                          # RNASeq
-            "hbc/bcbioSingleCell"                       # SingleCell
-            ## > "BaderLab/scClustViz"                  # SingleCell
-            ## > "cole-trapnell-lab/monocle3"           # SingleCell
-            ## > "jonocarroll/DFplyr"                   # DataRepresentation
-            ## > "js229/Vennerable"                     # Visualization
-            ## > "kevinblighe/scDataviz"                # SingleCell
-            ## > "waldronlab/cBioPortalData"            # RNASeq
+            "BaderLab/scClustViz"                       # SingleCell
+            "cole-trapnell-lab/monocle3"                # SingleCell
+            "jonocarroll/DFplyr"                        # DataRepresentation
+            "js229/Vennerable"                          # Visualization
+            "kevinblighe/scDataviz"                     # SingleCell
+            "waldronlab/cBioPortalData"                 # RNASeq
         ),
         reinstall = FALSE
     )
