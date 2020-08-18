@@ -316,11 +316,11 @@ installDefaultPackages <- function(all = FALSE) {
     h2("GitHub")
     install(
         pkgs = c(
-            "BaderLab/scClustViz"                       # SingleCell
-            "cole-trapnell-lab/monocle3"                # SingleCell
-            "jonocarroll/DFplyr"                        # DataRepresentation
-            "js229/Vennerable"                          # Visualization
-            "kevinblighe/scDataviz"                     # SingleCell
+            "BaderLab/scClustViz",                      # SingleCell
+            "cole-trapnell-lab/monocle3",               # SingleCell
+            "jonocarroll/DFplyr",                       # DataRepresentation
+            "js229/Vennerable",                         # Visualization
+            "kevinblighe/scDataviz",                    # SingleCell
             "waldronlab/cBioPortalData"                 # RNASeq
         ),
         reinstall = FALSE
