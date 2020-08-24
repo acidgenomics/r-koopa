@@ -4,13 +4,14 @@
 #'
 #' - **2020-08-24**: mgcv v1.8-32 won't build on macOS due to `_kij` missing.
 #'   Can fix by installing binary package instead.
+#'   This issue is fixed in v1.8-33, not yet on CRAN.
 #' - **2020-08-05**: rgdal v1.5-15 won't build on Debian.
 #'   Fixed with v1.5-16.
 #' - **2020-08-11**: cpp11 v0.2.0 update is breaking tidyr.
 #'   See https://github.com/tidyverse/tidyr/issues/1024 for details.
 #'
 #' @export
-#' @note Updated 2020-08-17.
+#' @note Updated 2020-08-24.
 #'
 #' @param all `logical(1)`.
 #'   Install additional extra packages.
@@ -45,7 +46,7 @@ installDefaultPackages <- function(all = FALSE) {
     ## >     reinstall = FALSE
     ## > )
     if (isMacOS()) {
-        binPrefix <- "https://cran.r-project.org/bin/macosx/contrib/4.0/",
+        binPrefix <- "https://cran.r-project.org/bin/macosx/contrib/4.0/"
         install(
             pkgs = paste0(binPrefix, "mgcv_1.8-32.tgz"),
             reinstall = FALSE
