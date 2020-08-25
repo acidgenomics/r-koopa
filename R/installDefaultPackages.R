@@ -11,7 +11,7 @@
 #'   See https://github.com/tidyverse/tidyr/issues/1024 for details.
 #'
 #' @export
-#' @note Updated 2020-08-24.
+#' @note Updated 2020-08-25.
 #'
 #' @param all `logical(1)`.
 #'   Install additional extra packages.
