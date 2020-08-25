@@ -238,6 +238,7 @@ installDefaultPackages <- function(all = FALSE) {
             "KEGGgraph",                                # Visualization
             "MAST",                                     # RNASeq
             "MultiAssayExperiment",                     # DataRepresentation
+            "PANTHER.db",                               # AnnotationData
             "ReactomePA",                               # Pathways
             "Rhdf5lib",                                 # DataRepresentation
             "Rhtslib",                                  # DataRepresentation
