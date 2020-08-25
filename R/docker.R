@@ -80,7 +80,10 @@ dockerBuildAllTags <- function(
                     } else {
                         if (!isTRUE(force)) {
                             if (isTRUE(
-                                isDockerBuildRecent(image, days = days)
+                                isDockerBuildRecent(
+                                    image = paste0(image, ":", tag),
+                                    days = days
+                                )
                             )) {
                                 cli_alert_info(sprintf(
                                     "'%s:%s' was built recently. Skipping.",
