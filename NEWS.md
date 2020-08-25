@@ -1,3 +1,7 @@
+## koopa 0.0.5 (2020-08-25)
+
+- `dockerBuildAllTags`: Fix for recently built image check.
+
 ## koopa 0.0.4 (2020-08-25)
 
 - `installDefaultPackages`: Added PANTHER.db package.
