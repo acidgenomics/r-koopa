@@ -14,11 +14,14 @@ Install additional extra packages.}
 Install recommended default R packages
 }
 \note{
-Updated 2020-08-13.
+Updated 2020-08-27.
 }
 \section{Tricky packages}{
 
 \itemize{
+\item \strong{2020-08-24}: mgcv v1.8-32 won't build on macOS due to \verb{_kij} missing.
+Can fix by installing binary package instead.
+This issue is fixed in v1.8-33, on CRAN 2020-08-27.
 \item \strong{2020-08-05}: rgdal v1.5-15 won't build on Debian.
 Fixed with v1.5-16.
 \item \strong{2020-08-11}: cpp11 v0.2.0 update is breaking tidyr.
