@@ -1,3 +1,7 @@
+## koopa 0.0.6 (2020-08-27)
+
+- `installDefaultPackages`: Removed temporary mgcv build fix for macOS.
+
 ## koopa 0.0.5 (2020-08-25)
 
 - `dockerBuildAllTags`: Fix for recently built image check.
