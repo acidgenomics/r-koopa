@@ -11,7 +11,7 @@
 #'   See https://github.com/tidyverse/tidyr/issues/1024 for details.
 #'
 #' @export
-#' @note Updated 2020-08-27.
+#' @note Updated 2020-09-08.
 #'
 #' @param all `logical(1)`.
 #'   Install additional extra packages.
@@ -73,6 +73,7 @@ installDefaultPackages <- function(all = FALSE) {
             "Rcpp",
             "RcppArmadillo",
             "backports",
+            "broom",
             "caTools",
             "cli",
             "covr",
@@ -92,6 +93,7 @@ installDefaultPackages <- function(all = FALSE) {
             "patrick",
             "pbapply",
             "pkgdown",
+            "processx",
             "rcmdcheck",
             "remotes",
             "reprex",
@@ -190,6 +192,7 @@ installDefaultPackages <- function(all = FALSE) {
             "pillar",
             "plyr",
             "pryr",
+            "ps",
             "pzfx",
             "rdrop2",
             "readxl",
@@ -199,7 +202,8 @@ installDefaultPackages <- function(all = FALSE) {
             "slam",
             "snakecase",
             "snow",
-            "uwot"
+            "uwot",
+            "waldo"
         ),
         reinstall = FALSE
     )
@@ -258,6 +262,7 @@ installDefaultPackages <- function(all = FALSE) {
             "ballgown",                                 # RNASeq
             "batchelor",                                # SingleCell
             "beachmat",                                 # SingleCell
+            "biobroom",                                 # DataImport
             "biomaRt",                                  # Annotation
             "biovizBase",                               # Visualization
             "cBioPortalData",                           # RNASeq
