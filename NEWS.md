@@ -1,3 +1,8 @@
+## koopa 0.0.7 (2020-09-08)
+
+- `installDefaultPackages`: Added broom, biobroom, and some other recommended
+  packages from r-lib.
+
 ## koopa 0.0.6 (2020-08-27)
 
 - `installDefaultPackages`: Removed temporary mgcv build fix for macOS.
