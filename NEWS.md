@@ -1,3 +1,7 @@
+## koopa 0.0.8 (2020-09-11)
+
+- Added `realpath` to reexports.
+
 ## koopa 0.0.7 (2020-09-08)
 
 - `installDefaultPackages`: Added broom, biobroom, and some other recommended
