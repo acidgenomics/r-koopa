@@ -2,6 +2,10 @@
 #' @export
 acidbase::initDir
 
+#' @importFrom acidbase realpath
+#' @export
+acidbase::realpath
+
 #' @importFrom acidbase shell
 #' @export
 acidbase::shell
