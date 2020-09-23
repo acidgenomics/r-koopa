@@ -105,6 +105,7 @@ installDefaultPackages <- function(all = FALSE) {
             "sessioninfo",
             "shiny",
             "shinydashboard",
+            "sloop",
             "stringi",
             "testthat",
             "tidyverse",
