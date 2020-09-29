@@ -11,7 +11,7 @@
 #'   See https://github.com/tidyverse/tidyr/issues/1024 for details.
 #'
 #' @export
-#' @note Updated 2020-09-23.
+#' @note Updated 2020-09-29.
 #'
 #' @param all `logical(1)`.
 #'   Install additional extra packages.
@@ -245,17 +245,18 @@ installDefaultPackages <- function(all = FALSE) {
             "MAST",                                     # RNASeq
             "MultiAssayExperiment",                     # DataRepresentation
             "PANTHER.db",                               # AnnotationData
+            "RDAVIDWebService",                         # Pathways
             "ReactomePA",                               # Pathways
             "Rhdf5lib",                                 # DataRepresentation
             "Rhtslib",                                  # DataRepresentation
             "Rsamtools",                                # Alignment
             "Rsubread",                                 # Alignment
             "SC3",                                      # SingleCell
-            "SpidermiR",                                # miRNA
             "STRINGdb",                                 # Pathways
             "ShortRead",                                # Alignment
-            "TargetScore",                              # miRNA
+            "SpidermiR",                                # miRNA
             "TCGAbiolinks",                             # Sequencing
+            "TargetScore",                              # miRNA
             "TxDb.Hsapiens.UCSC.hg19.knownGene",        # AnnotationData
             "TxDb.Hsapiens.UCSC.hg38.knownGene",        # AnnotationData
             "TxDb.Mmusculus.UCSC.mm10.knownGene",       # AnnotationData
