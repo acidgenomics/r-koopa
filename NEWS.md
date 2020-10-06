@@ -1,3 +1,7 @@
+## koopa 0.0.9 (2020-10-06)
+
+- Renamed acidbase dependency to AcidBase.
+
 ## koopa 0.0.8 (2020-09-11)
 
 - Added `realpath` to reexports.
