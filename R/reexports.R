@@ -1,14 +1,16 @@
-#' @importFrom acidbase initDir
+#' @importFrom AcidBase initDir
 #' @export
-acidbase::initDir
+AcidBase::initDir
 
-#' @importFrom acidbase realpath
+#' @importFrom AcidBase realpath
 #' @export
-acidbase::realpath
+AcidBase::realpath
 
-#' @importFrom acidbase shell
+#' @importFrom AcidBase shell
 #' @export
-acidbase::shell
+AcidBase::shell
+
+
 
 #' @importFrom bb8 install
 #' @export
@@ -17,6 +19,8 @@ bb8::install
 #' @importFrom bb8 uninstall
 #' @export
 bb8::uninstall
+
+
 
 #' @importFrom bb8 updatePackages
 #' @export
@@ -45,6 +49,8 @@ goalie::isCleanSystemLibrary
 #' @importFrom goalie isSubset
 #' @export
 goalie::isSubset
+
+
 
 #' @importFrom syntactic camelCase
 #' @export

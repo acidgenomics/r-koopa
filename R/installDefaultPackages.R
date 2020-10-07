@@ -315,15 +315,15 @@ installDefaultPackages <- function(all = FALSE) {
     install(
         pkgs = c(
             "bb8",                                      # Infrastructure
-            "acidroxygen",                              # Infrastructure
-            "acidtest",                                 # Infrastructure
+            "AcidRoxygen",                              # Infrastructure
+            "AcidTest",                                 # Infrastructure
             "basejump",                                 # Infrastructure
-            "acidplots",                                # Visualization
+            "AcidPlots",                                # Visualization
             "EggNOG",                                   # Annotation
             "PANTHER",                                  # Annotation
             "WormBase",                                 # Annotation
             "DESeqAnalysis",                            # RNASeq
-            "acidgsea",                                 # RNASeq
+            "AcidGSEA",                                 # RNASeq
             "Chromium",                                 # SingleCell
             "pointillism",                              # SingleCell
             "bcbioRNASeq",                              # RNASeq

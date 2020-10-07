@@ -2,7 +2,7 @@ Package: koopa
 Title: Shell Bootloader for Bioinformatics
 Description: Shell bootloader for bioinformatics.
 Version: 0.0.9
-Date: 2020-10-06
+Date: 2020-10-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -33,10 +33,5 @@ Imports:
     utils
 Suggests:
     testthat
-Remotes:
-    acidgenomics/AcidBase,
-    acidgenomics/bb8,
-    acidgenomics/goalie,
-    acidgenomics/syntactic
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

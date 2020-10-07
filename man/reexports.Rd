@@ -25,7 +25,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{acidbase}{\code{\link[acidbase]{initDir}}, \code{\link[acidbase]{realpath}}, \code{\link[acidbase]{shell}}}
+  \item{AcidBase}{\code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{shell}}}
 
   \item{bb8}{\code{\link[bb8]{install}}, \code{\link[bb8]{uninstall}}, \code{\link[bb8]{updatePackages}}}
 
