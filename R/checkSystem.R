@@ -1,7 +1,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2020-08-12.
+#' @note Updated 2020-10-26.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -221,7 +221,7 @@ checkSystem <- function() {
     ## Cloud APIs ==============================================================
     h2("Cloud APIs")
     checkInstalled(c("aws", "az", "gcloud"))
-        ## Tools ===================================================================
+    ## Tools ===================================================================
     h2("Tools")
     checkVersion("git")
     checkVersion("htop", nameFancy = NULL)
@@ -238,6 +238,7 @@ checkSystem <- function() {
     checkInstalled("shunit2")
     ## Heavy dependencies ======================================================
     h2("Heavy dependencies")
+    checkVersion("armadillo", nameFancy = "Armadillo")
     checkVersion("proj", nameFancy = "PROJ")
     checkVersion("gdal", nameFancy = "GDAL")
     checkVersion("geos", nameFancy = "GEOS")

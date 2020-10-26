@@ -1,3 +1,7 @@
+## koopa 0.0.10 (2020-10-26)
+
+- Added support for checking armadillo version.
+
 ## koopa 0.0.9 (2020-10-06)
 
 - Renamed acidbase dependency to AcidBase.
