@@ -11,7 +11,7 @@
 #'   See https://github.com/tidyverse/tidyr/issues/1024 for details.
 #'
 #' @export
-#' @note Updated 2020-09-29.
+#' @note Updated 2020-10-28.
 #'
 #' @param all `logical(1)`.
 #'   Install additional extra packages.
@@ -178,6 +178,7 @@ installDefaultPackages <- function(all = FALSE) {
             "fs",
             "future",
             "ggdendro",
+            "ggpubr",
             "ggrepel",
             "ggridges",
             "ggupset",
