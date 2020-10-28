@@ -217,6 +217,8 @@ installDefaultPackages <- function(all = FALSE) {
             # > "BSgenome.Hsapiens.UCSC.hg19",          # AnnotationData
             # > "BSgenome.Hsapiens.UCSC.hg38",          # AnnotaitonData
             # > "BSgenome.Mmusculus.UCSC.mm10",         # AnnotationData
+            # > "ReactomePA",                           # Pathways
+            # > "reactome.db",                          # AnnotationData
             "AnnotationFilter",                         # Annotation
             "ChIPpeakAnno",                             # ChIPSeq
             "ComplexHeatmap",                           # Visualization
@@ -247,7 +249,6 @@ installDefaultPackages <- function(all = FALSE) {
             "MultiAssayExperiment",                     # DataRepresentation
             "PANTHER.db",                               # AnnotationData
             "RDAVIDWebService",                         # Pathways
-            "ReactomePA",                               # Pathways
             "Rhdf5lib",                                 # DataRepresentation
             "Rhtslib",                                  # DataRepresentation
             "Rsamtools",                                # Alignment
@@ -296,7 +297,6 @@ installDefaultPackages <- function(all = FALSE) {
             "org.Mm.eg.db",                             # AnnotationData
             "pathview",                                 # Pathways
             "pcaMethods",                               # Bayesian
-            "reactome.db",                              # AnnotationData
             "rhdf5",                                    # DataRepresentation
             "scater",                                   # SingleCell
             "scone",                                    # SingleCell
