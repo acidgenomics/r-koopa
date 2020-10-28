@@ -213,11 +213,11 @@ installDefaultPackages <- function(all = FALSE) {
     h2("Bioconductor")
     install(
         pkgs = c(
+            # > "BSgenome.Hsapiens.NCBI.GRCh38",        # AnnotationData
+            # > "BSgenome.Hsapiens.UCSC.hg19",          # AnnotationData
+            # > "BSgenome.Hsapiens.UCSC.hg38",          # AnnotaitonData
+            # > "BSgenome.Mmusculus.UCSC.mm10",         # AnnotationData
             "AnnotationFilter",                         # Annotation
-            "BSgenome.Hsapiens.NCBI.GRCh38",            # AnnotationData
-            "BSgenome.Hsapiens.UCSC.hg19",              # AnnotationData
-            "BSgenome.Hsapiens.UCSC.hg38",              # AnnotaitonData
-            "BSgenome.Mmusculus.UCSC.mm10",             # AnnotationData
             "ChIPpeakAnno",                             # ChIPSeq
             "ComplexHeatmap",                           # Visualization
             "ConsensusClusterPlus",                     # Visualization
@@ -313,25 +313,7 @@ installDefaultPackages <- function(all = FALSE) {
         reinstall = FALSE
     )
     h2("Acid Genomics")
-    install(
-        pkgs = c(
-            "bb8",                                      # Infrastructure
-            "AcidRoxygen",                              # Infrastructure
-            "AcidTest",                                 # Infrastructure
-            "basejump",                                 # Infrastructure
-            "AcidPlots",                                # Visualization
-            "EggNOG",                                   # Annotation
-            "PANTHER",                                  # Annotation
-            "WormBase",                                 # Annotation
-            "DESeqAnalysis",                            # RNASeq
-            "AcidGSEA",                                 # RNASeq
-            "Chromium",                                 # SingleCell
-            "pointillism",                              # SingleCell
-            "bcbioRNASeq",                              # RNASeq
-            "bcbioSingleCell"                           # SingleCell
-        ),
-        reinstall = FALSE
-    )
+    installAcidverse()
     h2("GitHub")
     install(
         pkgs = c(

@@ -1,3 +1,8 @@
+## koopa 0.0.11 (2020-10-28)
+
+- Added new `installAcidverse` function.
+- Updated `installDefaultPackages` to call `installAcidverse` internally.
+
 ## koopa 0.0.10 (2020-10-26)
 
 - Added support for checking armadillo version.
