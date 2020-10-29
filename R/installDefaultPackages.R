@@ -220,12 +220,13 @@ installDefaultPackages <- function(all = FALSE) {
     h2("Bioconductor")
     install(
         pkgs = c(
-            # > "BSgenome.Hsapiens.NCBI.GRCh38",        # AnnotationData
-            # > "BSgenome.Hsapiens.UCSC.hg19",          # AnnotationData
-            # > "BSgenome.Hsapiens.UCSC.hg38",          # AnnotaitonData
-            # > "BSgenome.Mmusculus.UCSC.mm10",         # AnnotationData
-            # > "ReactomePA",                           # Pathways
-            # > "reactome.db",                          # AnnotationData
+            ## > "BSgenome.Hsapiens.NCBI.GRCh38",       # AnnotationData
+            ## > "BSgenome.Hsapiens.UCSC.hg19",         # AnnotationData
+            ## > "BSgenome.Hsapiens.UCSC.hg38",         # AnnotaitonData
+            ## > "BSgenome.Mmusculus.UCSC.mm10",        # AnnotationData
+            ## > "ReactomePA",                          # Pathways
+            ## > "reactome.db",                         # AnnotationData
+            ## > "STRINGdb",                            # Pathways
             "AnnotationFilter",                         # Annotation
             "ChIPpeakAnno",                             # ChIPSeq
             "ComplexHeatmap",                           # Visualization
@@ -261,7 +262,6 @@ installDefaultPackages <- function(all = FALSE) {
             "Rsamtools",                                # Alignment
             "Rsubread",                                 # Alignment
             "SC3",                                      # SingleCell
-            "STRINGdb",                                 # Pathways
             "ShortRead",                                # Alignment
             "SpidermiR",                                # miRNA
             "TCGAbiolinks",                             # Sequencing
