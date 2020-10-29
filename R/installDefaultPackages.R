@@ -117,10 +117,16 @@ installDefaultPackages <- function(all = FALSE) {
         reinstall = FALSE
     )
     h2("Bioconductor")
-    ## 2020-10-29: Temporary fix for missing DelayedArray in BioC 3.13 repo.
+    ## 2020-10-29: Temporary fix for missing packages in BioC 3.13 repo.
     if (isTRUE(isBiocDevel())) {
         install(
-            pkgs = "https://git.bioconductor.org/packages/DelayedArray.git",
+            pkgs = paste0(
+                "https://git.bioconductor.org/packages/",
+                c(
+                    "DelayedArray",
+                    "SingleCellExperiment"
+                )
+            ),
             reinstall = FALSE
         )
     }
