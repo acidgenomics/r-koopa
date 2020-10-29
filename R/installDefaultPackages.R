@@ -11,7 +11,7 @@
 #'   See https://github.com/tidyverse/tidyr/issues/1024 for details.
 #'
 #' @export
-#' @note Updated 2020-10-28.
+#' @note Updated 2020-10-29.
 #'
 #' @param all `logical(1)`.
 #'   Install additional extra packages.
@@ -117,6 +117,13 @@ installDefaultPackages <- function(all = FALSE) {
         reinstall = FALSE
     )
     h2("Bioconductor")
+    ## 2020-10-29: Temporary fix for missing DelayedArray in BioC 3.13 repo.
+    if (isTRUE(isBiocDevel())) {
+        install(
+            pkgs = "https://git.bioconductor.org/packages/DelayedArray.git",
+            reinstall = FALSE
+        )
+    }
     install(
         pkgs = c(
             "AnnotationDbi",
@@ -150,7 +157,7 @@ installDefaultPackages <- function(all = FALSE) {
         reinstall = FALSE
     )
     if (!isTRUE(all)) {
-        return(invisible())
+        return(invisible(NULL))
     }
     h1("Install additional R packages ({.arg --all} mode)")
     h2("CRAN")
