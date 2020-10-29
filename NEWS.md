@@ -1,3 +1,11 @@
+## koopa 0.0.12 (2020-10-29)
+
+- `installDefaultPackages`: Added temporary fix for DelayedArray not currently
+  available for Bioc Devel (3.13).
+  Requires goalie v0.4.10, which adds `isBiocDevel` check function.
+  Also requires bb8 v0.2.34, which adds easy installation from Git repos
+  inside the `install` function.
+
 ## koopa 0.0.11 (2020-10-28)
 
 - Added new `installAcidverse` function.
