@@ -11,7 +11,7 @@
 #'   See https://github.com/tidyverse/tidyr/issues/1024 for details.
 #'
 #' @export
-#' @note Updated 2020-10-29.
+#' @note Updated 2020-11-03.
 #'
 #' @param all `logical(1)`.
 #'   Install additional extra packages.
@@ -20,8 +20,8 @@
 #' - https://www.bioconductor.org/packages/release/BiocViews.html#___Software
 #'
 #' @examples
-#' ## > installDefaultPackages()
-installDefaultPackages <- function(all = FALSE) {
+#' ## > installRPackages()
+installRPackages <- function(all = FALSE) {
     assert(isFlag(all))
     ## These dependencies are required to install sf, etc.
     assert(allAreSystemCommands(c("gdal-config", "geos-config")))
