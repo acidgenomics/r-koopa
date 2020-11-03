@@ -16,6 +16,18 @@ AcidBase::shell
 #' @export
 bb8::install
 
+#' @importFrom bb8 installAcidverse
+#' @export
+bb8::installAcidverse
+
+#' @importFrom bb8 installBioconductor
+#' @export
+bb8::installBioconductor
+
+#' @importFrom bb8 installDefaultPackages
+#' @export
+bb8::installDefaultPackages
+
 #' @importFrom bb8 uninstall
 #' @export
 bb8::uninstall
