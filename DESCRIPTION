@@ -31,7 +31,6 @@ Imports:
     syntactic (>= 0.4.3),
     utils
 Suggests:
-    BiocManager,
     testthat
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
