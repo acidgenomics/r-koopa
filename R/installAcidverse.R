@@ -3,6 +3,8 @@
 #' @export
 #' @note Updated 2020-10-28.
 #'
+#' @return Status from `install()`.
+#'
 #' @examples
 #' ## > installAcidverse()
 installAcidverse <- function() {
