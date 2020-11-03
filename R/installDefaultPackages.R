@@ -23,21 +23,16 @@
 #' ## > installDefaultPackages()
 installDefaultPackages <- function(all = FALSE) {
     assert(isFlag(all))
-    cranArchive <- "https://cloud.r-project.org/src/contrib/Archive/"
     ## These dependencies are required to install sf, etc.
     assert(allAreSystemCommands(c("gdal-config", "geos-config")))
     ## Check for GitHub PAT, if necessary.
     if (isTRUE(all)) {
         assert(hasGitHubPAT())
     }
-    ## Enable versioned Bioconductor install.
-    biocVersion <- Sys.getenv("BIOC_VERSION")
-    if (isString(biocVersion)) {
-        cli_alert(sprintf("Installing Bioconductor %s.", biocVersion))
-        BiocManager::install(update = FALSE, ask = FALSE, version = biocVersion)
-    }
+    installBioconductor()
     h1("Install R packages")
     h2("Tricky packages")
+    ## > cranArchive <- "https://cloud.r-project.org/src/contrib/Archive/"
     ## > install(
     ## >     pkgs = c(
     ## >         paste0(cranArchive, "cpp11/cpp11_0.1.0.tar.gz"),
@@ -118,18 +113,18 @@ installDefaultPackages <- function(all = FALSE) {
     )
     h2("Bioconductor")
     ## 2020-10-29: Temporary fix for missing packages in BioC 3.13 repo.
-    if (isTRUE(isBiocDevel())) {
-        install(
-            pkgs = paste0(
-                "https://git.bioconductor.org/packages/",
-                c(
-                    "DelayedArray",
-                    "SingleCellExperiment"
-                )
-            ),
-            reinstall = FALSE
-        )
-    }
+    ## > if (isTRUE(isBiocDevel())) {
+    ## >     install(
+    ## >         pkgs = paste0(
+    ## >             "https://git.bioconductor.org/packages/",
+    ## >             c(
+    ## >                 "DelayedArray",
+    ## >                 "SingleCellExperiment"
+    ## >             )
+    ## >         ),
+    ## >         reinstall = FALSE
+    ## >     )
+    ## > }
     install(
         pkgs = c(
             "AnnotationDbi",
