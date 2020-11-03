@@ -1,3 +1,9 @@
+## koopa 0.0.13 (2020-11-03)
+
+- Renamed `installDefaultPackages` to `installRPackages`.
+- Added `installBioconductor`, for easily setting up Bioconductor.
+- Added `installAcidverse`, for easily installing all Acid Genomics packages.
+
 ## koopa 0.0.12 (2020-10-29)
 
 - `installDefaultPackages`: Added temporary fix for DelayedArray not currently
