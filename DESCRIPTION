@@ -31,7 +31,6 @@ Imports:
     syntactic (>= 0.4.3),
     utils
 Suggests:
-    BiocCheck,
     BiocManager,
     covr,
     desc,

@@ -1,7 +1,7 @@
 ## koopa 0.0.14 (2020-11-04)
 
-- Added more suggested packages: BiocCheck, BiocManager, covr, desc, lintr,
-  remotes, and sessioninfo.
+- Added more suggested packages: BiocManager, covr, desc, lintr, remotes, and
+  sessioninfo.
 
 ## koopa 0.0.13 (2020-11-03)
 
