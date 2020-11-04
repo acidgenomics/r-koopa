@@ -34,6 +34,7 @@ Suggests:
     BiocCheck,
     BiocManager,
     covr,
+    desc,
     lintr,
     sessioninfo,
     testthat
