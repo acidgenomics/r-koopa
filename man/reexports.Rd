@@ -8,7 +8,6 @@
 \alias{shell}
 \alias{install}
 \alias{installAcidverse}
-\alias{installBioconductor}
 \alias{installDefaultPackages}
 \alias{uninstall}
 \alias{updatePackages}
@@ -30,7 +29,7 @@ below to see their documentation.
 \describe{
   \item{AcidBase}{\code{\link[AcidBase]{initDir}}, \code{\link[AcidBase]{realpath}}, \code{\link[AcidBase]{shell}}}
 
-  \item{bb8}{\code{\link[bb8]{install}}, \code{\link[bb8]{installAcidverse}}, \code{\link[bb8]{installBioconductor}}, \code{\link[bb8]{installDefaultPackages}}, \code{\link[bb8]{uninstall}}, \code{\link[bb8]{updatePackages}}}
+  \item{bb8}{\code{\link[bb8]{install}}, \code{\link[bb8]{installAcidverse}}, \code{\link[bb8]{installDefaultPackages}}, \code{\link[bb8]{uninstall}}, \code{\link[bb8]{updatePackages}}}
 
   \item{goalie}{\code{\link[goalie]{assert}}, \code{\link[goalie:check-scalar-hasLength]{hasLength}}, \code{\link[goalie:check-vector-isDirectory]{isADir}}, \code{\link[goalie:check-vector-isFile]{isAFile}}, \code{\link[goalie:check-scalar-isCleanSystemLibrary]{isCleanSystemLibrary}}, \code{\link[goalie:check-scalar-sets]{isSubset}}}
 

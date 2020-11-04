@@ -20,10 +20,6 @@ bb8::install
 #' @export
 bb8::installAcidverse
 
-#' @importFrom bb8 installBioconductor
-#' @export
-bb8::installBioconductor
-
 #' @importFrom bb8 installDefaultPackages
 #' @export
 bb8::installDefaultPackages
