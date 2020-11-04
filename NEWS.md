@@ -1,3 +1,8 @@
+## koopa 0.0.14 (2020-11-04)
+
+- Added more suggested packages: BiocCheck, BiocManager, covr, lintr,
+  and sessioninfo.
+
 ## koopa 0.0.13 (2020-11-03)
 
 - Migrated installer functions to bb8: `installAcidverse`,
