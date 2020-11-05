@@ -1,7 +1,7 @@
 #' Manage Docker images
 #'
 #' @name docker
-#' @note Updated 2020-08-12.
+#' @note Updated 2020-11-05.
 #'
 #' @param images,image `character`.
 #'   Docker image name.
@@ -19,6 +19,8 @@ NULL
 
 
 
+
+
 #' @describeIn docker Build all tags for a specific image.
 #' @export
 dockerBuildAllTags <- function(
@@ -33,6 +35,9 @@ dockerBuildAllTags <- function(
         isNumber(days),
         isFlag(force)
     )
+    ## Treat all warnings as errors.
+    warn <- getOption("warn")
+    options("warn" = 2L)
     koopaPrefix <- koopaPrefix()
     if (!any(grepl(pattern = "/", x = images)))
         images <- file.path("acidgenomics", images)
@@ -130,6 +135,8 @@ dockerBuildAllTags <- function(
             }
         }
     ))
+    options("warn" = warn)
+    invisible(TRUE)
 }
 
 
