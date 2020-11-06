@@ -20,9 +20,9 @@ bb8::install
 #' @export
 bb8::installAcidverse
 
-#' @importFrom bb8 installDefaultPackages
+#' @importFrom bb8 installRecommendedPackages
 #' @export
-bb8::installDefaultPackages
+bb8::installRecommendedPackages
 
 #' @importFrom bb8 uninstall
 #' @export

@@ -39,7 +39,7 @@ Manage Docker images
 }}
 
 \note{
-Updated 2020-08-12.
+Updated 2020-11-05.
 }
 \examples{
 ## > dockerBuildAllTags()

@@ -1,7 +1,12 @@
+## koopa 0.0.15 (2020-11-06)
+
+- Now requiring bb8 0.2.41+.
+
 ## koopa 0.0.14 (2020-11-04)
 
 - Added more suggested packages: BiocManager, covr, desc, lintr, remotes, and
   sessioninfo.
+- Removed defunct `installBioconductor` reexport.
 
 ## koopa 0.0.13 (2020-11-03)
 
