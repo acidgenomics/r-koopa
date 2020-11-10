@@ -1,7 +1,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2020-11-03.
+#' @note Updated 2020-11-10.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -316,9 +316,11 @@ checkSystem <- function() {
             name = c(
                 "broot",
                 "cargo",
+                "dog",
                 "dust",
                 "exa",
                 "fd",
+                "proc",
                 "rg",
                 "zoxide"
             )
