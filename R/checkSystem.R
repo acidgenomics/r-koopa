@@ -322,6 +322,7 @@ checkSystem <- function() {
                 "fd",
                 "proc",
                 "rg",
+                "starship",
                 "zoxide"
             )
         )
