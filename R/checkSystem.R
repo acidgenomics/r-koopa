@@ -98,6 +98,7 @@ checkSystem <- function() {
             "pr",
             "printenv",
             "printf",
+            "ps",
             "ptx",
             "pwd",
             "readlink",
