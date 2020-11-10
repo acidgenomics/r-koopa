@@ -1,3 +1,8 @@
+## koopa 0.0.17 (2020-11-10)
+
+- `koopaPrefix`: Path resolution fix on Linux.
+  Needed to wrap `koopa` bin path in `dirname` call.
+
 ## koopa 0.0.16 (2020-11-10)
 
 - Added checks for Rust dog, procs, and starship.

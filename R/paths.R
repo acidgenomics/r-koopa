@@ -23,5 +23,5 @@ koopa <- function() {
 #' @rdname paths
 #' @export
 koopaPrefix <- function() {
-    realpath(file.path(koopa(), "..", ".."))
+    realpath(file.path(dirname(koopa()), ".."))
 }
