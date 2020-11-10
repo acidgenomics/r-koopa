@@ -309,13 +309,13 @@ checkSystem <- function() {
             "ranger"
         )
     )
-    ## Rust cargo crates =======================================================
+    ## Rust packaegs ===========================================================
     if (!isTRUE(docker)) {
-        h2("Rust cargo crates")
+        h2("Rust packages")
         checkInstalled(
             name = c(
+                ## > "cargo",
                 "broot",
-                "cargo",
                 "dog",
                 "dust",
                 "exa",
