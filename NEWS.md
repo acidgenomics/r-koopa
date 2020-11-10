@@ -1,6 +1,7 @@
 ## koopa 0.0.16 (2020-11-10)
 
 - Added checks for Rust dog, procs, and starship.
+- Added check for ps as a base dependency.
 
 ## koopa 0.0.15 (2020-11-06)
 
