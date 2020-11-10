@@ -1,6 +1,6 @@
 ## koopa 0.0.16 (2020-11-10)
 
-- Added checks for Rust dog, proc, and starship.
+- Added checks for Rust dog, procs, and starship.
 
 ## koopa 0.0.15 (2020-11-06)
 

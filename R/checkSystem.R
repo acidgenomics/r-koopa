@@ -320,7 +320,7 @@ checkSystem <- function() {
                 "dust",
                 "exa",
                 "fd",
-                "proc",
+                "procs",
                 "rg",
                 "starship",
                 "zoxide"
