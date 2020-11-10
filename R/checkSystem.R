@@ -314,8 +314,8 @@ checkSystem <- function() {
         h2("Rust packages")
         checkInstalled(
             name = c(
-                ## > "cargo",
                 "broot",
+                "cargo",
                 "dog",
                 "dust",
                 "exa",
