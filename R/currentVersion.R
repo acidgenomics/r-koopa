@@ -75,6 +75,7 @@ currentMacOSAppVersion <- function(x) {
 #' @export
 currentMajorVersion <- function(x) {
     x <- currentVersion(x)
+    if (is.na(x)) return(NA_character_)
     x <- sanitizeVersion(x)
     x <- majorVersion(x)
     x
@@ -86,6 +87,7 @@ currentMajorVersion <- function(x) {
 #' @export
 currentMinorVersion <- function(x) {
     x <- currentVersion(x)
+    if (is.na(x)) return(NA_character_)
     x <- sanitizeVersion(x)
     x <- minorVersion(x)
     x

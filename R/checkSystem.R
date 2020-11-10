@@ -248,6 +248,7 @@ checkSystem <- function() {
     checkVersion(
         name = "llvm",
         nameFancy = "LLVM",
+        ## FIXME THIS IS RETURNING NA AND FAILING.
         current = currentMajorVersion("llvm"),
         expected = expectedMajorVersion("llvm")
     )
@@ -311,34 +312,30 @@ checkSystem <- function() {
         )
     )
     ## Rust packaegs ===========================================================
-    if (!isTRUE(docker)) {
-        h2("Rust packages")
-        checkInstalled(
-            name = c(
-                "broot",
-                "cargo",
-                "dog",
-                "dust",
-                "exa",
-                "fd",
-                "procs",
-                "rg",
-                "starship",
-                "zoxide"
-            )
+    h2("Rust packages")
+    checkInstalled(
+        name = c(
+            "broot",
+            "cargo",
+            "dog",
+            "dust",
+            "exa",
+            "fd",
+            "procs",
+            "rg",
+            "starship",
+            "zoxide"
         )
-    }
+    )
     ## Ruby gems ===============================================================
-    if (!isTRUE(docker)) {
-        h2("Ruby gems")
-        checkInstalled(
-            name = c(
-                "gem",
-                "bundle",
-                "ronn"
-            )
+    h2("Ruby gems")
+    checkInstalled(
+        name = c(
+            "gem",
+            "bundle",
+            "ronn"
         )
-    }
+    )
     if (Sys.getenv("KOOPA_CHECK_FAIL") == 1L) {
         stop("System failed checks.", call. = FALSE)
     }
