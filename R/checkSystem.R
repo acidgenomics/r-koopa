@@ -328,14 +328,16 @@ checkSystem <- function() {
         )
     )
     ## Ruby gems ===============================================================
-    h2("Ruby gems")
-    checkInstalled(
-        name = c(
-            "gem",
-            "bundle",
-            "ronn"
+    if (!isTRUE(docker)) {
+        h2("Ruby gems")
+        checkInstalled(
+            name = c(
+                "gem",
+                "bundle",
+                "ronn"
+            )
         )
-    )
+    }
     if (Sys.getenv("KOOPA_CHECK_FAIL") == 1L) {
         stop("System failed checks.", call. = FALSE)
     }
