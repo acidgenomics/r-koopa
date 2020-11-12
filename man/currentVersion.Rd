@@ -8,7 +8,7 @@
 \alias{currentMinorVersion}
 \title{Current version of installed program}
 \usage{
-currentVersion(x, .fun = "get-version")
+currentVersion(x, .cmd = "version")
 
 currentHomebrewCaskVersion(x)
 
@@ -47,7 +47,7 @@ Current version of installed program
 }}
 
 \note{
-Updated 2020-08-12.
+Updated 2020-11-12.
 }
 \examples{
 apps <- c("vim", "tmux")

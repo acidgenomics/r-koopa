@@ -1,7 +1,11 @@
+## FIXME REWORK THE COMMAND PASSTHROUGH HERE.
+
+
+
 #' Current version of installed program
 #'
 #' @name currentVersion
-#' @note Updated 2020-08-12.
+#' @note Updated 2020-11-12.
 #'
 #' @param x `character`.
 #'   Program names.
@@ -32,7 +36,7 @@ NULL
 
 #' @describeIn currentVersion Current system command version.
 #' @export
-currentVersion <- function(x, .fun = "get-version") {
+currentVersion <- function(x, .cmd = "version") {
     vapply(
         X = x,
         .fun = .fun,
@@ -40,7 +44,7 @@ currentVersion <- function(x, .fun = "get-version") {
             tryCatch(
                 expr = shell(
                     command = koopa(),
-                    args = c(.fun, paste0("'", x, "'")),
+                    args = c("system", .cmd, paste0("'", x, "'")),
                     stdout = TRUE,
                     stderr = FALSE
                 ),
@@ -58,7 +62,7 @@ currentVersion <- function(x, .fun = "get-version") {
 #' @describeIn currentVersion Current Homebrew Cask version.
 #' @export
 currentHomebrewCaskVersion <- function(x) {
-    currentVersion(x = x, .fun = "get-homebrew-cask-version")
+    currentVersion(x = x, .fun = "homebrew-cask-version")
 }
 
 
@@ -66,7 +70,7 @@ currentHomebrewCaskVersion <- function(x) {
 #' @describeIn currentVersion Current macOS app version.
 #' @export
 currentMacOSAppVersion <- function(x) {
-    currentVersion(x = x, .fun = "get-macos-app-version")
+    currentVersion(x = x, .fun = "macos-app-version")
 }
 
 

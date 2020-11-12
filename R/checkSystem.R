@@ -1,7 +1,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2020-11-10.
+#' @note Updated 2020-11-12.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -17,7 +17,11 @@ checkSystem <- function() {
     macos <- isMacOS()
     linux <- !macos
     docker <- isDocker()
-    os <- shell(command = koopa, args = "os-string", stdout = TRUE)
+    os <- shell(
+        command = koopa,
+        args = c("system", "os-string"),
+        stdout = TRUE
+    )
     ## Basic dependencies ======================================================
     h2("Basic dependencies")
     checkInstalled(
