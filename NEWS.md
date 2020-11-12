@@ -1,3 +1,7 @@
+## koopa 0.0.18 (2020-11-12)
+
+- Internal syntax updates reflecting reorganization in main `koopa` program.
+
 ## koopa 0.0.17 (2020-11-10)
 
 - `koopaPrefix`: Path resolution fix on Linux.

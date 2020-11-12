@@ -214,7 +214,11 @@ checkSystem <- function() {
     checkVersion("rust")
     ## Version managers ========================================================
     h2("Version managers")
-    condaPrefix <- shell(command = koopa, args = "conda-prefix", stdout = TRUE)
+    condaPrefix <- shell(
+        command = koopa,
+        args = c("system", "prefix", "conda"),
+        stdout = TRUE
+    )
     if (file.exists(file.path(condaPrefix, "bin", "anaconda"))) {
         checkVersion("anaconda")
     } else {

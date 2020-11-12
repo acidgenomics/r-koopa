@@ -9,8 +9,8 @@
 #'
 #' @param x `character`.
 #'   Program names.
-#' @param .fun `character(1)`.
-#'   Koopa version function to call internally via `shell()`.
+#' @param .cmd `character(1)`.
+#'   Koopa version command function to call internally via `shell()`.
 #'   Intended for use with wrapper functions only.
 #'
 #' @return `character`.
@@ -39,8 +39,8 @@ NULL
 currentVersion <- function(x, .cmd = "version") {
     vapply(
         X = x,
-        .fun = .fun,
-        FUN = function(x, .fun) {
+        .cmd = .cmd,
+        FUN = function(x, .cmd) {
             tryCatch(
                 expr = shell(
                     command = koopa(),
@@ -62,7 +62,7 @@ currentVersion <- function(x, .cmd = "version") {
 #' @describeIn currentVersion Current Homebrew Cask version.
 #' @export
 currentHomebrewCaskVersion <- function(x) {
-    currentVersion(x = x, .fun = "homebrew-cask-version")
+    currentVersion(x = x, .cmd = "homebrew-cask-version")
 }
 
 
@@ -70,7 +70,7 @@ currentHomebrewCaskVersion <- function(x) {
 #' @describeIn currentVersion Current macOS app version.
 #' @export
 currentMacOSAppVersion <- function(x) {
-    currentVersion(x = x, .fun = "macos-app-version")
+    currentVersion(x = x, .cmd = "macos-app-version")
 }
 
 

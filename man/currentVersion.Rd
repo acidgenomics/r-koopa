@@ -22,8 +22,8 @@ currentMinorVersion(x)
 \item{x}{\code{character}.
 Program names.}
 
-\item{.fun}{\code{character(1)}.
-Koopa version function to call internally via \code{shell()}.
+\item{.cmd}{\code{character(1)}.
+Koopa version command function to call internally via \code{shell()}.
 Intended for use with wrapper functions only.}
 }
 \value{
