@@ -240,7 +240,6 @@ checkSystem <- function() {
     h2("Shell tools")
     if (!isTRUE(docker)) {
         checkVersion("the-silver-searcher")
-        checkVersion("autojump")
         checkVersion("fzf")
     }
     checkVersion("shellcheck", nameFancy = "ShellCheck")
