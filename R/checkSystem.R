@@ -310,7 +310,6 @@ checkSystem <- function() {
             "flake8",
             "pip3",
             "pylint",
-            "pytest",
             "ranger"
         )
     )
