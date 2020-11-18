@@ -1,7 +1,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2020-11-12.
+#' @note Updated 2020-11-18.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -238,10 +238,7 @@ checkSystem <- function() {
     checkVersion("subversion")
     ## Shell tools =============================================================
     h2("Shell tools")
-    if (!isTRUE(docker)) {
-        checkVersion("the-silver-searcher")
-        checkVersion("fzf")
-    }
+    checkVersion("the-silver-searcher")
     checkVersion("shellcheck", nameFancy = "ShellCheck")
     checkInstalled("shunit2")
     ## Heavy dependencies ======================================================
@@ -255,7 +252,6 @@ checkSystem <- function() {
     checkVersion(
         name = "llvm",
         nameFancy = "LLVM",
-        ## FIXME THIS IS RETURNING NA AND FAILING.
         current = currentMajorVersion("llvm"),
         expected = expectedMajorVersion("llvm")
     )
