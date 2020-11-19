@@ -1,3 +1,8 @@
+## koopa 0.0.19 (2020-11-19)
+
+- Added groff to system check.
+- Removed autojump from system check. Now favoring zoxide instead.
+
 ## koopa 0.0.18 (2020-11-12)
 
 - Internal syntax updates reflecting reorganization in main `koopa` program.

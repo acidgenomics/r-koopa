@@ -1,7 +1,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2020-11-18.
+#' @note Updated 2020-11-19.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -68,6 +68,7 @@ checkSystem <- function() {
             "g++",
             "gcc",
             "grep",
+            "groff",
             "groups",
             "head",
             "hostid",
@@ -174,6 +175,7 @@ checkSystem <- function() {
     checkGNUVersion("gawk")
     ## > checkGNUVersion("gcc")
     checkGNUVersion("grep")
+    checkGNUVersion("groff")
     if (isTRUE(linux))
         checkGNUVersion("libtool")
     checkGNUVersion("make")
