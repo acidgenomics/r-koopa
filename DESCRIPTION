@@ -34,6 +34,7 @@ Suggests:
     BiocManager,
     covr,
     desc,
+    drat,
     lintr,
     remotes,
     sessioninfo,
