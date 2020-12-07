@@ -1,7 +1,7 @@
 #' Parse command line argument flags
 #'
 #' @export
-#' @note Updated 2020-08-12.
+#' @note Updated 2020-12-07.
 #'
 #' @param required,optional `character` or `NULL`.
 #'   Valid key-value pair argument names.
@@ -134,4 +134,12 @@ positionalArgs <- function() {
         positional = TRUE
     )
     x[["positional"]]
+}
+
+
+
+#' @rdname parseArgs
+#' @export
+hasPositionalArgs <- function() {
+    hasLength(commandArgs(trailingOnly = TRUE))
 }

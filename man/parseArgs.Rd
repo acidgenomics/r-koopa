@@ -3,11 +3,14 @@
 \name{parseArgs}
 \alias{parseArgs}
 \alias{positionalArgs}
+\alias{hasPositionalArgs}
 \title{Parse command line argument flags}
 \usage{
 parseArgs(required = NULL, optional = NULL, flags = NULL, positional = FALSE)
 
 positionalArgs()
+
+hasPositionalArgs()
 }
 \arguments{
 \item{required, optional}{\code{character} or \code{NULL}.
@@ -38,7 +41,7 @@ Named list containing arguments, organized by type:
 Parse command line argument flags
 }
 \note{
-Updated 2020-08-12.
+Updated 2020-12-07.
 }
 \examples{
 ## Inside Rscript:
