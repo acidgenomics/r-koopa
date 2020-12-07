@@ -1,3 +1,7 @@
+## koopa 0.0.20 (2020-12-07)
+
+- Added `hasPositionalArgs` boolean check for user input.
+
 ## koopa 0.0.19 (2020-11-19)
 
 - Added groff to system check.
