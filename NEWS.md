@@ -1,3 +1,7 @@
+## koopa 0.2.21 (2020-12-14)
+
+- `parseArgs`: Bug fix for parsing of quoted arguments containing spaces.
+
 ## koopa 0.0.20 (2020-12-07)
 
 - Added `hasPositionalArgs` boolean check for user input.
