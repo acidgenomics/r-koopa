@@ -51,6 +51,7 @@ parseArgs <- function(
         isFlag(positional)
     )
     cmdArgs <- commandArgs(trailingOnly = TRUE)
+    assert(hasNoDuplicates(cmdArgs))
     out <- list(
         required = NULL,
         optional = NULL,
@@ -77,11 +78,21 @@ parseArgs <- function(
         out[["flags"]] <- flagNames
     }
     if (!is.null(required) || !is.null(optional)) {
-        argPattern <- "^--([^=[:space:]]+)=([^[:space:]]+)$"
+        argPattern <- "^--([^=]+)=(.+)$"
         args <- grep(pattern = argPattern, x = cmdArgs, value = TRUE)
         cmdArgs <- setdiff(cmdArgs, args)
         names(args) <- sub(pattern = argPattern, replacement = "\\1", x = args)
         args <- sub(pattern = argPattern, replacement = "\\2", x = args)
+        args <- sub(
+            pattern = "^[\"']",
+            replacement = "",
+            x = args
+        )
+        args <- sub(
+            pattern = "[\"']$",
+            replacement = "",
+            x = args
+        )
         if (!is.null(required)) {
             ok <- required %in% names(args)
             if (!all(ok)) {

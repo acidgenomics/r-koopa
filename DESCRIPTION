@@ -1,7 +1,7 @@
 Package: koopa
 Title: Shell Bootloader for Bioinformatics
 Description: Shell bootloader for bioinformatics.
-Version: 0.0.20
+Version: 0.0.21
 Date: 2020-12-07
 Authors@R: c(
     person(
@@ -22,12 +22,13 @@ License: GPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
-    AcidBase (>= 0.2.4),
-    bb8 (>= 0.2.45),
-    cli (>= 2.0),
+    AcidBase (>= 0.2.5),
+    bb8 (>= 0.2.47),
+    cli (>= 2.2),
     crayon (>= 1.3),
     goalie (>= 0.4.11),
     methods,
+    stringr (>= 1.4),
     syntactic (>= 0.4.3),
     utils
 Suggests:
