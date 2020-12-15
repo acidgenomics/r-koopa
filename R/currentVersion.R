@@ -1,7 +1,3 @@
-## FIXME REWORK THE COMMAND PASSTHROUGH HERE.
-
-
-
 #' Current version of installed program
 #'
 #' @name currentVersion

@@ -2,7 +2,7 @@
 #'
 #' @name paths
 #' @note Updated 2020-08-12.
-#' 
+#'
 #' @examples
 #' koopa()
 #' koopaPrefix()
