@@ -1,3 +1,7 @@
+## koopa 0.2.22 (2020-12-24)
+
+- Bug fix for GPG Suite version check on macOS.
+
 ## koopa 0.2.21 (2020-12-14)
 
 - `parseArgs`: Bug fix for parsing of quoted arguments containing spaces.
