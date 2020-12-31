@@ -27,7 +27,7 @@ listPrograms <- function() {
     keep <- !grepl(
         pattern = file.path(
             koopaPrefix(),
-            "(app|cellar|dotfiles|opt)"
+            "(app|cellar|dotfiles|opt|stow)"
         ),
         x = files
     )

@@ -1,7 +1,11 @@
+## NOTE Consider adding support for checking PATH priority here.
+
+
+
 #' Check system
 #'
 #' @export
-#' @note Updated 2020-11-19.
+#' @note Updated 2020-12-31.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -184,6 +188,7 @@ checkSystem <- function() {
     checkGNUVersion("parallel")
     checkGNUVersion("patch")
     checkGNUVersion("sed")
+    checkGNUVersion("stow")
     checkGNUVersion("texinfo")
     checkGNUVersion("wget")
     ## Core packages ===========================================================
