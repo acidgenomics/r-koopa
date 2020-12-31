@@ -309,6 +309,7 @@ checkSystem <- function() {
     checkInstalled(
         name = c(
             "black",
+            "bpytop",
             "flake8",
             "pip3",
             "pylint",

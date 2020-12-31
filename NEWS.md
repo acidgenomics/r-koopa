@@ -1,3 +1,7 @@
+## koopa 0.2.23 (2020-12-31)
+
+- Added check for bpytop.
+
 ## koopa 0.2.22 (2020-12-24)
 
 - Bug fix for GPG Suite version check on macOS.
