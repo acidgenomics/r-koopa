@@ -1,7 +1,7 @@
 #' List user-accessible programs exported in PATH
 #'
 #' @export
-#' @note Updated 2020-08-11.
+#' @note Updated 2020-12-31.
 #'
 #' @examples
 #' ## > listPrograms()
@@ -20,11 +20,17 @@ listPrograms <- function() {
     if (!isADir(path)) return()
     path <- realpath(path)
     files <- sort(list.files(path = path, all.files = FALSE, full.names = TRUE))
-    # Ignore directories.
+    ## Ignore directories.
     keep <- !file.info(files)[["isdir"]]
     files <- files[keep]
-    # Ignore exported scripts in `opt`.
-    keep <- !grepl(file.path(koopaPrefix(), "opt"), files)
+    ## Ignore scripts defined in non-koopa programs.
+    keep <- !grepl(
+        pattern = file.path(
+            koopaPrefix(),
+            "(app|cellar|dotfiles|opt)"
+        ),
+        x = files
+    )
     files <- files[keep]
     if (!hasLength(files)) return()
     h1(path)
