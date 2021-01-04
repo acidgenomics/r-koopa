@@ -1,12 +1,11 @@
 #' List user-accessible programs exported in PATH
 #'
 #' @export
-#' @note Updated 2020-12-31.
+#' @note Updated 2021-01-04.
 #'
 #' @examples
 #' ## > listPrograms()
 listPrograms <- function() {
-    assert(isVanilla())
     path <- Sys.getenv("PATH")
     assert(any(grepl("koopa", path)))
     ## Split PATH string into a character vector.
@@ -15,6 +14,8 @@ listPrograms <- function() {
     path <- path[keep]
     invisible(lapply(X = path, FUN = .printPrograms))
 }
+
+
 
 .printPrograms <- function(path) {
     if (!isADir(path)) return()

@@ -10,7 +10,7 @@ listPrograms()
 List user-accessible programs exported in PATH
 }
 \note{
-Updated 2020-12-31.
+Updated 2021-01-04.
 }
 \examples{
 ## > listPrograms()

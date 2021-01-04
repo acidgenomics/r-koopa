@@ -1,11 +1,11 @@
-## NOTE Consider adding support for checking PATH priority here.
+## FIXME Consider adding support for checking PATH priority here.
 
 
 
 #' Check system
 #'
 #' @export
-#' @note Updated 2020-12-31.
+#' @note Updated 2021-01-04.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -15,7 +15,6 @@
 #' @examples
 #' ## > checkSystem()
 checkSystem <- function() {
-    assert(isVanilla())
     h1("Checking koopa installation.")
     koopa <- koopa()
     macos <- isMacOS()
