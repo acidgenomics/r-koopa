@@ -3,22 +3,25 @@
 #' @name docker
 #' @note Updated 2021-01-04.
 #'
-#' @param images,image `character`.
-#'   Docker image name.
+#' @examples
+#' ## > dockerBuildAllTags()
+NULL
+
+
+
+#' Build all Docker tags
+#'
+#' @note Updated 2021-01-04.
+#' @noRd
+#'
+#' @param images `character`.
+#'   Docker image names.
 #' @param dir `character(1)`.
 #'   Docker image repository.
 #' @param days `numeric(1)`.
 #'   Number of days to allow since last build.
 #' @param force `logical(1)`.
 #'   Force rebuild.
-#'
-#' @examples
-#' ## > dockerBuildAllTags()
-#' ## > isDockerBuildRecent("acidgenomics/debian")
-NULL
-
-
-
 .dockerBuildAllTags <- function(
     images,
     dir = file.path("~", ".config", "koopa", "docker"),
@@ -81,7 +84,7 @@ NULL
                     } else {
                         if (!isTRUE(force)) {
                             if (isTRUE(
-                                isDockerBuildRecent(
+                                .isDockerBuildRecent(
                                     image = paste0(image, ":", tag),
                                     days = days
                                 )
@@ -137,35 +140,11 @@ NULL
 
 
 
-#' @describeIn docker Build all tags for a specific image.
-#' @export
-dockerBuildAllTags <- function() {
-    parse <- parseArgs(
-        optional = c("days", "dir"),
-        flags = "force",
-        positional = TRUE
-    )
-    args <- list(
-        images = parse[["positional"]],
-        force = "force" %in% parse[["flags"]]
-    )
-    optional <- parse[["optional"]]
-    if (!is.null(optional)) {
-        if (isSubset("days", names(optional))) {
-            args[["days"]] <- as.numeric(optional[["days"]])
-        }
-        if (isSubset("dir", names(optional))) {
-            args[["dir"]] <- optional[["dir"]]
-        }
-    }
-    do.call(what = .dockerBuildAllTags, args = args)
-}
-
-
-
-#' @describeIn docker Has the requested Docker image been built recently?
-#' @export
-isDockerBuildRecent <- function(image, days = 2L) {
+#' Is the Docker build recent?
+#'
+#' @note Updated 2021-01-04.
+#' @noRd
+.isDockerBuildRecent <- function(image, days = 2L) {
     assert(
         isString(image),
         isNumber(days)
@@ -193,4 +172,30 @@ isDockerBuildRecent <- function(image, days = 2L) {
         units = "days"
     )
     diffDays < days
+}
+
+
+
+#' @describeIn docker Build all tags for a specific image.
+#' @export
+dockerBuildAllTags <- function() {
+    parse <- parseArgs(
+        optional = c("days", "dir"),
+        flags = "force",
+        positional = TRUE
+    )
+    args <- list(
+        images = parse[["positional"]],
+        force = "force" %in% parse[["flags"]]
+    )
+    optional <- parse[["optional"]]
+    if (!is.null(optional)) {
+        if (isSubset("days", names(optional))) {
+            args[["days"]] <- as.numeric(optional[["days"]])
+        }
+        if (isSubset("dir", names(optional))) {
+            args[["dir"]] <- optional[["dir"]]
+        }
+    }
+    do.call(what = .dockerBuildAllTags, args = args)
 }

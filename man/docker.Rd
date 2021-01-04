@@ -3,25 +3,9 @@
 \name{docker}
 \alias{docker}
 \alias{dockerBuildAllTags}
-\alias{isDockerBuildRecent}
 \title{Manage Docker images}
 \usage{
 dockerBuildAllTags()
-
-isDockerBuildRecent(image, days = 2L)
-}
-\arguments{
-\item{days}{\code{numeric(1)}.
-Number of days to allow since last build.}
-
-\item{images, image}{\code{character}.
-Docker image name.}
-
-\item{dir}{\code{character(1)}.
-Docker image repository.}
-
-\item{force}{\code{logical(1)}.
-Force rebuild.}
 }
 \description{
 Manage Docker images
@@ -29,8 +13,6 @@ Manage Docker images
 \section{Functions}{
 \itemize{
 \item \code{dockerBuildAllTags}: Build all tags for a specific image.
-
-\item \code{isDockerBuildRecent}: Has the requested Docker image been built recently?
 }}
 
 \note{
@@ -38,5 +20,4 @@ Updated 2021-01-04.
 }
 \examples{
 ## > dockerBuildAllTags()
-## > isDockerBuildRecent("acidgenomics/debian")
 }
