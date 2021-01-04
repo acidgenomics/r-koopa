@@ -1,8 +1,9 @@
-## koopa 0.2.23 (2020-12-31)
+## koopa 0.2.23 (2020-01-04)
 
 - Added check for bpytop.
 - Added check for GNU stow.
 - `listPrograms` now excludes `app` directory, as expected.
+- Migrated internal R scripts previously defined in koopa package.
 
 ## koopa 0.2.22 (2020-12-24)
 
