@@ -1,7 +1,7 @@
 #' Manage Docker images
 #'
 #' @name docker
-#' @note Updated 2020-11-05.
+#' @note Updated 2021-01-04.
 #'
 #' @param images,image `character`.
 #'   Docker image name.
@@ -19,11 +19,7 @@ NULL
 
 
 
-
-
-#' @describeIn docker Build all tags for a specific image.
-#' @export
-dockerBuildAllTags <- function(
+.dockerBuildAllTags <- function(
     images,
     dir = file.path("~", ".config", "koopa", "docker"),
     days = 2L,
@@ -137,6 +133,32 @@ dockerBuildAllTags <- function(
     ))
     options("warn" = warn)
     invisible(TRUE)
+}
+
+
+
+#' @describeIn docker Build all tags for a specific image.
+#' @export
+dockerBuildAllTags <- function() {
+    parse <- parseArgs(
+        optional = c("days", "dir"),
+        flags = "force",
+        positional = TRUE
+    )
+    args <- list(
+        images = parse[["positional"]],
+        force = "force" %in% parse[["flags"]]
+    )
+    optional <- parse[["optional"]]
+    if (!is.null(optional)) {
+        if (isSubset("days", names(optional))) {
+            args[["days"]] <- as.numeric(optional[["days"]])
+        }
+        if (isSubset("dir", names(optional))) {
+            args[["dir"]] <- optional[["dir"]]
+        }
+    }
+    do.call(what = .dockerBuildAllTags, args = args)
 }
 
 
