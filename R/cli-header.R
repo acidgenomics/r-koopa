@@ -1,3 +1,7 @@
+## FIXME MOVE THIS TO ACIDCLI.
+
+
+
 #' Header level
 #'
 #' @name header

@@ -27,7 +27,7 @@ checkSystem <- function() {
     )
     ## Basic dependencies ======================================================
     h2("Basic dependencies")
-    checkInstalled(
+    .checkInstalled(
         name = c(
             ## "[",
             ## "basenc",
@@ -164,9 +164,9 @@ checkSystem <- function() {
     )
     ## Shells ==================================================================
     h2("Shells")
-    checkVersion("bash")
-    checkVersion("zsh")
-    checkVersion("fish")
+    .checkVersion("bash")
+    .checkVersion("zsh")
+    .checkVersion("fish")
     ## GNU packages ============================================================
     h2("GNU packages")
     checkGNUVersion("autoconf")
@@ -192,32 +192,32 @@ checkSystem <- function() {
     checkGNUVersion("wget")
     ## Core packages ===========================================================
     h2("Core packages")
-    checkVersion("cmake", nameFancy = "CMake")
-    checkVersion("curl", nameFancy = "cURL")
-    checkVersion("openssh", nameFancy = "OpenSSH")
-    checkVersion("pkg-config", nameFancy = NULL)
-    checkVersion("rsync", nameFancy = NULL)
+    .checkVersion("cmake", nameFancy = "CMake")
+    .checkVersion("curl", nameFancy = "cURL")
+    .checkVersion("openssh", nameFancy = "OpenSSH")
+    .checkVersion("pkg-config", nameFancy = NULL)
+    .checkVersion("rsync", nameFancy = NULL)
     ## Editors =================================================================
     h2("Editors")
-    checkVersion("emacs")
-    checkVersion("neovim")
-    checkVersion("tmux")
-    checkVersion(
+    .checkVersion("emacs")
+    .checkVersion("neovim")
+    .checkVersion("tmux")
+    .checkVersion(
         name = "vim",
         current = currentMinorVersion("vim"),
         expected = expectedMinorVersion("vim")
     )
     ## Languages ===============================================================
     h2("Primary languages")
-    checkVersion("python")
-    checkVersion("r")
+    .checkVersion("python")
+    .checkVersion("r")
     h2("Secondary languages")
-    checkVersion("go")
-    checkVersion("openjdk", nameFancy = "Java : OpenJDK")
-    checkVersion("julia")
-    checkVersion("perl")
-    checkVersion("ruby")
-    checkVersion("rust")
+    .checkVersion("go")
+    .checkVersion("openjdk", nameFancy = "Java : OpenJDK")
+    .checkVersion("julia")
+    .checkVersion("perl")
+    .checkVersion("ruby")
+    .checkVersion("rust")
     ## Version managers ========================================================
     h2("Version managers")
     condaPrefix <- shell(
@@ -226,43 +226,43 @@ checkSystem <- function() {
         stdout = TRUE
     )
     if (file.exists(file.path(condaPrefix, "bin", "anaconda"))) {
-        checkVersion("anaconda")
+        .checkVersion("anaconda")
     } else {
-        checkVersion("conda", nameFancy = "Miniconda")
+        .checkVersion("conda", nameFancy = "Miniconda")
     }
     if (!isTRUE(docker)) {
-        checkVersion("rustup", nameFancy = "Rust : rustup")
+        .checkVersion("rustup", nameFancy = "Rust : rustup")
     }
     ## Cloud APIs ==============================================================
     h2("Cloud APIs")
-    checkInstalled(c("aws", "az", "gcloud"))
+    .checkInstalled(c("aws", "az", "gcloud"))
     ## Tools ===================================================================
     h2("Tools")
-    checkVersion("git")
-    checkVersion("htop", nameFancy = NULL)
-    checkVersion("neofetch")
-    checkVersion("subversion")
+    .checkVersion("git")
+    .checkVersion("htop", nameFancy = NULL)
+    .checkVersion("neofetch")
+    .checkVersion("subversion")
     ## Shell tools =============================================================
     h2("Shell tools")
-    checkVersion("the-silver-searcher")
-    checkVersion("shellcheck", nameFancy = "ShellCheck")
-    checkInstalled("shunit2")
+    .checkVersion("the-silver-searcher")
+    .checkVersion("shellcheck", nameFancy = "ShellCheck")
+    .checkInstalled("shunit2")
     ## Heavy dependencies ======================================================
     h2("Heavy dependencies")
-    checkVersion("armadillo", nameFancy = "Armadillo")
-    checkVersion("proj", nameFancy = "PROJ")
-    checkVersion("gdal", nameFancy = "GDAL")
-    checkVersion("geos", nameFancy = "GEOS")
-    checkVersion("gsl", nameFancy = "GSL")
-    checkVersion("hdf5", nameFancy = "HDF5")
-    checkVersion(
+    .checkVersion("armadillo", nameFancy = "Armadillo")
+    .checkVersion("proj", nameFancy = "PROJ")
+    .checkVersion("gdal", nameFancy = "GDAL")
+    .checkVersion("geos", nameFancy = "GEOS")
+    .checkVersion("gsl", nameFancy = "GSL")
+    .checkVersion("hdf5", nameFancy = "HDF5")
+    .checkVersion(
         name = "llvm",
         nameFancy = "LLVM",
         current = currentMajorVersion("llvm"),
         expected = expectedMajorVersion("llvm")
     )
-    checkVersion("sqlite", nameFancy = "SQLite")
-    checkInstalled(
+    .checkVersion("sqlite", nameFancy = "SQLite")
+    .checkInstalled(
         name = c(
             "pandoc",
             "pandoc-citeproc",
@@ -272,25 +272,25 @@ checkSystem <- function() {
     ## OS-specific =============================================================
     if (isTRUE(linux)) {
         h2("Linux specific")
-        checkVersion("aspera-connect")
+        .checkVersion("aspera-connect")
         if (!isTRUE(docker)) {
-            checkVersion("docker")
-            checkVersion("docker-credential-pass")
+            .checkVersion("docker")
+            .checkVersion("docker-credential-pass")
         }
-        checkVersion("gnupg", nameFancy = "GnuPG")
-        checkVersion("password-store")
-        checkVersion("perl-file-rename")
-        checkVersion("rstudio-server", nameFancy = "RStudio Server")
+        .checkVersion("gnupg", nameFancy = "GnuPG")
+        .checkVersion("password-store")
+        .checkVersion("perl-file-rename")
+        .checkVersion("rstudio-server", nameFancy = "RStudio Server")
     } else if (isTRUE(macos)) {
         h2("macOS specific")
-        checkInstalled(
+        .checkInstalled(
             name = c(
                 "brew",
                 "clang",
                 "gcc"
             )
         )
-        checkVersion("tex", nameFancy = "TeX Live")
+        .checkVersion("tex", nameFancy = "TeX Live")
         checkHomebrewCaskVersion("gpg-suite", nameFancy = "GPG Suite")
     }
     ## High performance ========================================================
@@ -300,17 +300,17 @@ checkSystem <- function() {
         isTRUE(getOption("mc.cores") >= 3L)
     ) {
         h2("High performance")
-        ## > checkVersion("bcbio-nextgen", nameFancy = NULL)
-        ## > checkVersion("bcl2fastq")
-        checkVersion("lmod")
-        checkVersion("lua")
-        checkVersion("luarocks", nameFancy = "LuaRocks")
-        checkVersion("shiny-server")
-        # > checkVersion("singularity")
+        ## > .checkVersion("bcbio-nextgen", nameFancy = NULL)
+        ## > .checkVersion("bcl2fastq")
+        .checkVersion("lmod")
+        .checkVersion("lua")
+        .checkVersion("luarocks", nameFancy = "LuaRocks")
+        .checkVersion("shiny-server")
+        # > .checkVersion("singularity")
     }
     ## Python packages =========================================================
     h2("Python packages")
-    checkInstalled(
+    .checkInstalled(
         name = c(
             "black",
             "bpytop",
@@ -322,7 +322,7 @@ checkSystem <- function() {
     )
     ## Rust packaegs ===========================================================
     h2("Rust packages")
-    checkInstalled(
+    .checkInstalled(
         name = c(
             "broot",
             "cargo",
@@ -339,7 +339,7 @@ checkSystem <- function() {
     ## Ruby gems ===============================================================
     if (!isTRUE(docker)) {
         h2("Ruby gems")
-        checkInstalled(
+        .checkInstalled(
             name = c(
                 "gem",
                 "bundle",
