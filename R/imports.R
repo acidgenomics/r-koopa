@@ -1,5 +1,6 @@
 #' @importFrom AcidBase basenameSansExt fileExt majorVersion minorVersion
 #'   realpath requireNamespaces sanitizeVersion shell
+#' @importFrom AcidGenomes downloadEnsemblGenome downloadGencodeGenome
 #' @importFrom bb8 install installRecommendedPackages updatePackages
 #' @importFrom cli cli_alert cli_alert_info cli_alert_success cli_div cli_end
 #'   cli_ul

@@ -3,9 +3,12 @@
 \name{downloadGenome}
 \alias{downloadGenome}
 \alias{downloadEnsemblGenome}
+\alias{downloadGencodeGenome}
 \title{Download a genome}
 \usage{
 downloadEnsemblGenome()
+
+downloadGencodeGenome()
 }
 \description{
 Download a genome
