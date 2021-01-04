@@ -1,7 +1,11 @@
+## FIXME MOVE THIS INTO BASEJUMP / ACIDBASE INSTEAD?
+
+
+
 #' Find and move files in sequence
 #'
-#' @export
-#' @note Updated 2020-08-11.
+#' @name findAndMoveInSequence
+#' @note Updated 2021-01-04.
 #'
 #' @param sourceDir `character(1)`.
 #'   Source directory.
@@ -10,7 +14,11 @@
 #'
 #' @examples
 #' ## > findAndMoveInSequence(sourceDir, targetDir)
-findAndMoveInSequence <- function(sourceDir, targetDir) {
+NULL
+
+
+
+.findAndMoveInSequence <- function(sourceDir, targetDir) {
     assert(
         isADir(sourceDir),
         isADir(targetDir),
@@ -53,4 +61,18 @@ findAndMoveInSequence <- function(sourceDir, targetDir) {
         "Successfully renamed %d files.",
         length(sourceFiles)
     ))
+}
+
+
+
+#' @rdname findAndMoveInSequence
+#' @export
+findAndMoveInSequence <- function() {
+    posArgs <- positionalArgs()
+    sourceDir <- realpath(posArgs[[1L]])
+    targetDir <- realpath(posArgs[[2L]])
+    .findAndMoveInSequence(
+        sourceDir = sourceDir,
+        targetDir = targetDir
+    )
 }
