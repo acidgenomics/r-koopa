@@ -6,24 +6,19 @@
 \alias{isDockerBuildRecent}
 \title{Manage Docker images}
 \usage{
-dockerBuildAllTags(
-  images,
-  dir = file.path("~", ".config", "koopa", "docker"),
-  days = 2L,
-  force = FALSE
-)
+dockerBuildAllTags()
 
 isDockerBuildRecent(image, days = 2L)
 }
 \arguments{
+\item{days}{\code{numeric(1)}.
+Number of days to allow since last build.}
+
 \item{images, image}{\code{character}.
 Docker image name.}
 
 \item{dir}{\code{character(1)}.
 Docker image repository.}
-
-\item{days}{\code{numeric(1)}.
-Number of days to allow since last build.}
 
 \item{force}{\code{logical(1)}.
 Force rebuild.}
@@ -39,7 +34,7 @@ Manage Docker images
 }}
 
 \note{
-Updated 2020-11-05.
+Updated 2021-01-04.
 }
 \examples{
 ## > dockerBuildAllTags()
