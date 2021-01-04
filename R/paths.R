@@ -6,7 +6,6 @@
 #' @examples
 #' koopa()
 #' koopaPrefix()
-NULL
 
 
 

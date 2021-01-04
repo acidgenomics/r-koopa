@@ -1,19 +1,20 @@
+#' Koopa emoji
+#'
+#' @note Updated 2021-01-04.
+#' @noRd
+.koopaEmoji <- "\U1F422"
+
+
+
 #' Check failure
 #'
 #' Set a system environment variable that we can detect in `koopa check`.
 #'
 #' @note Updated 2020-08-11.
 #' @noRd
-#'
-#' @examples
-#' .checkFail()
-.checkFail <- function() {
+.setCheckFail <- function() {
     Sys.setenv("KOOPA_CHECK_FAIL" = 1L)
 }
-
-
-
-.koopaEmoji <- "\U1F422"
 
 
 
