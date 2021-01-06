@@ -1,11 +1,3 @@
-#' Koopa emoji
-#'
-#' @note Updated 2021-01-04.
-#' @noRd
-.koopaEmoji <- "\U1F422"
-
-
-
 #' Check failure
 #'
 #' Set a system environment variable that we can detect in `koopa check`.
