@@ -1,3 +1,7 @@
+## koopa 0.2.24 (2020-01-06)
+
+- Bug fixes for `drat`.
+
 ## koopa 0.2.23 (2020-01-04)
 
 - Added check for bpytop.

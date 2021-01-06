@@ -1,6 +1,6 @@
 #' Build a package and commit to drat repo
 #'
-#' @note Updated 2021-01-04.
+#' @note Updated 2021-01-06.
 #' @export
 #'
 #' @examples
@@ -29,7 +29,8 @@ drat <- function() {
     tarballs <- sort(list.files(
         path = ".",
         pattern = paste0(pkgName, "_.*.tar.gz"),
-        recursive = FALSE
+        recursive = FALSE,
+        ignore.case = TRUE
     ))
     file <- tail(tarballs, n = 1L)
     assert(isAFile(file))
