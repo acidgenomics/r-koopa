@@ -23,6 +23,7 @@ Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
     AcidBase (>= 0.2.6),
+    AcidCLI (>= 0.0.1),
     AcidGenomes (>= 0.1.1),
     bb8 (>= 0.2.47),
     cli (>= 2.2),
