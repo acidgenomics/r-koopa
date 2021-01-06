@@ -1,6 +1,6 @@
 #' Expected version
 #'
-#' @note Updated 2021-01-04.
+#' @note Updated 2021-01-06.
 #' @noRd
 #'
 #' @param x `character`.
@@ -22,7 +22,7 @@
     vapply(
         X = x,
         FUN = function(x) {
-            x <- kebabCase(x)
+            x <- syntactic::kebabCase(x)
             keep <- grepl(pattern = paste0("^", x, "="), x = variables)
             assert(sum(keep, na.rm = TRUE) == 1L)
             x <- variables[keep]

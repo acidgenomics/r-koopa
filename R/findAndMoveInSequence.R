@@ -35,7 +35,7 @@ findAndMoveInSequence <- function() {
         targetDir,
         paste0(
             strtrim(
-                kebabCase(
+                syntactic::kebabCase(
                     paste(
                         autopadZeros(seq_along(sourceFiles)),
                         basenameSansExt(sourceFiles),
