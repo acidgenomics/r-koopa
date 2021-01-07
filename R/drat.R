@@ -25,12 +25,12 @@ NULL
         X = pkgDirs,
         repoDir = repoDir,
         FUN = function(pkgDir, repoDir) {
+            setwd(dirname(pkgDir))
             pkgName <- basename(pkgDir)
             ## Handle `r-koopa` edge case.
             if (any(grepl("-", pkgName))) {
                 pkgName <- strsplit(pkgName, "-")[[1L]][[2L]]
             }
-            setwd(dirname(pkgDir))
             devtools::build(pkgDir)
             tarballs <- sort(list.files(
                 path = ".",
@@ -54,12 +54,13 @@ NULL
                 args = c("commit", "-m", paste0("'Add ", basename(file), ".'"))
             )
             shell(command = "git", args = "push")
-            shell(command = "update")
             message(sprintf("Successfully added '%s'.", basename(file)))
-            setwd(wd)
             TRUE
         }
     )
+    setwd(repoDir)
+    shell(command = "update")
+    setwd(wd)
     invisible(TRUE)
 }
 
