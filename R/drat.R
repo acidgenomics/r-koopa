@@ -1,26 +1,13 @@
 #' Build a package and commit to drat repo
 #'
+#' @name drat
 #' @note Updated 2021-01-06.
-#' @export
 #'
 #' @return `logical(1)`.
 #'
 #' @examples
 #' ## > drat()
-drat <- function() {
-    parse <- parseArgs(
-        optional = "repo-dir",
-        positional = TRUE
-    )
-    args <- list("pkgDirs" = parse[["positional"]])
-    optional <- parse[["optional"]]
-    if (!is.null(optional)) {
-        if (isSubset("repo-dir", names(optional))) {
-            args[["repoDir"]] <- optional[["repo-dir"]]
-        }
-    }
-    do.call(what = .drat, args = args)
-}
+NULL
 
 
 
@@ -74,4 +61,23 @@ drat <- function() {
         }
     )
     invisible(TRUE)
+}
+
+
+
+#' @rdname drat
+#' @export
+drat <- function() {
+    parse <- parseArgs(
+        optional = "repo-dir",
+        positional = TRUE
+    )
+    args <- list("pkgDirs" = parse[["positional"]])
+    optional <- parse[["optional"]]
+    if (!is.null(optional)) {
+        if (isSubset("repo-dir", names(optional))) {
+            args[["repoDir"]] <- optional[["repo-dir"]]
+        }
+    }
+    do.call(what = .drat, args = args)
 }
