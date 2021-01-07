@@ -1,7 +1,7 @@
 #' Parse command line argument flags
 #'
 #' @export
-#' @note Updated 2020-12-07.
+#' @note Updated 2021-01-06.
 #'
 #' @param required,optional `character` or `NULL`.
 #'   Valid key-value pair argument names.
@@ -51,6 +51,12 @@ parseArgs <- function(
         isFlag(positional)
     )
     cmdArgs <- commandArgs(trailingOnly = TRUE)
+    ## Ensure we strip out quoting from shell handoff.
+    cmdArgs <- gsub(
+        pattern = "^('\")(.+)('\")$",
+        replacement = "\2",
+        x = cmdArgs
+    )
     assert(hasNoDuplicates(cmdArgs))
     out <- list(
         required = NULL,
