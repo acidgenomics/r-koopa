@@ -1,7 +1,7 @@
 #' Download a genome
 #'
 #' @name downloadGenome
-#' @note Updated 2021-01-04.
+#' @note Updated 2021-01-07.
 #'
 #' @examples
 #' ## > downloadEnsemblGenome()
@@ -13,11 +13,9 @@ NULL
 #' @export
 downloadEnsemblGenome <- function() {
     input <- parseArgs(
-        required = c(
-            "organism",
-            "genome-build"
-        ),
+        required = "organism",
         optional = c(
+            "genome-build",
             "release",
             "type",
             "annotation",
@@ -28,7 +26,9 @@ downloadEnsemblGenome <- function() {
     )
     args <- list()
     args[["organism"]] <- input[["required"]][["organism"]]
-    args[["genomeBuild"]] <- input[["required"]][["genome-build"]]
+    if (isSubset("genome-build", names(input[["optional"]]))) {
+        args[["genomeBuild"]] <- input[["optional"]][["genome-build"]]
+    }
     if (isSubset("release", names(input[["optional"]]))) {
         args[["release"]] <- input[["optional"]][["release"]]
     }
@@ -59,7 +59,7 @@ downloadGencodeGenome <- function() {
     input <- parseArgs(
         required = c(
             "organism",
-            "genome-build"
+            "genome-build"  # FIXME MAKE OPTIONAL
         ),
         optional = c(
             "release",
