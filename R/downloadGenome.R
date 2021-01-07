@@ -26,7 +26,6 @@ downloadEnsemblGenome <- function() {
         flags = "decompress",
         positional = FALSE
     )
-    return(input)
     args <- list()
     args[["organism"]] <- input[["required"]][["organism"]]
     args[["genomeBuild"]] <- input[["required"]][["genome-build"]]
