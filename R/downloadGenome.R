@@ -12,6 +12,7 @@ NULL
 #' @rdname downloadGenome
 #' @export
 downloadEnsemblGenome <- function() {
+    requireNamespaces("AcidGenomes")
     input <- parseArgs(
         required = "organism",
         optional = c(
@@ -44,7 +45,6 @@ downloadEnsemblGenome <- function() {
     if (isSubset("decompress", names(input[["flags"]]))) {
         args[["decompress"]] <- TRUE
     }
-    requireNamespaces("AcidGenomes")
     do.call(
         what = AcidGenomes::downloadEnsemblGenome,
         args = args
@@ -56,6 +56,7 @@ downloadEnsemblGenome <- function() {
 #' @rdname downloadGenome
 #' @export
 downloadGencodeGenome <- function() {
+    requireNamespaces("AcidGenomes")
     input <- parseArgs(
         required = c(
             "organism",
@@ -88,7 +89,6 @@ downloadGencodeGenome <- function() {
     if (isSubset("decompress", names(input[["flags"]]))) {
         args[["decompress"]] <- TRUE
     }
-    requireNamespaces("AcidGenomes")
     do.call(
         what = AcidGenomes::downloadGencodeGenome,
         args = args

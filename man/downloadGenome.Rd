@@ -14,7 +14,7 @@ downloadGencodeGenome()
 Download a genome
 }
 \note{
-Updated 2021-01-04.
+Updated 2021-01-07.
 }
 \examples{
 ## > downloadEnsemblGenome()

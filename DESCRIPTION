@@ -24,13 +24,13 @@ Depends: R (>= 4.0)
 Imports:
     AcidBase (>= 0.3.1),
     AcidCLI (>= 0.0.1),
-    AcidGenomes (>= 0.1.2),
     bb8 (>= 0.2.48),
     goalie (>= 0.4.13),
     methods,
     syntactic (>= 0.4.3),
     utils
 Suggests:
+    AcidGenomes (>= 0.1.2),
     BiocManager,
     covr,
     desc,
