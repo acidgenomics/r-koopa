@@ -53,8 +53,8 @@ parseArgs <- function(
     cmdArgs <- commandArgs(trailingOnly = TRUE)
     ## Ensure we strip out quoting from shell handoff.
     cmdArgs <- gsub(
-        pattern = "^('\")(.+)('\")$",
-        replacement = "\2",
+        pattern = "^['\"](.+)['\"]$",
+        replacement = "\\1",
         x = cmdArgs
     )
     assert(hasNoDuplicates(cmdArgs))
