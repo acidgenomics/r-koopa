@@ -1,4 +1,4 @@
-## koopa 0.2.24 (2020-01-06)
+## koopa 0.2.24 (UNRELEASED)
 
 - Bug fixes for `drat`.
 
