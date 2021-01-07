@@ -1,3 +1,14 @@
+##❯ download-ensembl-genome --organism="Homo sapiens"
+##WARNING: unknown option '--organism=Homo'
+##
+##ARGUMENT 'sapiens' __ignored__
+##
+##Error in parseArgs(required = c("organism", "genome-build"), optional = ##c("release",  :
+##  Missing required args: organism, genome-build.
+##Calls: <Anonymous> -> parseArgs
+
+
+
 #' Download a genome
 #'
 #' @name downloadGenome
@@ -26,6 +37,7 @@ downloadEnsemblGenome <- function() {
         flags = "decompress",
         positional = FALSE
     )
+    return(input)
     args <- list()
     args[["organism"]] <- input[["required"]][["organism"]]
     args[["genomeBuild"]] <- input[["required"]][["genome-build"]]
