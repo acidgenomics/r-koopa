@@ -59,7 +59,7 @@ NULL
         }
     )
     setwd(repoDir)
-    shell(command = "update")
+    shell(command = "./update")
     setwd(wd)
     invisible(TRUE)
 }
