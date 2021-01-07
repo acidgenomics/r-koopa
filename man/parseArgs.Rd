@@ -41,7 +41,7 @@ Named list containing arguments, organized by type:
 Parse command line argument flags
 }
 \note{
-Updated 2020-12-07.
+Updated 2021-01-06.
 }
 \examples{
 ## Inside Rscript:

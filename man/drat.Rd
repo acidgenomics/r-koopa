@@ -6,12 +6,15 @@
 \usage{
 drat()
 }
+\value{
+\code{logical(1)}.
+}
 \description{
 Build a package and commit to drat repo
 }
 \note{
-Updated 2021-01-04.
+Updated 2021-01-06.
 }
 \examples{
-## > drat("~/monorepo/r-packages/basejump")
+## > drat()
 }
