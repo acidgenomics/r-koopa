@@ -1,3 +1,7 @@
+## FIXME NEED TO ADD FLYBASE, REFSEQ.
+
+
+
 #' Download a genome
 #'
 #' @name downloadGenome
