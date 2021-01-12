@@ -204,8 +204,8 @@ checkSystem <- function() {
     .checkVersion("tmux")
     .checkVersion(
         name = "vim",
-        current = currentMinorVersion("vim"),
-        expected = expectedMinorVersion("vim")
+        current = .currentMinorVersion("vim"),
+        expected = .expectedMinorVersion("vim")
     )
     ## Languages ===============================================================
     h2("Primary languages")
@@ -258,8 +258,8 @@ checkSystem <- function() {
     .checkVersion(
         name = "llvm",
         nameFancy = "LLVM",
-        current = currentMajorVersion("llvm"),
-        expected = expectedMajorVersion("llvm")
+        current = .currentMajorVersion("llvm"),
+        expected = .expectedMajorVersion("llvm")
     )
     .checkVersion("sqlite", nameFancy = "SQLite")
     .checkInstalled(
@@ -291,7 +291,7 @@ checkSystem <- function() {
             )
         )
         .checkVersion("tex", nameFancy = "TeX Live")
-        checkHomebrewCaskVersion("gpg-suite", nameFancy = "GPG Suite")
+        .checkHomebrewCaskVersion("gpg-suite", nameFancy = "GPG Suite")
     }
     ## High performance ========================================================
     if (
