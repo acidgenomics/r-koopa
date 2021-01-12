@@ -16,16 +16,16 @@
 #' @examples
 #' apps <- c("vim", "tmux")
 #' if (goalie::allAreSystemCommands(apps)) {
-#'     currentVersion(apps)
-#'     currentMajorVersion(apps)
-#'     currentMinorVersion(apps)
+#'     .currentVersion(apps)
+#'     .currentMajorVersion(apps)
+#'     .currentMinorVersion(apps)
 #' }
 #'
 #' if (goalie::isMacOS()) {
 #'     apps <- c("BBEdit", "RStudio")
-#'     currentMacOSAppVersion(apps)
+#'     .currentMacOSAppVersion(apps)
 #'     casks <- c("bbedit", "rstudio")
-#'     currentHomebrewCaskVersion(casks)
+#'     .currentHomebrewCaskVersion(casks)
 #' }
 NULL
 
@@ -77,7 +77,7 @@ NULL
 
 
 .currentMinorVersion <- function(x) {
-    x <- currentVersion(x)
+    x <- .currentVersion(x)
     if (is.na(x)) return(NA_character_)
     x <- sanitizeVersion(x)
     x <- minorVersion(x)
