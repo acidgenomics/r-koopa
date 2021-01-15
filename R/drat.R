@@ -30,6 +30,10 @@ NULL
         X = pkgDirs,
         repoDir = repoDir,
         FUN = function(pkgDir, repoDir) {
+            ## FIXME CHECK THAT WERE ON DEFAULT BRANCH OF PACKAGE REPO,
+            ## OTHERWISE ERROR OUT.
+            ## FIXME NEED TO GET BRANCH
+            ## FIXME HOW TO CHECK GIT DEFAULT BRANCH AGAIN?
             pkgName <- basename(pkgDir)
             ## Handle `r-koopa` edge case.
             if (any(grepl("-", pkgName))) {
@@ -38,6 +42,7 @@ NULL
             check(path = pkgDir)
             tarball <- devtools::build(pkg = pkgDir)
             assert(isAFile(tarball))
+            ## FIXME THIS NEEDS TO SYNC BIN AND SRC WITH DELETE, SIZE-ONLY.
             .pkgdownDeployToAWS(pkg = pkgDir)
             drat::insertPackage(
                 file = tarball,
@@ -46,6 +51,7 @@ NULL
             )
             invisible(file.remove(tarball))
             setwd(repoDir)
+            branch <- 
             shell(command = "git", args = c("checkout", "master"))
             shell(command = "git", args = c("fetch", "--all"))
             shell(command = "git", args = "merge")
