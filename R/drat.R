@@ -47,11 +47,13 @@ NULL
             shell(command = "git", args = c("add", "./"))
             shell(
                 command = "git",
-                args = c("commit", "-m", paste0("'Add ", basename(file), ".'"))
+                args = c(
+                    "commit", "-m", paste0("'Add ", basename(tarball), ".'")
+                )
             )
             shell(command = "git", args = "push")
             setwd(wd)
-            message(sprintf("Successfully added '%s'.", basename(file)))
+            message(sprintf("Successfully added '%s'.", basename(tarball)))
             TRUE
         }
     )
