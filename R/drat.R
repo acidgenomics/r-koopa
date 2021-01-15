@@ -70,7 +70,7 @@ NULL
 #'
 #' @note Updated 2021-01-15.
 #' @noRd
-pkgdownDeployToAWS <- function(
+.pkgdownDeployToAWS <- function(
     pkg = ".",
     bucketDir = "s3://r.acidgenomics.com/packages"
 ) {
