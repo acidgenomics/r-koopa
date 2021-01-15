@@ -25,7 +25,6 @@ NULL
         X = pkgDirs,
         repoDir = repoDir,
         FUN = function(pkgDir, repoDir) {
-            setwd(pkgDir)
             pkgName <- basename(pkgDir)
             ## Handle `r-koopa` edge case.
             if (any(grepl("-", pkgName))) {
@@ -58,6 +57,7 @@ NULL
                 args = c("commit", "-m", paste0("'Add ", basename(file), ".'"))
             )
             shell(command = "git", args = "push")
+            setwd(wd)
             message(sprintf("Successfully added '%s'.", basename(file)))
             TRUE
         }
