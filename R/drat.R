@@ -11,6 +11,9 @@ NULL
 
 
 
+## FIXME Tag release and push automatically.
+## FIXME ERROR IF BRANCH ISNT ON MAIN / MASTER
+## FIXME NEED TO ADD CODE TO DETECT DEFAULT GIT BRANCH.
 .drat <- function(
     pkgDirs,
     repoDir = file.path("~", "monorepo", "drat")
