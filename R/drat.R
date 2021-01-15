@@ -70,18 +70,34 @@ NULL
 #'
 #' @note Updated 2021-01-15.
 #' @noRd
-.pkgdownDeployToAWS <- function(pkg = ".") {
-    requireNamespaces("pkgdown")
+pkgdownDeployToAWS <- function(
+    pkg = ".",
+    bucketDir = "s3://r.acidgenomics.com/packages"
+) {
     pkgDir <- realpath(pkg)
     pkgName <- basename(pkgDir)
+    bucketDir <- pasteURL(bucketDir, pkgName)
     docsDir <- file.path(pkgDir, "docs")
     configFile <- file.path(pkgDir, "_pkgdown.yml")
     if (!isAFile(configFile)) {
-        alertWarning("pkgdown not enabled for {.pkg %s}.", pkgName)
+        alertWarning(sprintf(
+            "pkgdown not enabled for {.pkg %s} at {.path %s}. Skipping.",
+            pkgName, pkgDir
+        ))
         return(invisible(FALSE))
     }
+    assert(isSystemCommand("aws"))
+    requireNamespaces("pkgdown")
     pkgdown::build_site(pkg = pkg)
-    ## aws s3 sync
+    shell(
+        command = "aws",
+        args = c(
+            "s3",
+            "sync",
+            paste0(docsDir, "/"),
+            paste0(bucketDir, "/")
+        )
+    )
     invisible(TRUE)
 }
 
