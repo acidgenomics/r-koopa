@@ -31,6 +31,7 @@ NULL
             if (any(grepl("-", pkgName))) {
                 pkgName <- strsplit(pkgName, "-")[[1L]][[2L]]
             }
+            .pkgdownDeployToAWS(pkg = pkgDir)
             devtools::build(pkgDir)
             tarballs <- sort(list.files(
                 path = ".",
@@ -59,6 +60,7 @@ NULL
         }
     )
     setwd(repoDir)
+    assert(isAFile("update"))
     shell(command = "./update")
     setwd(wd)
     invisible(TRUE)
@@ -86,6 +88,13 @@ NULL
         ))
         return(invisible(FALSE))
     }
+    alert(sprintf(
+        paste(
+            "Building pkgdown website for {.pkg %s} at {.path %s},",
+            "then pushing to AWS S3 bucket at {.url %s}."
+        ),
+        pkgName, docsDir, bucketDir
+    ))
     assert(isSystemCommand("aws"))
     requireNamespaces("pkgdown")
     pkgdown::build_site(pkg = pkg)
