@@ -1,5 +1,5 @@
 #' @importFrom AcidBase basenameSansExt fileExt initDir majorVersion
-#'   minorVersion realpath requireNamespaces sanitizeVersion shell
+#'   minorVersion pasteURL realpath requireNamespaces sanitizeVersion shell
 #' @importFrom AcidCLI alertWarning green h1 h2 h3 h4 h5 h6 h7 magenta red ul
 #'   yellow
 #' @importFrom bb8 install installRecommendedPackages updatePackages
