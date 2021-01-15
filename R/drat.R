@@ -1,7 +1,7 @@
 #' Build a package and commit to drat repo
 #'
 #' @name drat
-#' @note Updated 2021-01-06.
+#' @note Updated 2021-01-15.
 #'
 #' @return `logical(1)`.
 #'
@@ -61,6 +61,27 @@ NULL
     setwd(repoDir)
     shell(command = "./update")
     setwd(wd)
+    invisible(TRUE)
+}
+
+
+
+#' Deploy pkgdown website to AWS S3
+#'
+#' @note Updated 2021-01-15.
+#' @noRd
+.pkgdownDeployToAWS <- function(pkg = ".") {
+    requireNamespaces("pkgdown")
+    pkgDir <- realpath(pkg)
+    pkgName <- basename(pkgDir)
+    docsDir <- file.path(pkgDir, "docs")
+    configFile <- file.path(pkgDir, "_pkgdown.yml")
+    if (!isAFile(configFile)) {
+        alertWarning("pkgdown not enabled for {.pkg %s}.", pkgName)
+        return(invisible(FALSE))
+    }
+    pkgdown::build_site(pkg = pkg)
+    ## aws s3 sync
     invisible(TRUE)
 }
 
