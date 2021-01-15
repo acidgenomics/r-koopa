@@ -49,6 +49,8 @@ NULL
             invisible(file.remove(file))
             setwd(repoDir)
             shell(command = "git", args = c("checkout", "master"))
+            shell(command = "git", args = c("fetch", "--all"))
+            shell(command = "git", args = "merge")
             shell(command = "git", args = c("add", "./"))
             shell(
                 command = "git",
