@@ -25,22 +25,23 @@ NULL
         X = pkgDirs,
         repoDir = repoDir,
         FUN = function(pkgDir, repoDir) {
-            setwd(dirname(pkgDir))
+            setwd(pkgDir)
             pkgName <- basename(pkgDir)
             ## Handle `r-koopa` edge case.
             if (any(grepl("-", pkgName))) {
                 pkgName <- strsplit(pkgName, "-")[[1L]][[2L]]
             }
-            .pkgdownDeployToAWS(pkg = pkgDir)
-            devtools::build(pkgDir)
+            check(path = pkgDir)
+            devtools::build(pkg = pkgDir)
             tarballs <- sort(list.files(
-                path = ".",
+                path = dirname(pkgDir),
                 pattern = paste0(pkgName, "_.*.tar.gz"),
                 recursive = FALSE,
                 ignore.case = TRUE
             ))
             file <- tail(tarballs, n = 1L)
             assert(isAFile(file))
+            .pkgdownDeployToAWS(pkg = pkgDir)
             drat::insertPackage(
                 file = file,
                 repodir = repoDir,
