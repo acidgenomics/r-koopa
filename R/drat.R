@@ -11,6 +11,8 @@ NULL
 
 
 
+## FIXME Ensure we sync bin and src with delete, size only.
+
 ## FIXME Tag release and push automatically.
 ## FIXME ERROR IF BRANCH ISNT ON MAIN / MASTER
 ## FIXME NEED TO ADD CODE TO DETECT DEFAULT GIT BRANCH.
