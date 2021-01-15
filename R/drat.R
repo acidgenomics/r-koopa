@@ -31,22 +31,15 @@ NULL
                 pkgName <- strsplit(pkgName, "-")[[1L]][[2L]]
             }
             check(path = pkgDir)
-            devtools::build(pkg = pkgDir)
-            tarballs <- sort(list.files(
-                path = dirname(pkgDir),
-                pattern = paste0(pkgName, "_.*.tar.gz"),
-                recursive = FALSE,
-                ignore.case = TRUE
-            ))
-            file <- tail(tarballs, n = 1L)
-            assert(isAFile(file))
+            tarball <- devtools::build(pkg = pkgDir)
+            assert(isAFile(tarball))
             .pkgdownDeployToAWS(pkg = pkgDir)
             drat::insertPackage(
-                file = file,
+                file = tarball,
                 repodir = repoDir,
                 action = "archive"
             )
-            invisible(file.remove(file))
+            invisible(file.remove(tarball))
             setwd(repoDir)
             shell(command = "git", args = c("checkout", "master"))
             shell(command = "git", args = c("fetch", "--all"))
@@ -110,6 +103,7 @@ NULL
             paste0(bucketDir, "/")
         )
     )
+    unlink(docsDir, recursive = TRUE)
     invisible(TRUE)
 }
 
