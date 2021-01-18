@@ -1,4 +1,4 @@
-## FIXME Consider adding support for checking PATH priority here.
+## NOTE Consider adding support for checking PATH priority here.
 
 
 

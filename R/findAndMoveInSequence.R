@@ -17,7 +17,6 @@ findAndMoveInSequence <- function() {
 
 
 
-## FIXME MOVE THIS INTO BASEJUMP / ACIDBASE INSTEAD?
 .findAndMoveInSequence <- function(sourceDir, targetDir) {
     assert(
         isADir(sourceDir),
