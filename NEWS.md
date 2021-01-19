@@ -1,19 +1,20 @@
-## koopa 0.2.24 (UNRELEASED)
+## koopa 0.1.0 (UNRELEASED)
 
+- Initial stable public release.
 - Bug fixes for `drat`.
 
-## koopa 0.2.23 (2020-01-04)
+## koopa 0.0.23 (2020-01-04)
 
 - Added check for bpytop.
 - Added check for GNU stow.
 - `listPrograms` now excludes `app` directory, as expected.
 - Migrated internal R scripts previously defined in koopa package.
 
-## koopa 0.2.22 (2020-12-24)
+## koopa 0.0.22 (2020-12-24)
 
 - Bug fix for GPG Suite version check on macOS.
 
-## koopa 0.2.21 (2020-12-14)
+## koopa 0.0.21 (2020-12-14)
 
 - `parseArgs`: Bug fix for parsing of quoted arguments containing spaces.
 
