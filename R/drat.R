@@ -46,12 +46,12 @@ NULL
             shell(
                 command = "git",
                 args = c(
-                    "tag", "-f",
+                    "tag", "--force",
                     "-a", paste0("'v", version, "'"),
                     "-m", paste0("'", name, " v", version, " (", today, ")'")
                 )
             )
-            shell(command = "git", args = c("push", "--tags"))
+            shell(command = "git", args = c("push", "--force", "--tags"))
             setwd(repoDir)
             shell(command = "git", args = c("checkout", "master"))
             shell(command = "git", args = c("fetch", "--all"))
