@@ -42,6 +42,7 @@ NULL
             name <- desc::desc_get_field(key = "Package", file = descFile)
             version <- as.character(desc::desc_get_version(file = descFile))
             today <- Sys.Date()
+            shell(command = "git", args = c("fetch", "--force", "--tags"))
             shell(
                 command = "git",
                 args = c(
