@@ -10,7 +10,7 @@ findAndMoveInSequence()
 Find and move files in sequence
 }
 \note{
-Updated 2021-01-04.
+Updated 2021-01-31.
 }
 \examples{
 ## > findAndMoveInSequence()

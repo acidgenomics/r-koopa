@@ -1,6 +1,6 @@
 #' Find and move files in sequence
 #'
-#' @note Updated 2021-01-04.
+#' @note Updated 2021-01-31.
 #' @export
 #'
 #' @examples
@@ -52,11 +52,11 @@ findAndMoveInSequence <- function() {
         from = sourceFiles,
         to = targetFiles,
         FUN = function(from, to) {
-            cli_alert(sprintf("Renaming '%s' to '%s'.", from, to))
+            alert(sprintf("Renaming '%s' to '%s'.", from, to))
             file.rename(from = from, to = to)
         }
     ))
-    cli_alert_info(sprintf(
+    alertInfo(sprintf(
         "Successfully renamed %d files.",
         length(sourceFiles)
     ))

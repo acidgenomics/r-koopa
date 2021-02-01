@@ -11,7 +11,7 @@ NULL
 
 #' Build all Docker tags
 #'
-#' @note Updated 2021-01-04.
+#' @note Updated 2021-01-31.
 #' @noRd
 #'
 #' @param images `character`.
@@ -40,7 +40,7 @@ NULL
     koopaPrefix <- koopaPrefix()
     if (!any(grepl(pattern = "/", x = images)))
         images <- file.path("acidgenomics", images)
-    cli_alert(sprintf("Building all tags: %s.", toString(images)))
+    alert(sprintf("Building all tags: %s.", toString(images)))
     invisible(lapply(
         X = images,
         FUN = function(image) {
@@ -89,7 +89,7 @@ NULL
                                     days = days
                                 )
                             )) {
-                                cli_alert_info(sprintf(
+                                alertInfo(sprintf(
                                     "'%s:%s' was built recently. Skipping.",
                                     image, tag
                                 ))
@@ -123,7 +123,7 @@ NULL
                 }
                 assert(isString(sourceTag))
                 destTag <- "latest"
-                cli_alert(sprintf(
+                alert(sprintf(
                     "Tagging %s '%s' as '%s'.",
                     image, sourceTag, destTag
                 ))
