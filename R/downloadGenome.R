@@ -1,14 +1,18 @@
-## FIXME NEED TO ADD FLYBASE, REFSEQ.
+## FIXME ADD REFSEQ
+## FIXME SIMPLIFY ARGUMENTS.
 
 
 
 #' Download a genome
 #'
 #' @name downloadGenome
-#' @note Updated 2021-01-07.
+#' @note Updated 2021-01-31.
 #'
 #' @examples
 #' ## > downloadEnsemblGenome()
+#' ## > downloadGencodeGenome()
+#' ## > downloadRefSeqGenome()
+#' ## > downloadUCSCGenome()
 NULL
 
 
