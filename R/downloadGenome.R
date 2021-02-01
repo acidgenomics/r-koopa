@@ -54,36 +54,24 @@ downloadEnsemblGenome <- function() {
 downloadGencodeGenome <- function() {
     requireNamespaces("AcidGenomes")
     input <- parseArgs(
-        required = c(
-            "organism",
-            "genome-build"  # FIXME MAKE OPTIONAL
-        ),
+        required = "organism",
         optional = c(
+            "genome-build",
             "release",
-            "type",
-            "annotation",
             "output-dir"
         ),
-        flags = "decompress",
         positional = FALSE
     )
     args <- list()
     args[["organism"]] <- input[["required"]][["organism"]]
-    args[["genomeBuild"]] <- input[["required"]][["genome-build"]]
+    if (isSubset("genome-build", names(input[["optional"]]))) {
+        args[["genomeBuild"]] <- input[["optional"]][["genome-build"]]
+    }
     if (isSubset("release", names(input[["optional"]]))) {
         args[["release"]] <- input[["optional"]][["release"]]
     }
-    if (isSubset("type", names(input[["optional"]]))) {
-        args[["type"]] <- input[["optional"]][["type"]]
-    }
-    if (isSubset("annotation", names(input[["optional"]]))) {
-        args[["annotation"]] <- input[["optional"]][["annotation"]]
-    }
     if (isSubset("output-dir", names(input[["optional"]]))) {
         args[["outputDir"]] <- input[["optional"]][["output-dir"]]
-    }
-    if (isSubset("decompress", names(input[["flags"]]))) {
-        args[["decompress"]] <- TRUE
     }
     do.call(
         what = AcidGenomes::downloadGencodeGenome,
