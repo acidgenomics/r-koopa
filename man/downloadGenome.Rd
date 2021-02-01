@@ -4,18 +4,34 @@
 \alias{downloadGenome}
 \alias{downloadEnsemblGenome}
 \alias{downloadGencodeGenome}
+\alias{downloadRefSeqGenome}
+\alias{downloadUCSCGenome}
 \title{Download a genome}
 \usage{
 downloadEnsemblGenome()
 
 downloadGencodeGenome()
+
+downloadRefSeqGenome()
+
+downloadUCSCGenome()
 }
 \description{
 Download a genome
 }
 \note{
-Updated 2021-01-07.
+Updated 2021-01-31.
 }
 \examples{
+## Ensembl.
 ## > downloadEnsemblGenome()
+
+## GENCODE.
+## > downloadGencodeGenome()
+
+## RefSeq.
+## > downloadRefSeqGenome()
+
+## UCSC.
+## > downloadUCSCGenome()
 }
