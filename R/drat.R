@@ -15,7 +15,7 @@ NULL
     pkgDirs,
     repoDir = file.path("~", "monorepo", "drat")
 ) {
-    requireNamespaces("desc")
+    requireNamespaces(c("desc", "devtools"))
     assert(
         allAreDirs(pkgDirs),
         isADir(repoDir)

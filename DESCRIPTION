@@ -34,8 +34,10 @@ Suggests:
     BiocManager,
     covr,
     desc,
+    devtools,
     drat,
     lintr,
+    pkgdown,
     remotes,
     sessioninfo
 Roxygen: list(markdown = TRUE)
