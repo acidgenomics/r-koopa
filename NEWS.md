@@ -1,7 +1,8 @@
-## koopa 0.1.0 (UNRELEASED)
+## koopa 0.1.0 (2021-01-31)
 
 - Initial stable public release.
 - Bug fixes for `drat`.
+- Improved genome download support for Ensembl, Gencode, RefSeq, and UCSC.
 
 ## koopa 0.0.23 (2020-01-04)
 

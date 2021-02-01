@@ -22,15 +22,15 @@ License: GPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
-    AcidBase (>= 0.3.2),
+    AcidBase (>= 0.3.4),
     AcidCLI (>= 0.0.5),
     bb8 (>= 0.2.50),
     goalie (>= 0.4.14),
     methods,
-    syntactic (>= 0.4.3),
+    syntactic (>= 0.4.4),
     utils
 Suggests:
-    AcidGenomes (>= 0.1.2),
+    AcidGenomes (>= 0.2.0),
     BiocManager,
     covr,
     desc,

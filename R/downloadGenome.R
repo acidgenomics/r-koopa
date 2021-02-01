@@ -26,11 +26,8 @@ downloadEnsemblGenome <- function() {
         optional = c(
             "genome-build",
             "release",
-            "type",
-            "annotation",
             "output-dir"
         ),
-        flags = "decompress",
         positional = FALSE
     )
     args <- list()
@@ -41,17 +38,8 @@ downloadEnsemblGenome <- function() {
     if (isSubset("release", names(input[["optional"]]))) {
         args[["release"]] <- input[["optional"]][["release"]]
     }
-    if (isSubset("type", names(input[["optional"]]))) {
-        args[["type"]] <- input[["optional"]][["type"]]
-    }
-    if (isSubset("annotation", names(input[["optional"]]))) {
-        args[["annotation"]] <- input[["optional"]][["annotation"]]
-    }
     if (isSubset("output-dir", names(input[["optional"]]))) {
         args[["outputDir"]] <- input[["optional"]][["output-dir"]]
-    }
-    if (isSubset("decompress", names(input[["flags"]]))) {
-        args[["decompress"]] <- TRUE
     }
     do.call(
         what = AcidGenomes::downloadEnsemblGenome,
