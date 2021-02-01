@@ -6,15 +6,11 @@
 \usage{
 unlinkApp()
 }
-\arguments{
-\item{x}{\code{character.}
-Application names.}
-}
 \description{
 Unlink an application
 }
 \note{
-Updated 2021-01-04.
+Updated 2021-01-31.
 }
 \examples{
 ## > unlinkApp(c("vim", "tmux"))

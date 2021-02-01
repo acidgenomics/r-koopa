@@ -1,10 +1,7 @@
 #' Unlink an application
 #'
-#' @note Updated 2021-01-04.
+#' @note Updated 2021-01-31.
 #' @export
-#'
-#' @param x `character.`
-#'   Application names.
 #'
 #' @examples
 #' ## > unlinkApp(c("vim", "tmux"))
