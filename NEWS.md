@@ -1,3 +1,8 @@
+## koopa 0.1.1 (2021-02-04)
+
+- Updated internal bb8 dependency to renamed AcidDevTools package.
+- Migrated `detectHPC` function from basejump, which is more useful for koopa.
+
 ## koopa 0.1.0 (2021-01-31)
 
 - Initial stable public release.
