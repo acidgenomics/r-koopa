@@ -1,3 +1,9 @@
+## koopa 0.1.2 (2021-02-06)
+
+- Improved internal argument parsing for syntactic functions.
+- `drat`: Added optional override flags: `--no-check`, `--no-pkgdown`,
+  and `--no-deploy`.
+
 ## koopa 0.1.1 (2021-02-04)
 
 - Updated internal bb8 dependency to renamed AcidDevTools package.
