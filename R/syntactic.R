@@ -17,7 +17,7 @@ camelCase <- function() {
     positional <- parse[["positional"]]
     args <- list(
         "object" = positional,
-        "prefix" = isSubset("prefix", flags)
+        "prefix" = isSubset("prefix", flags),
         "recursive" = isSubset("recursive", flags),
         "rename" = TRUE,
         "strict" = isSubset("strict", flags),
@@ -38,7 +38,7 @@ kebabCase <- function() {
     positional <- parse[["positional"]]
     args <- list(
         "object" = positional,
-        "prefix" = isSubset("prefix", flags)
+        "prefix" = isSubset("prefix", flags),
         "recursive" = isSubset("recursive", flags),
         "rename" = TRUE
     )
@@ -58,7 +58,7 @@ snakeCase <- function() {
     positional <- parse[["positional"]]
     args <- list(
         "object" = positional,
-        "prefix" = isSubset("prefix", flags)
+        "prefix" = isSubset("prefix", flags),
         "recursive" = isSubset("recursive", flags),
         "rename" = TRUE
     )
