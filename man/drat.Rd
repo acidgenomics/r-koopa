@@ -13,7 +13,7 @@ drat()
 Build a package and commit to drat repo
 }
 \note{
-Updated 2021-01-19.
+Updated 2021-02-06.
 }
 \examples{
 ## > drat()

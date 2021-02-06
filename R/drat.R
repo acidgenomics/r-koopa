@@ -165,7 +165,7 @@ drat <- function() {
         "pkgDirs" = positional,
         "check" = !isSubset("no-check", flags),
         "deploy" = !isSubset("no-deploy", flags),
-        "pkgdown" = !isSubset("no-pkgdown", flags),
+        "pkgdown" = !isSubset("no-pkgdown", flags)
     )
     if (!is.null(optional)) {
         if (isSubset("repo-dir", names(optional))) {

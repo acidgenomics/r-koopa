@@ -20,7 +20,7 @@ camelCase <- function() {
         "prefix" = isSubset("prefix", flags),
         "recursive" = isSubset("recursive", flags),
         "rename" = TRUE,
-        "strict" = isSubset("strict", flags),
+        "strict" = isSubset("strict", flags)
     )
     do.call(what = syntactic::camelCase, args = args)
 }
