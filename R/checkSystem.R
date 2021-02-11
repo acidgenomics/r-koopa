@@ -311,7 +311,7 @@ checkSystem <- function() {
     .checkPythonPackageVersion("bpytop")
     .checkPythonPackageVersion("flake8")
     .checkPythonPackageVersion("pylint")
-    .checkPythonPackageVersion("ranger")
+    .checkPythonPackageVersion("ranger-fm")
     ## Rust packaegs ===========================================================
     h2("Rust packages")
     .checkInstalled("cargo")
