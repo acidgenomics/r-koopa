@@ -283,12 +283,9 @@ checkSystem <- function() {
     } else if (isTRUE(macos)) {
         h2("macOS specific")
         .checkInstalled(
-            name = c(
-                "brew",
-                "clang",
-                "gcc"
-            )
+            name = c("clang", "gcc")
         )
+        .checkVersion("homebrew")
         .checkVersion("tex", nameFancy = "TeX Live")
         .checkHomebrewCaskVersion("gpg-suite", nameFancy = "GPG Suite")
     }
@@ -309,43 +306,34 @@ checkSystem <- function() {
     }
     ## Python packages =========================================================
     h2("Python packages")
-    .checkInstalled(
-        name = c(
-            "black",
-            "bpytop",
-            "flake8",
-            "pip3",
-            "pylint",
-            "ranger"
-        )
-    )
+    .checkPythonPackageVersion("pip")
+    .checkPythonPackageVersion("black")
+    .checkPythonPackageVersion("bpytop")
+    .checkPythonPackageVersion("flake8")
+    .checkPythonPackageVersion("pylint")
+    .checkPythonPackageVersion("ranger")
     ## Rust packaegs ===========================================================
     h2("Rust packages")
-    .checkInstalled(
-        name = c(
-            "broot",
-            "cargo",
-            "dog",
-            "dust",
-            "exa",
-            "fd",
-            "procs",
-            "rg",
-            "starship",
-            "zoxide"
-        )
-    )
+    .checkInstalled("cargo")
+    .checkRustPackageVersion("bat")
+    .checkRustPackageVersion("broot")
+    .checkRustPackageVersion("dog")
+    .checkRustPackageVersion("du-dust")
+    .checkRustPackageVersion("exa")
+    .checkRustPackageVersion("fd-find")
+    .checkRustPackageVersion("hyperfine")
+    .checkRustPackageVersion("procs")
+    .checkRustPackageVersion("ripgrep")
+    .checkRustPackageVersion("ripgrep-all")
+    .checkRustPackageVersion("starship")
+    .checkRustPackageVersion("tokei")
+    .checkRustPackageVersion("xsv")
+    .checkRustPackageVersion("zoxide")
     ## Ruby gems ===============================================================
-    if (!isTRUE(docker)) {
-        h2("Ruby gems")
-        .checkInstalled(
-            name = c(
-                "gem",
-                "bundle",
-                "ronn"
-            )
-        )
-    }
+    h2("Ruby gems")
+    .checkRubyPackageVersion("gem")
+    .checkRubyPackageVersion("bundle")
+    .checkRubyPackageVersion("ronn")
     if (Sys.getenv("KOOPA_CHECK_FAIL") == 1L) {
         stop("System failed checks.", call. = FALSE)
     }

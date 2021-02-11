@@ -1,6 +1,6 @@
 #' Check version
 #'
-#' @note Updated 2021-01-04.
+#' @note Updated 2021-02-11.
 #' @noRd
 #'
 #' @param name `character(1)`.
@@ -95,6 +95,7 @@
 
 
 
+## Updated 2021-02-11.
 .checkGNUVersion <- function(name, ...) {
     .checkVersion(
         name = name,
@@ -105,6 +106,19 @@
 
 
 
+## Updated 2021-02-11.
+.checkHomebrewCaskVersion <- function(name, ...) {
+    .checkVersion(
+        name = name,
+        current = .currentHomebrewCaskVersion(name),
+        expected = .expectedHomebrewCaskVersion(name),
+        ...
+    )
+}
+
+
+
+## Updated 2021-02-11.
 .checkMacOSAppVersion <- function(name, ...) {
     .checkVersion(
         name = name,
@@ -116,11 +130,54 @@
 
 
 
-.checkHomebrewCaskVersion <- function(name, ...) {
+## Updated 2021-02-11.
+.checkPythonPackageVersion <- function(
+    name,
+    op = c("==", ">="),
+    required = TRUE
+) {
     .checkVersion(
         name = name,
-        current = .currentHomebrewCaskVersion(name),
-        expected = .expectedHomebrewCaskVersion(name),
-        ...
+        nameFancy = NULL,
+        current = .currentVersion(name),
+        expected = .expectedPythonPackageVersion(name),
+        op = match.arg(op),
+        required = required
+    )
+}
+
+
+
+## Updated 2021-02-11.
+.checkRubyPackageVersion <- function(
+    name,
+    op = c("==", ">="),
+    required = TRUE
+) {
+    .checkVersion(
+        name = name,
+        nameFancy = NULL,
+        current = .currentVersion(name),
+        expected = .expectedRubyPackageVersion(name),
+        op = match.arg(op),
+        required = required
+    )
+}
+
+
+
+## Updated 2021-02-11.
+.checkRustPackageVersion <- function(
+    name,
+    op = c("==", ">="),
+    required = TRUE
+) {
+    .checkVersion(
+        name = name,
+        nameFancy = NULL,
+        current = .currentVersion(name),
+        expected = .expectedRustPackageVersion(name),
+        op = match.arg(op),
+        required = required
     )
 }
