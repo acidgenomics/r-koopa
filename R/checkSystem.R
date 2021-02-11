@@ -5,7 +5,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2021-01-04.
+#' @note Updated 2021-02-11.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -171,8 +171,7 @@ checkSystem <- function() {
     h2("GNU packages")
     .checkGNUVersion("autoconf")
     .checkGNUVersion("automake")
-    if (isTRUE(linux))
-        .checkGNUVersion("binutils")
+    .checkGNUVersion("binutils")
     .checkGNUVersion("coreutils")
     .checkGNUVersion("findutils")
     .checkGNUVersion("gawk")

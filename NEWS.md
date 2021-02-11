@@ -1,3 +1,7 @@
+## koopa 0.1.3 (2021-02-11)
+
+- Including checking for GNU binutils on macOS in addition to Linux.
+
 ## koopa 0.1.2 (2021-02-06)
 
 - Improved internal argument parsing for syntactic functions.
