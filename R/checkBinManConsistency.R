@@ -1,11 +1,14 @@
 #' Check `bin` and `man` directory consistency
 #'
+#' @export
 #' @note Updated 2021-02-15.
-#' @noRd
 #'
 #' @details
 #' Check that all scripts in `bin` and `sbin` directories have corresponding
 #' documentation in `man/man1`.
+#'
+#' @examples
+#' ## > checkBinManConsistency()
 checkBinManConsistency <- function() {
     koopaPrefix <- koopaPrefix()
     ## Exclude these directories from search.
