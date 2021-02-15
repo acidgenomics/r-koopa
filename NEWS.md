@@ -1,3 +1,8 @@
+## koopa 0.1.4 (2021-02-15)
+
+- Added version check for GNU tar.
+- Updated dependency version cutoffs.
+
 ## koopa 0.1.3 (2021-02-11)
 
 - Including checking for GNU binutils on macOS in addition to Linux.
