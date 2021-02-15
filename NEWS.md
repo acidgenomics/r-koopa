@@ -1,3 +1,7 @@
+## koopa 0.1.5 (2021-02-15)
+
+- Migrated `checkBinManConsistency` here from main koopa package.
+
 ## koopa 0.1.4 (2021-02-15)
 
 - Added version check for GNU tar.
