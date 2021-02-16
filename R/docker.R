@@ -51,7 +51,7 @@ NULL
             if (file.exists(buildFile)) {
                 tags <- readLines(buildFile)
                 ## Ensure we ignore comments here.
-                keep <- grepl(pattern = "^[a-z0-9_-.]+$", x = tags)
+                keep <- grepl(pattern = "^[a-z0-9_.-]+$", x = tags)
                 tags <- tags[keep]
                 assert(isCharacter(tags))
             } else {
