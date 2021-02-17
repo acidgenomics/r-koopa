@@ -18,7 +18,7 @@ URL:
     https://koopa.acidgenomics.com/
     https://github.com/acidgenomics/koopa/
 BugReports: https://github.com/acidgenomics/koopa/issues/
-License: GPL-3
+License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
