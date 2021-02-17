@@ -1,3 +1,7 @@
+## koopa 0.1.7 (2021-02-17)
+
+- `drat`: pkgdown documentation in docs is no longer removed.
+
 ## koopa 0.1.6 (2021-02-16)
 
 - `dockerBuildAllTags`: Ignore lines that contain comments in `build.txt` files.
