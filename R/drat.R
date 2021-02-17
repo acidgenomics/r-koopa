@@ -1,7 +1,7 @@
 #' Build a package and commit to drat repo
 #'
 #' @name drat
-#' @note Updated 2021-02-06.
+#' @note Updated 2021-02-17.
 #'
 #' @return `logical(1)`.
 #'
@@ -102,7 +102,7 @@ NULL
 
 #' Deploy pkgdown website to AWS S3
 #'
-#' @note Updated 2021-01-19.
+#' @note Updated 2021-02-17.
 #' @noRd
 .pkgdownDeployToAWS <- function(
     pkg = ".",
@@ -140,7 +140,9 @@ NULL
             paste0(bucketDir, "/")
         )
     )
-    unlink(docsDir, recursive = TRUE)
+    ## Don't delete, since some packages (e.g. bcbio R packages) keep track
+    ## of the documentation under git.
+    ## > unlink(docsDir, recursive = TRUE)
     invisible(TRUE)
 }
 
