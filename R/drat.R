@@ -45,7 +45,10 @@ NULL
             if (isTRUE(pkgdown)) {
                 .pkgdownDeployToAWS(pkg = pkgDir)
             }
-            tarball <- devtools::build(pkg = pkgDir)
+            tarball <- devtools::build(
+                pkg = pkgDir,
+                vignettes = check
+            )
             assert(isAFile(tarball))
             drat::insertPackage(
                 file = tarball,
