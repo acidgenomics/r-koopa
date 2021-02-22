@@ -154,6 +154,7 @@ drat <- function() {
     parse <- parseArgs(
         optional = "repo-dir",
         flags = c(
+            "fast",
             "no-check",
             "no-deploy",
             "no-pkgdown"
@@ -169,6 +170,10 @@ drat <- function() {
         "deploy" = !isSubset("no-deploy", flags),
         "pkgdown" = !isSubset("no-pkgdown", flags)
     )
+    if (isSubset("fast", flags)) {
+        args[["check"]] <- FALSE
+        args[["pkgdown"]] <- FALSE
+    }
     if (!is.null(optional)) {
         if (isSubset("repo-dir", names(optional))) {
             args[["repoDir"]] <- optional[["repo-dir"]]
