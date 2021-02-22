@@ -50,6 +50,7 @@ NULL
                 vignettes = check
             )
             assert(isAFile(tarball))
+            ## FIXME Error if the file is too large.
             drat::insertPackage(
                 file = tarball,
                 repodir = repoDir,
