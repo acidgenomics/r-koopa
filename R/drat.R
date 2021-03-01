@@ -51,7 +51,7 @@ NULL
             )
             assert(isAFile(tarball))
             size <- file.size(tarball)
-            if (isTRUE(size > 2e6)) {
+            if (isTRUE(size > 2e6L)) {
                 stop(sprintf(
                     "Package tarball is too large: '%s'.",
                     tarball
