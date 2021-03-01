@@ -1,7 +1,7 @@
 #' Check `bin` and `man` directory consistency
 #'
 #' @export
-#' @note Updated 2021-02-15.
+#' @note Updated 2021-03-01.
 #'
 #' @details
 #' Check that all scripts in `bin` and `sbin` directories have corresponding
@@ -15,8 +15,7 @@ checkBinManConsistency <- function() {
     exclude <- file.path(koopaPrefix, "(app|dotfiles|opt|system)", "")
     h1("Checking bin/man consistency.")
     status <- 0L
-    ## Bin-to-man mapping {{{1
-    ## =========================================================================
+    ## Bin-to-man file mapping.
     bins <- sort(list.files(
         path = koopaPrefix,
         pattern = "^[s]?bin$",
@@ -25,9 +24,7 @@ checkBinManConsistency <- function() {
         include.dirs = TRUE
     ))
     bins <- bins[!grepl(pattern = exclude, x = bins)]
-    ## Scripts {{{2
-    ## -------------------------------------------------------------------------
-    ## List the files for each bin directory.
+    ## Check the script files for each bin directory.
     scripts <- sort(unlist(lapply(
         X = bins,
         FUN = list.files,
@@ -35,9 +32,7 @@ checkBinManConsistency <- function() {
         recursive = FALSE,
         include.dirs = FALSE
     )))
-    ## Man files {{{2
-    ## -------------------------------------------------------------------------
-    ## Map to corresponding man files.
+    ## Check consistency of man files.
     manfiles <- gsub(
         pattern = file.path("", "[s]?bin", ""),
         replacement = file.path("", "man", "man1", ""),
@@ -58,8 +53,7 @@ checkBinManConsistency <- function() {
         })
         status <- 1L
     }
-    ## Orphaned man-to-bin files {{{1
-    ## =========================================================================
+    ## Check for orphaned man-to-bin files.
     mans <- sort(list.files(
         path = koopaPrefix,
         pattern = "^man1$",
