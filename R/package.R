@@ -2,6 +2,8 @@
 #'
 #' Shell bootloader for bioinformatics.
 #'
+#' @aliases NULL
+#'
 #' @importFrom AcidBase basenameSansExt fileExt head initDir install.packages
 #'   majorVersion minorVersion pasteURL realpath requireNamespaces
 #'   sanitizeVersion shell tail

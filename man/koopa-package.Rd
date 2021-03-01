@@ -2,8 +2,6 @@
 % Please edit documentation in R/package.R
 \docType{package}
 \name{koopa-package}
-\alias{koopa}
-\alias{koopa-package}
 \title{koopa}
 \description{
 Shell bootloader for bioinformatics.
