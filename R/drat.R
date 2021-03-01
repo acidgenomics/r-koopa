@@ -43,14 +43,20 @@ NULL
                 check(path = pkgDir)
             }
             if (isTRUE(pkgdown)) {
-                .pkgdownDeployToAWS(pkg = pkgDir)
+                .pkgdownDeployToAWS(pkgDir)
             }
             tarball <- devtools::build(
                 pkg = pkgDir,
                 vignettes = check
             )
             assert(isAFile(tarball))
-            ## FIXME Error if the file is too large.
+            size <- file.size(tarball)
+            if (isTRUE(size > 2e6)) {
+                stop(sprintf(
+                    "Package tarball is too large: '%s'.",
+                    tarball
+                ))
+            }
             drat::insertPackage(
                 file = tarball,
                 repodir = repoDir,
@@ -99,54 +105,6 @@ NULL
         shell(command = "./update")
         setwd(wd)
     }
-    invisible(TRUE)
-}
-
-
-
-#' Deploy pkgdown website to AWS S3
-#'
-#' @note Updated 2021-02-17.
-#' @noRd
-.pkgdownDeployToAWS <- function(
-    pkg = ".",
-    bucketDir = "s3://r.acidgenomics.com/packages"
-) {
-    requireNamespaces(c("desc", "pkgdown"))
-    assert(isSystemCommand("aws"))
-    pkgDir <- realpath(pkg)
-    descFile <- file.path(pkgDir, "DESCRIPTION")
-    assert(isAFile(descFile))
-    pkgName <- desc::desc_get_field(key = "Package", file = descFile)
-    bucketDir <- pasteURL(bucketDir, tolower(pkgName))
-    docsDir <- file.path(pkgDir, "docs")
-    configFile <- file.path(pkgDir, "_pkgdown.yml")
-    if (!isAFile(configFile)) {
-        alertWarning(sprintf(
-            "pkgdown not enabled for {.pkg %s} at {.path %s}. Skipping.",
-            pkgName, pkgDir
-        ))
-        return(invisible(FALSE))
-    }
-    alert(sprintf(
-        paste(
-            "Building pkgdown website for {.pkg %s} at {.path %s},",
-            "then pushing to AWS S3 bucket at {.url %s}."
-        ),
-        pkgName, docsDir, bucketDir
-    ))
-    pkgdown::build_site(pkg = pkg)
-    shell(
-        command = "aws",
-        args = c(
-            "s3", "sync", "--delete",
-            paste0(docsDir, "/"),
-            paste0(bucketDir, "/")
-        )
-    )
-    ## Don't delete, since some packages (e.g. bcbio R packages) keep track
-    ## of the documentation under git.
-    ## > unlink(docsDir, recursive = TRUE)
     invisible(TRUE)
 }
 

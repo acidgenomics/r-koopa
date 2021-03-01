@@ -4,6 +4,7 @@
 
 - Added file size check to `drat`.
 - Updated dependency packages.
+- Cleaned up NAMESPACE.
 
 ## koopa 0.1.7 (2021-02-17)
 
