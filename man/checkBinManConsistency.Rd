@@ -14,7 +14,7 @@ Check that all scripts in \code{bin} and \code{sbin} directories have correspond
 documentation in \code{man/man1}.
 }
 \note{
-Updated 2021-02-15.
+Updated 2021-03-01.
 }
 \examples{
 ## > checkBinManConsistency()
