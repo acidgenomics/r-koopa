@@ -1,3 +1,10 @@
+## koopa 0.1.8 (2021-03-01)
+
+### Minor changes
+
+- Added file size check to `drat`.
+- Updated dependency packages.
+
 ## koopa 0.1.7 (2021-02-17)
 
 - `drat`: pkgdown documentation in docs is no longer removed.
