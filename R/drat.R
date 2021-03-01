@@ -43,7 +43,7 @@ NULL
                 check(path = pkgDir)
             }
             if (isTRUE(pkgdown)) {
-                .pkgdownDeployToAWS(pkgDir)
+                .pkgdownDeployToAWS(package = pkgDir)
             }
             tarball <- devtools::build(
                 pkg = pkgDir,

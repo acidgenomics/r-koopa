@@ -4,7 +4,7 @@
 #'
 #' @importFrom AcidBase basenameSansExt fileExt head initDir install.packages
 #'   majorVersion minorVersion pasteURL realpath requireNamespaces
-#'   sanitizeVersion shell
+#'   sanitizeVersion shell tail
 #' @importFrom AcidCLI alert alertInfo alertSuccess alertWarning green h1 h2 h3
 #'   h4 h5 h6 h7 magenta red ul yellow
 #' @importFrom AcidDevTools check install installRecommendedPackages
