@@ -188,7 +188,7 @@ dockerPruneStaleTags <- function() {
         required = argNames,
         positional = FALSE
     )
-    args <- parse[["required"]][argNames]
+    args <- as.list(parse[["required"]][argNames])
     do.call(
         what = .dockerPruneStaleTags,
         args = args
