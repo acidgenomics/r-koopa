@@ -24,7 +24,9 @@
         FUN = function(x) {
             x <- syntactic::kebabCase(x)
             keep <- grepl(pattern = paste0("^", x, "="), x = variables)
-            assert(sum(keep, na.rm = TRUE) == 1L)
+            if (!identical(sum(keep, na.rm = TRUE), 1L)) {
+                stop(sprintf("Need to fix koopa variable: '%s'.", x))
+            }
             x <- variables[keep]
             assert(isString(x))
             x <- sub(
