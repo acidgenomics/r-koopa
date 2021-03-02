@@ -118,13 +118,13 @@ NULL
         staleTags <- tags[isStale, "name", drop = TRUE]
         if (!hasLength(staleTags)) {
             alertInfo(sprintf(
-                "No stale tags to prune for '%s/%s'.",
+                "No stale tags to prune for {.var %s/%s} repo.",
                 organization, image
             ))
             return(invisible(FALSE))
         }
         alert(sprintf(
-            "Pruning %d %s from '%s/%s'.",
+            "Pruning %d %s from {.var %s/%s} repo.",
             length(staleTags),
             ngettext(
                 n = length(staleTags),
@@ -135,13 +135,13 @@ NULL
             image
         ))
         ## Loop across the stale tags and delete.
-        lapply(
+        status <- vapply(
             X = staleTags,
             organization = organization,
             image = image,
             token = token,
             FUN = function(tag, organization, image, token) {
-                alert(sprintf("Deleting stale '%s' tag.", tag))
+                alert(sprintf("Deleting stale {.var %s} tag.", tag))
                 shell(
                     command = "curl",
                     args = c(
@@ -165,9 +165,10 @@ NULL
                         )
                     )
                 )
-            }
+            },
+            FUN.VALUE = integer(1L)
         )
-        invisible(TRUE)
+        invisible(status)
     }
 
 
