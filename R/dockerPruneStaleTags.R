@@ -122,6 +122,13 @@ NULL
         ## newest to oldest.
         tags <- tags[order(tags[["last_updated"]]), , drop = FALSE]
         isStale <- tags[["tag_status"]] == "stale"
+        if (all(isStale)) {
+            alertWarning(sprintf(
+                "All tags for {.var %s/%s} repo are stale. Skipping.",
+                organization, image
+            ))
+            return(invisible(FALSE))
+        }
         staleTags <- tags[isStale, "name", drop = TRUE]
         if (!hasLength(staleTags)) {
             alertInfo(sprintf(
