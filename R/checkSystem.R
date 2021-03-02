@@ -175,7 +175,7 @@ checkSystem <- function() {
     ## GNU packages ============================================================
     h2("GNU packages")
     switch(
-        EXPR = "platform",
+        EXPR = platform,
         "linux" = {
             .checkGNUVersion("gcc")
             .checkGNUVersion("libtool")
@@ -326,7 +326,7 @@ checkSystem <- function() {
     .checkInstalled(c("pandoc", "pandoc-citeproc", "tex"))
     ## OS-specific =============================================================
     switch(
-        expr = platform,
+        EXPR = platform,
         "linux" = {
             h2("Linux specific")
             .checkVersion("aspera-connect")
