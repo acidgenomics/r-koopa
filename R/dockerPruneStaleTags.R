@@ -77,9 +77,7 @@ NULL
             ),
             stdout = TRUE
         )
-        df <- jsonlite::fromJSON(json)[["results"]]
-        assert(is.data.frame(df))
-        df
+        jsonlite::fromJSON(json)[["results"]]
     }
 
 
@@ -109,6 +107,13 @@ NULL
             image = image,
             token = token
         )
+        if (!hasLength(tags)) {
+            alertInfo(sprintf(
+                "No tags to prune for {.var %s/%s} repo.",
+                organization, image
+            ))
+            return(invisible(FALSE))
+        }
         assert(isSubset(
             x = c("last_updated", "tag_status"),
             y = colnames(tags)
