@@ -82,10 +82,92 @@ NULL
 
 
 
-## Updated 2021-03-02.
+#' Prune (delete) stale tags from DockerHub
+#'
+#' @note Updated 2021-03-02.
+#' @noRd
+#'
+#' @seealso
+#' - https://stackoverflow.com/questions/44209644/
+#' - https://serverfault.com/questions/1021883/
+#' - https://gist.github.com/kizbitz/e59f95f7557b4bbb8bf2
 .dockerPruneStaleTags <-
-    function(username, password) {
-        token <- .dockerHubToken(username = username, password = password)
+    function(
+        username,
+        password,
+        organization,
+        image
+    ) {
+        token <- .dockerHubToken(
+            username = username,
+            password = password
+        )
+        tags <- .dockerListTags(
+            organization = organization,
+            image = image,
+            token = token
+        )
+        assert(isSubset(
+            x = c("last_updated", "tag_status"),
+            y = colnames(tags)
+        ))
+        ## Arrange from oldest to newest. By default, the JSON API returns
+        ## newest to oldest.
+        tags <- tags[order(tags[["last_updated"]]), , drop = FALSE]
+        isStale <- tags[["tag_status"]] == "stale"
+        staleTags <- tags[isStale, "name", drop = TRUE]
+        if (!hasLength(staleTags)) {
+            alertInfo(sprintf(
+                "No stale tags to prune for '%s/%s'.",
+                organization, image
+            ))
+            return(invisible(FALSE))
+        }
+        alert(sprintf(
+            "Pruning %d %s from '%s/%s'.",
+            length(staleTags),
+            ngettext(
+                n = length(staleTags),
+                msg1 = "tag",
+                msg2 = "tags",
+            ),
+            organization,
+            image
+        ))
+        ## Loop across the stale tags and delete.
+        lapply(
+            X = staleTags,
+            organization = organization,
+            image = image,
+            token = token,
+            FUN = function(tag, organization, image, token) {
+                alert(sprintf("Deleting stale '%s' tag.", tag))
+                shell(
+                    command = "curl",
+                    args = c(
+                        "-siL",
+                        "-H", "'Accept: application/json'",
+                        "-H", paste0("'Authorization: JWT ", token, "'"),
+                        "-X", "DELETE",
+                        paste0(
+                            "'",
+                            pasteURL(
+                                "hub.docker.com",
+                                "v2",
+                                "repositories",
+                                organization,
+                                image,
+                                "tags",
+                                tag,
+                                protocol = "https"
+                            ),
+                            "'"
+                        )
+                    )
+                )
+            }
+        )
+        invisible(TRUE)
     }
 
 
