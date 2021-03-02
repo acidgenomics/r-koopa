@@ -17,6 +17,7 @@ NULL
 #' @return `character(1)`.
 .dockerHubToken <-
     function(username, password) {
+        requireNamespaces("jsonlite")
         json <- shell(
             command = "curl",
             args = c(
@@ -32,7 +33,7 @@ NULL
             ),
             stdout = TRUE
         )
-        token <- fromJSON(json)[["token"]]
+        token <- jsonlite::fromJSON(json)[["token"]]
         assert(isString(token))
         token
     }
@@ -47,6 +48,7 @@ NULL
 #' @return `data.frame`
 .dockerListTags <-
     function(organization, image, token) {
+        requireNamespaces("jsonlite")
         assert(
             isString(organization),
             isString(image),
@@ -75,7 +77,7 @@ NULL
             ),
             stdout = TRUE
         )
-        df <- fromJSON(json)[["results"]]
+        df <- jsonlite::fromJSON(json)[["results"]]
         assert(is.data.frame(df))
         df
     }
