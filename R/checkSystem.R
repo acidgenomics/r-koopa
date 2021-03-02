@@ -5,7 +5,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2021-02-15.
+#' @note Updated 2021-03-02.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -17,14 +17,19 @@
 checkSystem <- function() {
     h1("Checking koopa installation.")
     koopa <- koopa()
-    macos <- isMacOS()
-    linux <- !macos
-    docker <- isDocker()
-    os <- shell(
-        command = koopa,
-        args = c("system", "os-string"),
-        stdout = TRUE
+    platform <- ifelse(
+        test = isMacOS(),
+        yes = "macos",
+        no = "linux"
     )
+    isDocker <- isDocker()
+    isLinux <- identical(platform, "linux")
+    isMacOS <- identical(platform, "macos")
+    ## > os <- shell(
+    ## >     command = koopa,
+    ## > args = c("system", "os-string"),
+    ## > stdout = TRUE
+    ## > )
     ## Basic dependencies ======================================================
     h2("Basic dependencies")
     .checkInstalled(
@@ -169,20 +174,30 @@ checkSystem <- function() {
     .checkVersion("fish")
     ## GNU packages ============================================================
     h2("GNU packages")
+    switch(
+        EXPR = "platform",
+        "linux" = {
+            .checkGNUVersion("gcc")
+            .checkGNUVersion("libtool")
+        },
+        "macos" = {
+            .checkInstalled("gcc-10")
+        }
+    )
     .checkGNUVersion("autoconf")
     .checkGNUVersion("automake")
     .checkGNUVersion("binutils")
     .checkGNUVersion("coreutils")
     .checkGNUVersion("findutils")
     .checkGNUVersion("gawk")
-    ## > .checkGNUVersion("gcc")
     .checkGNUVersion("grep")
     .checkGNUVersion("groff")
-    if (isTRUE(linux))
-        .checkGNUVersion("libtool")
     .checkGNUVersion("make")
-    if (isTRUE(linux))
-        .checkGNUVersion("ncurses")
+    .checkGNUVersion(
+        name = "ncurses",
+        current = .currentMinorVersion("ncurses"),
+        expected = .expectedMinorVersion("ncurses")
+    )
     .checkGNUVersion("parallel")
     .checkGNUVersion("patch")
     .checkGNUVersion("sed")
@@ -192,11 +207,26 @@ checkSystem <- function() {
     .checkGNUVersion("wget")
     ## Core packages ===========================================================
     h2("Core packages")
-    .checkVersion("cmake", nameFancy = "CMake")
-    .checkVersion("curl", nameFancy = "cURL")
-    .checkVersion("openssh", nameFancy = "OpenSSH")
-    .checkVersion("pkg-config", nameFancy = NULL)
-    .checkVersion("rsync", nameFancy = NULL)
+    .checkVersion(
+        name = "cmake",
+        nameFancy = "CMake"
+    )
+    .checkVersion(
+        name = "curl",
+        nameFancy = "cURL"
+    )
+    .checkVersion(
+        name = "openssh",
+        nameFancy = "OpenSSH"
+    )
+    .checkVersion(
+        name = "pkg-config",
+        nameFancy = NULL
+    )
+    .checkVersion(
+        name = "rsync",
+        nameFancy = NULL
+    )
     ## Editors =================================================================
     h2("Editors")
     .checkVersion("emacs")
@@ -213,7 +243,10 @@ checkSystem <- function() {
     .checkVersion("r")
     h2("Secondary languages")
     .checkVersion("go")
-    .checkVersion("openjdk", nameFancy = "Java : OpenJDK")
+    .checkVersion(
+        name = "openjdk",
+        nameFancy = "Java : OpenJDK"
+    )
     .checkVersion("julia")
     .checkVersion("perl")
     .checkVersion("ruby")
@@ -228,72 +261,110 @@ checkSystem <- function() {
     if (file.exists(file.path(condaPrefix, "bin", "anaconda"))) {
         .checkVersion("anaconda")
     } else {
-        .checkVersion("conda", nameFancy = "Miniconda")
+        .checkVersion(
+            name = "conda",
+            nameFancy = "Miniconda"
+        )
     }
-    if (!isTRUE(docker)) {
-        .checkVersion("rustup", nameFancy = "Rust : rustup")
-    }
+    .checkVersion(
+        name = "rustup",
+        nameFancy = "Rust : rustup"
+    )
     ## Cloud APIs ==============================================================
     h2("Cloud APIs")
     .checkInstalled(c("aws", "az", "gcloud"))
     ## Tools ===================================================================
     h2("Tools")
     .checkVersion("git")
-    .checkVersion("htop", nameFancy = NULL)
+    .checkVersion(
+        name = "htop",
+        nameFancy = NULL
+    )
     .checkVersion("neofetch")
     .checkVersion("subversion")
     ## Shell tools =============================================================
     h2("Shell tools")
     .checkVersion("the-silver-searcher")
-    .checkVersion("shellcheck", nameFancy = "ShellCheck")
+    .checkVersion(
+        name = "shellcheck",
+        nameFancy = "ShellCheck"
+    )
     .checkInstalled("shunit2")
     ## Heavy dependencies ======================================================
     h2("Heavy dependencies")
-    .checkVersion("armadillo", nameFancy = "Armadillo")
-    .checkVersion("proj", nameFancy = "PROJ")
-    .checkVersion("gdal", nameFancy = "GDAL")
-    .checkVersion("geos", nameFancy = "GEOS")
-    .checkVersion("gsl", nameFancy = "GSL")
-    .checkVersion("hdf5", nameFancy = "HDF5")
+    .checkVersion("armadillo")
+    .checkVersion(
+        name = "proj",
+        nameFancy = "PROJ"
+    )
+    .checkVersion(
+        name = "gdal",
+        nameFancy = "GDAL"
+    )
+    .checkVersion(
+        name = "geos",
+        nameFancy = "GEOS"
+    )
+    .checkVersion(
+        name = "gsl",
+        nameFancy = "GSL"
+    )
+    .checkVersion(
+        name = "hdf5",
+        nameFancy = "HDF5"
+    )
     .checkVersion(
         name = "llvm",
         nameFancy = "LLVM",
         current = .currentMajorVersion("llvm"),
         expected = .expectedMajorVersion("llvm")
     )
-    .checkVersion("sqlite", nameFancy = "SQLite")
-    .checkInstalled(
-        name = c(
-            "pandoc",
-            "pandoc-citeproc",
-            "tex"
-        )
+    .checkVersion(
+        name = "sqlite",
+        nameFancy = "SQLite"
     )
+    .checkInstalled(c("pandoc", "pandoc-citeproc", "tex"))
     ## OS-specific =============================================================
-    if (isTRUE(linux)) {
-        h2("Linux specific")
-        .checkVersion("aspera-connect")
-        if (!isTRUE(docker)) {
-            .checkVersion("docker")
-            .checkVersion("docker-credential-pass")
+    switch(
+        expr = platform,
+        "linux" = {
+            h2("Linux specific")
+            .checkVersion("aspera-connect")
+            if (!isTRUE(isDocker)) {
+                .checkVersion("docker")
+                .checkVersion("docker-credential-pass")
+            }
+            .checkVersion(
+                name = "gnupg",
+                nameFancy = "GnuPG"
+            )
+            .checkVersion("password-store")
+            .checkVersion("perl-file-rename")
+            .checkVersion(
+                name = "rstudio-server",
+                nameFancy = "RStudio Server"
+            )
+        },
+        "macos" = {
+            h2("macOS specific")
+            .checkInstalled(
+                name = c("clang", "gcc")
+            )
+            .checkVersion("homebrew")
+            .checkVersion(
+                name = "tex",
+                nameFancy = "TeX Live"
+            )
+            .checkHomebrewCaskVersion(
+                name = "gpg-suite",
+                nameFancy = "GPG Suite"
+            )
         }
-        .checkVersion("gnupg", nameFancy = "GnuPG")
-        .checkVersion("password-store")
-        .checkVersion("perl-file-rename")
-        .checkVersion("rstudio-server", nameFancy = "RStudio Server")
-    } else if (isTRUE(macos)) {
-        h2("macOS specific")
-        .checkInstalled(
-            name = c("clang", "gcc")
-        )
-        .checkVersion("homebrew")
-        .checkVersion("tex", nameFancy = "TeX Live")
-        .checkHomebrewCaskVersion("gpg-suite", nameFancy = "GPG Suite")
-    }
+    )
     ## High performance ========================================================
     if (
-        isTRUE(linux) &&
-        !isTRUE(docker) &&
+        isTRUE(isLinux) &&
+        !isTRUE(isDocker) &&
         isTRUE(getOption("mc.cores") >= 3L)
     ) {
         h2("High performance")
@@ -301,7 +372,10 @@ checkSystem <- function() {
         ## > .checkVersion("bcl2fastq")
         .checkVersion("lmod")
         .checkVersion("lua")
-        .checkVersion("luarocks", nameFancy = "LuaRocks")
+        .checkVersion(
+            name = "luarocks",
+            nameFancy = "LuaRocks"
+        )
         .checkVersion("shiny-server")
         # > .checkVersion("singularity")
     }
