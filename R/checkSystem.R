@@ -218,13 +218,10 @@ checkSystem <- function() {
         nameFancy = "cURL"
     )
     .checkVersion("harfbuzz")
-    ## FIXME This is erroring out...
-    ## ICU is not installed.
-    ## > .checkVersion(
-    ## >     name = "icu",
-    ## > nameFancy = "ICU"
-    ## > )
-    ## FIXME This is erroring with a really poor error message.
+    .checkVersion(
+        name = "icu",
+        nameFancy = "ICU"
+    )
     .checkVersion(
         name = "imagemagick",
         nameFancy = "ImageMagick"
