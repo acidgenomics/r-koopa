@@ -207,6 +207,8 @@ checkSystem <- function() {
     .checkGNUVersion("wget")
     ## Core packages ===========================================================
     h2("Core packages")
+    .checkVersion("boost")
+    .checkVersion("cairo")
     .checkVersion(
         name = "cmake",
         nameFancy = "CMake"
@@ -214,6 +216,15 @@ checkSystem <- function() {
     .checkVersion(
         name = "curl",
         nameFancy = "cURL"
+    )
+    .checkVersion("harfbuzz")
+    .checkVersion(
+        name = "icu4c",
+        nameFancy = "ICU4C"
+    )
+    .checkVersion(
+        name = "imagemagick",
+        nameFancy = "ImageMagick"
     )
     .checkVersion(
         name = "openssh",
@@ -248,6 +259,7 @@ checkSystem <- function() {
         nameFancy = "Java : OpenJDK"
     )
     .checkVersion("julia")
+    .checkVersion("node")
     .checkVersion("perl")
     .checkVersion("ruby")
     .checkVersion("rust")
@@ -275,6 +287,10 @@ checkSystem <- function() {
     .checkInstalled(c("aws", "az", "gcloud"))
     ## Tools ===================================================================
     h2("Tools")
+    .checkVersion(
+        name = "bfg",
+        nameFancy = "BFG"
+    )
     .checkVersion("git")
     .checkVersion(
         name = "htop",
