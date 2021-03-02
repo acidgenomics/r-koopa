@@ -176,5 +176,19 @@ NULL
 #' @rdname dockerPruneStaleTags
 #' @export
 dockerPruneStaleTags <- function() {
-    stop("FIXME")
+    argNames <- c(
+        "username",
+        "password",
+        "organization",
+        "image"
+    )
+    parse <- parseArgs(
+        required = argNames,
+        positional = FALSE
+    )
+    args <- parse[["required"]][argNames]
+    do.call(
+        what = .dockerPruneStaleTags,
+        args = args
+    )
 }

@@ -23,7 +23,7 @@ NULL
 #' @export
 downloadEnsemblGenome <- function() {
     requireNamespaces("AcidGenomes")
-    input <- parseArgs(
+    parse <- parseArgs(
         required = "organism",
         optional = c(
             "genome-build",
@@ -33,15 +33,15 @@ downloadEnsemblGenome <- function() {
         positional = FALSE
     )
     args <- list()
-    args[["organism"]] <- input[["required"]][["organism"]]
-    if (isSubset("genome-build", names(input[["optional"]]))) {
-        args[["genomeBuild"]] <- input[["optional"]][["genome-build"]]
+    args[["organism"]] <- parse[["required"]][["organism"]]
+    if (isSubset("genome-build", names(parse[["optional"]]))) {
+        args[["genomeBuild"]] <- parse[["optional"]][["genome-build"]]
     }
-    if (isSubset("release", names(input[["optional"]]))) {
-        args[["release"]] <- input[["optional"]][["release"]]
+    if (isSubset("release", names(parse[["optional"]]))) {
+        args[["release"]] <- parse[["optional"]][["release"]]
     }
-    if (isSubset("output-dir", names(input[["optional"]]))) {
-        args[["outputDir"]] <- input[["optional"]][["output-dir"]]
+    if (isSubset("output-dir", names(parse[["optional"]]))) {
+        args[["outputDir"]] <- parse[["optional"]][["output-dir"]]
     }
     do.call(
         what = AcidGenomes::downloadEnsemblGenome,
@@ -55,7 +55,7 @@ downloadEnsemblGenome <- function() {
 #' @export
 downloadGencodeGenome <- function() {
     requireNamespaces("AcidGenomes")
-    input <- parseArgs(
+    parse <- parseArgs(
         required = "organism",
         optional = c(
             "genome-build",
@@ -65,15 +65,15 @@ downloadGencodeGenome <- function() {
         positional = FALSE
     )
     args <- list()
-    args[["organism"]] <- input[["required"]][["organism"]]
-    if (isSubset("genome-build", names(input[["optional"]]))) {
-        args[["genomeBuild"]] <- input[["optional"]][["genome-build"]]
+    args[["organism"]] <- parse[["required"]][["organism"]]
+    if (isSubset("genome-build", names(parse[["optional"]]))) {
+        args[["genomeBuild"]] <- parse[["optional"]][["genome-build"]]
     }
-    if (isSubset("release", names(input[["optional"]]))) {
-        args[["release"]] <- input[["optional"]][["release"]]
+    if (isSubset("release", names(parse[["optional"]]))) {
+        args[["release"]] <- parse[["optional"]][["release"]]
     }
-    if (isSubset("output-dir", names(input[["optional"]]))) {
-        args[["outputDir"]] <- input[["optional"]][["output-dir"]]
+    if (isSubset("output-dir", names(parse[["optional"]]))) {
+        args[["outputDir"]] <- parse[["optional"]][["output-dir"]]
     }
     do.call(
         what = AcidGenomes::downloadGencodeGenome,
@@ -87,7 +87,7 @@ downloadGencodeGenome <- function() {
 #' @export
 downloadRefSeqGenome <- function() {
     requireNamespaces("AcidGenomes")
-    input <- parseArgs(
+    parse <- parseArgs(
         required = "organism",
         optional = c(
             "taxonomic-group",
@@ -97,15 +97,15 @@ downloadRefSeqGenome <- function() {
         positional = FALSE
     )
     args <- list()
-    args[["organism"]] <- input[["required"]][["organism"]]
-    if (isSubset("genome-build", names(input[["optional"]]))) {
-        args[["genomeBuild"]] <- input[["optional"]][["genome-build"]]
+    args[["organism"]] <- parse[["required"]][["organism"]]
+    if (isSubset("genome-build", names(parse[["optional"]]))) {
+        args[["genomeBuild"]] <- parse[["optional"]][["genome-build"]]
     }
-    if (isSubset("taxonomic-group", names(input[["optional"]]))) {
-        args[["taxonomicGroup"]] <- input[["optional"]][["taxonomic-group"]]
+    if (isSubset("taxonomic-group", names(parse[["optional"]]))) {
+        args[["taxonomicGroup"]] <- parse[["optional"]][["taxonomic-group"]]
     }
-    if (isSubset("output-dir", names(input[["optional"]]))) {
-        args[["outputDir"]] <- input[["optional"]][["output-dir"]]
+    if (isSubset("output-dir", names(parse[["optional"]]))) {
+        args[["outputDir"]] <- parse[["optional"]][["output-dir"]]
     }
     do.call(
         what = AcidGenomes::downloadRefSeqGenome,
@@ -119,7 +119,7 @@ downloadRefSeqGenome <- function() {
 #' @export
 downloadUCSCGenome <- function() {
     requireNamespaces("AcidGenomes")
-    input <- parseArgs(
+    parse <- parseArgs(
         required = "organism",
         optional = c(
             "genome-build",
@@ -128,12 +128,12 @@ downloadUCSCGenome <- function() {
         positional = FALSE
     )
     args <- list()
-    args[["organism"]] <- input[["required"]][["organism"]]
-    if (isSubset("genome-build", names(input[["optional"]]))) {
-        args[["genomeBuild"]] <- input[["optional"]][["genome-build"]]
+    args[["organism"]] <- parse[["required"]][["organism"]]
+    if (isSubset("genome-build", names(parse[["optional"]]))) {
+        args[["genomeBuild"]] <- parse[["optional"]][["genome-build"]]
     }
-    if (isSubset("output-dir", names(input[["optional"]]))) {
-        args[["outputDir"]] <- input[["optional"]][["output-dir"]]
+    if (isSubset("output-dir", names(parse[["optional"]]))) {
+        args[["outputDir"]] <- parse[["optional"]][["output-dir"]]
     }
     do.call(
         what = AcidGenomes::downloadUCSCGenome,
