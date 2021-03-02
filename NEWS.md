@@ -1,3 +1,10 @@
+## koopa 0.1.9 (2021-03-02)
+
+### Minor changes
+
+- Added more package version checks: boost, cairo, harfbuzz, icu4c, imagemagick,
+  and node.
+
 ## koopa 0.1.8 (2021-03-01)
 
 ### Minor changes
