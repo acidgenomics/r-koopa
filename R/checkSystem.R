@@ -339,7 +339,15 @@ checkSystem <- function() {
         name = "sqlite",
         nameFancy = "SQLite"
     )
-    .checkInstalled(c("pandoc", "pandoc-citeproc", "tex"))
+    .checkVersion("pandoc")
+    .checkVersion(
+        name = "pandoc-citeproc",
+        nameFancy = NULL
+    )
+    .checkVersion(
+        name = "tex",
+        nameFancy = "TeX"
+    )
     ## OS-specific =============================================================
     switch(
         EXPR = platform,

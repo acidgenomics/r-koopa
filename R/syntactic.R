@@ -1,7 +1,7 @@
 #' Syntactic naming functions
 #'
 #' @name syntactic
-#' @note Updated 2021-02-06.
+#' @note Updated 2021-03-10.
 NULL
 
 
@@ -10,17 +10,16 @@ NULL
 #' @export
 camelCase <- function() {
     parse <- parseArgs(
-        flags = c("prefix", "recursive", "strict"),
+        flags = "recursive",
         positional = TRUE
     )
     flags <- parse[["flags"]]
     positional <- parse[["positional"]]
     args <- list(
         "object" = positional,
-        "prefix" = isSubset("prefix", flags),
         "recursive" = isSubset("recursive", flags),
         "rename" = TRUE,
-        "strict" = isSubset("strict", flags)
+        "strict" = TRUE
     )
     do.call(what = syntactic::camelCase, args = args)
 }
@@ -31,14 +30,13 @@ camelCase <- function() {
 #' @export
 kebabCase <- function() {
     parse <- parseArgs(
-        flags = c("prefix", "recursive"),
+        flags = "recursive",
         positional = TRUE
     )
     flags <- parse[["flags"]]
     positional <- parse[["positional"]]
     args <- list(
         "object" = positional,
-        "prefix" = isSubset("prefix", flags),
         "recursive" = isSubset("recursive", flags),
         "rename" = TRUE
     )
@@ -51,14 +49,13 @@ kebabCase <- function() {
 #' @export
 snakeCase <- function() {
     parse <- parseArgs(
-        flags = c("prefix", "recursive"),
+        flags = "recursive",
         positional = TRUE
     )
     flags <- parse[["flags"]]
     positional <- parse[["positional"]]
     args <- list(
         "object" = positional,
-        "prefix" = isSubset("prefix", flags),
         "recursive" = isSubset("recursive", flags),
         "rename" = TRUE
     )
