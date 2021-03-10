@@ -1,8 +1,9 @@
-## koopa 0.1.10 (2021-03-02)
+## koopa 0.1.10 (2021-03-10)
 
 ### New functions
 
 - Added `dockerPruneTags`, which helps prune old tags automatically.
+- Bug fix for prefix handling in syntactic rename functions.
 
 ## koopa 0.1.9 (2021-03-02)
 
