@@ -1,3 +1,9 @@
+## koopa 0.1.11 (2021-03-18)
+
+### Minor changes
+
+- Updated Ruby checks.
+
 ## koopa 0.1.10 (2021-03-10)
 
 ### New functions

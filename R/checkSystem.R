@@ -5,7 +5,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2021-03-02.
+#' @note Updated 2021-03-18.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -430,8 +430,7 @@ checkSystem <- function() {
     .checkRustPackageVersion("zoxide")
     ## Ruby gems ===============================================================
     h2("Ruby gems")
-    .checkRubyPackageVersion("gem")
-    .checkRubyPackageVersion("bundle")
+    .checkRubyPackageVersion("bundler")
     .checkRubyPackageVersion("ronn")
     if (Sys.getenv("KOOPA_CHECK_FAIL") == 1L) {
         stop("System failed checks.", call. = FALSE)
