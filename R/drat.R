@@ -1,7 +1,7 @@
 #' Build a package and commit to drat repo
 #'
 #' @name drat
-#' @note Updated 2021-02-17.
+#' @note Updated 2021-03-18.
 #'
 #' @return `logical(1)`.
 #'
@@ -60,7 +60,9 @@ NULL
             drat::insertPackage(
                 file = tarball,
                 repodir = repoDir,
-                action = "archive"
+                ## NOTE "archive" is preferred but doesn't currently work
+                ## perfectly with AWS CloudFront enabled.
+                action = "none"
             )
             invisible(file.remove(tarball))
             if (isTRUE(deploy)) {

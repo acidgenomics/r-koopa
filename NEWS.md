@@ -2,7 +2,8 @@
 
 ### Minor changes
 
-- Updated Ruby checks.
+- `drat`: Changed archive mode to play nicer with AWS CloudFront.
+- `checkSystem`: Updated Ruby checks.
 
 ## koopa 0.1.10 (2021-03-10)
 
