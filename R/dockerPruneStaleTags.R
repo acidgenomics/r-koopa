@@ -121,7 +121,7 @@ NULL
         ## Arrange from oldest to newest. By default, the JSON API returns
         ## newest to oldest.
         tags <- tags[order(tags[["last_updated"]]), , drop = FALSE]
-        isStale <- tags[["tag_status"]] == "stale"
+        isStale <- tags[["tag_status"]] != "active"  # inactive, stale
         if (all(isStale)) {
             alertWarning(sprintf(
                 "All tags for {.var %s/%s} repo are stale. Skipping.",
