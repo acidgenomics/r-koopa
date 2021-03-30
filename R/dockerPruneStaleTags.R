@@ -121,8 +121,6 @@ NULL
             organization = split[, 1L],
             image = split[, 2L],
             MoreArgs = list(
-                username = username,
-                password = password,
                 token = token
             ),
             FUN = function(
