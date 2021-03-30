@@ -1,3 +1,10 @@
+## koopa 0.1.12 (2021-03-30)
+
+### Minor changes
+
+- `dockerPruneStaleTags`: Updated to use environment variables for DockerHub
+  credentials.
+
 ## koopa 0.1.11 (2021-03-18)
 
 ### Minor changes

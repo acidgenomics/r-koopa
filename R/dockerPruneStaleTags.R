@@ -1,10 +1,10 @@
 #' Prune (delete) stale tags from DockerHub for a specific repo
 #'
 #' @name dockerPruneStaleTags
-#' @note Updated 2021-03-02.
+#' @note Updated 2021-03-30.
 #'
 #' @examples
-#' ## > dockerPruneTags()
+#' ## > dockerPruneStaleTags()
 NULL
 
 
@@ -190,19 +190,30 @@ NULL
 #' @rdname dockerPruneStaleTags
 #' @export
 dockerPruneStaleTags <- function() {
-    argNames <- c(
-        "username",
-        "password",
-        "organization",
-        "image"
+    username <- Sys.getenv("DOCKERHUB_USERNAME")
+    if (is.null(username)) {
+        stop("Set 'username' with 'DOCKERHUB_USERNAME' environment variable.")
+    }
+    password <- Sys.getenv("DOCKERHUB_PASSWORD")
+    if (is.null(password)) {
+        stop("Set 'password' with 'DOCKERHUB_PASSWORD' environment variable.")
+    }
+    images <- positionalArgs()
+    if (!any(grepl(pattern = "^[^/]+/[^/]$", x = images))) {
+        images <- paste("acidgenomics", images, sep = "/")
+    }
+    split <- strsplit(x = images, split = "/", fixed = TRUE)
+    split <- do.call(what = rbind, args = split)
+    mapply(
+        organization = split[, 1L],
+        image = split[, 2L],
+        MoreArgs = list(
+            username = username,
+            password = password
+        ),
+        FUN = .dockerPruneStaleTags,
+        SIMPLIFY = FALSE,
+        USE.NAMES = FALSE
     )
-    parse <- parseArgs(
-        required = argNames,
-        positional = FALSE
-    )
-    args <- as.list(parse[["required"]][argNames])
-    do.call(
-        what = .dockerPruneStaleTags,
-        args = args
-    )
+    invisible(images)
 }
