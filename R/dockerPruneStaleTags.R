@@ -84,7 +84,7 @@ NULL
 
 #' Prune (delete) stale tags from DockerHub
 #'
-#' @note Updated 2021-03-02.
+#' @note Updated 2021-03-30.
 #' @noRd
 #'
 #' @seealso
@@ -92,97 +92,131 @@ NULL
 #' - https://serverfault.com/questions/1021883/
 #' - https://gist.github.com/kizbitz/e59f95f7557b4bbb8bf2
 .dockerPruneStaleTags <-
-    function(
-        username,
-        password,
-        organization,
-        image
-    ) {
+    function(images) {
+        assert(isCharacter(images))
+        username <- Sys.getenv("DOCKERHUB_USERNAME")
+        if (is.null(username)) {
+            stop(sprintf(
+                "Set '%s' with '%s' environment variable.",
+                "username", "DOCKERHUB_USERNAME"
+            ))
+        }
+        password <- Sys.getenv("DOCKERHUB_PASSWORD")
+        if (is.null(password)) {
+            stop(sprintf(
+                "Set '%s' with '%s' environment variable.",
+                "password", "DOCKERHUB_PASSWORD"
+            ))
+        }
         token <- .dockerHubToken(
             username = username,
             password = password
         )
-        tags <- .dockerListTags(
-            organization = organization,
-            image = image,
-            token = token
-        )
-        if (!hasLength(tags)) {
-            alertInfo(sprintf(
-                "No tags to prune for {.var %s/%s} repo.",
-                organization, image
-            ))
-            return(invisible(FALSE))
+        if (!any(grepl(pattern = "^[^/]+/[^/]$", x = images))) {
+            images <- paste("acidgenomics", images, sep = "/")
         }
-        assert(isSubset(
-            x = c("last_updated", "tag_status"),
-            y = colnames(tags)
-        ))
-        ## Arrange from oldest to newest. By default, the JSON API returns
-        ## newest to oldest.
-        tags <- tags[order(tags[["last_updated"]]), , drop = FALSE]
-        isStale <- tags[["tag_status"]] != "active"  # inactive, stale
-        if (all(isStale)) {
-            alertWarning(sprintf(
-                "All tags for {.var %s/%s} repo are stale. Skipping.",
-                organization, image
-            ))
-            return(invisible(FALSE))
-        }
-        staleTags <- tags[isStale, "name", drop = TRUE]
-        if (!hasLength(staleTags)) {
-            alertInfo(sprintf(
-                "No stale tags to prune for {.var %s/%s} repo.",
-                organization, image
-            ))
-            return(invisible(FALSE))
-        }
-        alert(sprintf(
-            "Pruning %d %s from {.var %s/%s} repo.",
-            length(staleTags),
-            ngettext(
-                n = length(staleTags),
-                msg1 = "tag",
-                msg2 = "tags",
+        split <- strsplit(x = images, split = "/", fixed = TRUE)
+        split <- do.call(what = rbind, args = split)
+        out <- mapply(
+            organization = split[, 1L],
+            image = split[, 2L],
+            MoreArgs = list(
+                username = username,
+                password = password,
+                token = token
             ),
-            organization,
-            image
-        ))
-        ## Loop across the stale tags and delete.
-        status <- vapply(
-            X = staleTags,
-            organization = organization,
-            image = image,
-            token = token,
-            FUN = function(tag, organization, image, token) {
-                alert(sprintf("Deleting stale {.var %s} tag.", tag))
-                shell(
-                    command = "curl",
-                    args = c(
-                        "-siL",
-                        "-H", "'Accept: application/json'",
-                        "-H", paste0("'Authorization: JWT ", token, "'"),
-                        "-X", "DELETE",
-                        paste0(
-                            "'",
-                            pasteURL(
-                                "hub.docker.com",
-                                "v2",
-                                "repositories",
-                                organization,
-                                image,
-                                "tags",
-                                tag,
-                                protocol = "https"
-                            ),
-                            "'"
-                        )
-                    )
+            FUN = function(
+                organization,
+                image,
+                token
+            ) {
+                tags <- .dockerListTags(
+                    organization = organization,
+                    image = image,
+                    token = token
                 )
+                if (!hasLength(tags)) {
+                    alertInfo(sprintf(
+                        "No tags to prune for {.var %s/%s} repo.",
+                        organization, image
+                    ))
+                    return(invisible(FALSE))
+                }
+                assert(isSubset(
+                    x = c("last_updated", "tag_status"),
+                    y = colnames(tags)
+                ))
+                ## Arrange from oldest to newest. By default, the JSON API returns
+                ## newest to oldest.
+                tags <- tags[order(tags[["last_updated"]]), , drop = FALSE]
+                isStale <- tags[["tag_status"]] != "active"  # inactive, stale
+                if (all(isStale)) {
+                    alertWarning(sprintf(
+                        "All tags for {.var %s/%s} repo are stale. Skipping.",
+                        organization, image
+                    ))
+                    return(invisible(FALSE))
+                }
+                staleTags <- tags[isStale, "name", drop = TRUE]
+                if (!hasLength(staleTags)) {
+                    alertInfo(sprintf(
+                        "No stale tags to prune for {.var %s/%s} repo.",
+                        organization, image
+                    ))
+                    return(invisible(FALSE))
+                }
+                alert(sprintf(
+                    "Pruning %d %s from {.var %s/%s} repo.",
+                    length(staleTags),
+                    ngettext(
+                        n = length(staleTags),
+                        msg1 = "tag",
+                        msg2 = "tags",
+                    ),
+                    organization,
+                    image
+                ))
+                ## Loop across the stale tags and delete.
+                status <- vapply(
+                    X = staleTags,
+                    organization = organization,
+                    image = image,
+                    token = token,
+                    FUN = function(tag, organization, image, token) {
+                        alert(sprintf("Deleting stale {.var %s} tag.", tag))
+                        shell(
+                            command = "curl",
+                            args = c(
+                                "-siL",
+                                "-H", "'Accept: application/json'",
+                                "-H", paste0("'Authorization: JWT ", token, "'"),
+                                "-X", "DELETE",
+                                paste0(
+                                    "'",
+                                    pasteURL(
+                                        "hub.docker.com",
+                                        "v2",
+                                        "repositories",
+                                        organization,
+                                        image,
+                                        "tags",
+                                        tag,
+                                        protocol = "https"
+                                    ),
+                                    "'"
+                                )
+                            )
+                        )
+                    },
+                    FUN.VALUE = integer(1L)
+                )
+                invisible(status)
             },
-            FUN.VALUE = integer(1L)
+            SIMPLIFY = FALSE,
+            USE.NAMES = FALSE
         )
-        invisible(status)
+        names(out) <- images
+        invisible(out)
     }
 
 
@@ -190,30 +224,21 @@ NULL
 #' @rdname dockerPruneStaleTags
 #' @export
 dockerPruneStaleTags <- function() {
-    username <- Sys.getenv("DOCKERHUB_USERNAME")
-    if (is.null(username)) {
-        stop("Set 'username' with 'DOCKERHUB_USERNAME' environment variable.")
-    }
-    password <- Sys.getenv("DOCKERHUB_PASSWORD")
-    if (is.null(password)) {
-        stop("Set 'password' with 'DOCKERHUB_PASSWORD' environment variable.")
-    }
     images <- positionalArgs()
-    if (!any(grepl(pattern = "^[^/]+/[^/]$", x = images))) {
-        images <- paste("acidgenomics", images, sep = "/")
-    }
-    split <- strsplit(x = images, split = "/", fixed = TRUE)
-    split <- do.call(what = rbind, args = split)
-    mapply(
-        organization = split[, 1L],
-        image = split[, 2L],
-        MoreArgs = list(
-            username = username,
-            password = password
-        ),
-        FUN = .dockerPruneStaleTags,
-        SIMPLIFY = FALSE,
-        USE.NAMES = FALSE
-    )
-    invisible(images)
+    .dockerPruneStaleTags(images = images)
+}
+
+
+
+#' @rdname dockerPruneStaleTags
+#' @export
+dockerPruneAllStaleTags <- function() {
+    dockerDir <- file.path("~", ".config", "koopa", "docker", "acidgenomics")
+    assert(isADir(dockerDir))
+    images <- sort(list.dirs(
+        path = dockerDir,
+        full.names = FALSE,
+        recursive = FALSE
+    ))
+    .dockerPruneStaleTags(images = images)
 }

@@ -2,16 +2,19 @@
 % Please edit documentation in R/dockerPruneStaleTags.R
 \name{dockerPruneStaleTags}
 \alias{dockerPruneStaleTags}
+\alias{dockerPruneAllStaleTags}
 \title{Prune (delete) stale tags from DockerHub for a specific repo}
 \usage{
 dockerPruneStaleTags()
+
+dockerPruneAllStaleTags()
 }
 \description{
 Prune (delete) stale tags from DockerHub for a specific repo
 }
 \note{
-Updated 2021-03-02.
+Updated 2021-03-30.
 }
 \examples{
-## > dockerPruneTags()
+## > dockerPruneStaleTags()
 }
