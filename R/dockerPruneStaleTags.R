@@ -144,8 +144,8 @@ NULL
                     x = c("last_updated", "tag_status"),
                     y = colnames(tags)
                 ))
-                ## Arrange from oldest to newest. By default, the JSON API returns
-                ## newest to oldest.
+                ## Arrange from oldest to newest. By default, the JSON API
+                ## returns newest to oldest.
                 tags <- tags[order(tags[["last_updated"]]), , drop = FALSE]
                 isStale <- tags[["tag_status"]] != "active"  # inactive, stale
                 if (all(isStale)) {
@@ -187,7 +187,9 @@ NULL
                             args = c(
                                 "-siL",
                                 "-H", "'Accept: application/json'",
-                                "-H", paste0("'Authorization: JWT ", token, "'"),
+                                "-H", paste0(
+                                    "'Authorization: JWT ", token, "'"
+                                ),
                                 "-X", "DELETE",
                                 paste0(
                                     "'",
