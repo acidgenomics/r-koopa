@@ -1,3 +1,9 @@
+## koopa 0.1.13 (2021-04-06)
+
+### Minor changes
+
+- `checkSystem`: Add fzf and hadolint system checks.
+
 ## koopa 0.1.12 (2021-03-30)
 
 ### Minor changes

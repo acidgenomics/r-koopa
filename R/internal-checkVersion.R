@@ -1,6 +1,6 @@
 #' Check version
 #'
-#' @note Updated 2021-02-11.
+#' @note Updated 2021-04-06.
 #' @noRd
 #'
 #' @param name `character(1)`.
@@ -23,16 +23,18 @@
 #' .checkVersion("tmux")
 .checkVersion <- function(
     name,
-    nameFancy = capitalize(gsub("-", " ", name)),
+    nameFancy = NULL,
     current = .currentVersion(name),
     expected = .expectedVersion(name),
     op = c("==", ">="),
     required = TRUE
 ) {
-    if (is.null(nameFancy))
+    if (is.null(nameFancy)) {
         nameFancy <- name
-    if (identical(current, character()))
+    }
+    if (identical(current, character())) {
         current <- NA_character_
+    }
     assert(
         isString(name),
         isString(nameFancy),

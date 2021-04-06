@@ -1,11 +1,14 @@
 ## NOTE Consider adding support for checking PATH priority here.
 
+## FIXME Need to add check for fzf
+## FIXME Need to add check for hadolint.
+
 
 
 #' Check system
 #'
 #' @export
-#' @note Updated 2021-03-18.
+#' @note Updated 2021-04-06.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -169,9 +172,9 @@ checkSystem <- function() {
     )
     ## Shells ==================================================================
     h2("Shells")
-    .checkVersion("bash")
-    .checkVersion("zsh")
-    .checkVersion("fish")
+    .checkVersion("bash", nameFancy = "Bash")
+    .checkVersion("zsh", nameFancy = "Zsh")
+    .checkVersion("fish", nameFancy = "Fish")
     ## GNU packages ============================================================
     h2("GNU packages")
     switch(
@@ -207,62 +210,39 @@ checkSystem <- function() {
     .checkGNUVersion("wget")
     ## Core packages ===========================================================
     h2("Core packages")
-    .checkVersion("boost")
-    .checkVersion("cairo")
-    .checkVersion(
-        name = "cmake",
-        nameFancy = "CMake"
-    )
-    .checkVersion(
-        name = "curl",
-        nameFancy = "cURL"
-    )
-    .checkVersion("harfbuzz")
-    .checkVersion(
-        name = "icu",
-        nameFancy = "ICU"
-    )
-    .checkVersion(
-        name = "imagemagick",
-        nameFancy = "ImageMagick"
-    )
-    .checkVersion(
-        name = "openssh",
-        nameFancy = "OpenSSH"
-    )
-    .checkVersion(
-        name = "pkg-config",
-        nameFancy = NULL
-    )
-    .checkVersion(
-        name = "rsync",
-        nameFancy = NULL
-    )
+    .checkVersion("boost", nameFancy = "Boost")
+    .checkVersion("cairo", nameFancy = "Cairo")
+    .checkVersion("cmake", nameFancy = "CMake")
+    .checkVersion("curl", nameFancy = "cURL")
+    .checkVersion("harfbuzz", nameFancy = "Harfbuzz")
+    .checkVersion("icu", nameFancy = "ICU")
+    .checkVersion("imagemagick", nameFancy = "ImageMagick")
+    .checkVersion("openssh", nameFancy = "OpenSSH")
+    .checkVersion("pkg-config")
+    .checkVersion("rsync")
     ## Editors =================================================================
     h2("Editors")
-    .checkVersion("emacs")
-    .checkVersion("neovim")
-    .checkVersion("tmux")
+    .checkVersion("emacs", nameFancy = "Emacs")
+    .checkVersion("neovim", nameFancy = "Neovim")
+    .checkVersion("tmux", nameFancy = "Tmux")
     .checkVersion(
         name = "vim",
+        nameFancy = "Vim",
         current = .currentMinorVersion("vim"),
         expected = .expectedMinorVersion("vim")
     )
     ## Languages ===============================================================
     h2("Primary languages")
-    .checkVersion("python")
-    .checkVersion("r")
+    .checkVersion("python", nameFancy = "Python")
+    .checkVersion("r", nameFancy = "R")
     h2("Secondary languages")
-    .checkVersion("go")
-    .checkVersion(
-        name = "openjdk",
-        nameFancy = "Java : OpenJDK"
-    )
-    .checkVersion("julia")
-    .checkVersion("node")
-    .checkVersion("perl")
-    .checkVersion("ruby")
-    .checkVersion("rust")
+    .checkVersion("go", nameFancy = "Go")
+    .checkVersion("openjdk", nameFancy = "Java : OpenJDK")
+    .checkVersion("julia", nameFancy = "Julia")
+    .checkVersion("node", nameFancy = "Node")
+    .checkVersion("perl", nameFancy = "Perl")
+    .checkVersion("ruby", nameFancy = "Ruby")
+    .checkVersion("rust", nameFancy = "Rust")
     ## Version managers ========================================================
     h2("Version managers")
     condaPrefix <- shell(
@@ -271,118 +251,67 @@ checkSystem <- function() {
         stdout = TRUE
     )
     if (file.exists(file.path(condaPrefix, "bin", "anaconda"))) {
-        .checkVersion("anaconda")
+        .checkVersion("anaconda", nameFancy = "Anaconda")
     } else {
-        .checkVersion(
-            name = "conda",
-            nameFancy = "Miniconda"
-        )
+        .checkVersion("conda", nameFancy = "Miniconda")
     }
-    .checkVersion(
-        name = "rustup",
-        nameFancy = "Rust : rustup"
-    )
+    .checkVersion("rustup", nameFancy = "Rust : rustup")
     ## Cloud APIs ==============================================================
     h2("Cloud APIs")
     .checkInstalled(c("aws", "az", "gcloud"))
     ## Tools ===================================================================
     h2("Tools")
-    .checkVersion(
-        name = "bfg",
-        nameFancy = "BFG"
-    )
-    .checkVersion("git")
-    .checkVersion(
-        name = "htop",
-        nameFancy = NULL
-    )
-    .checkVersion("neofetch")
-    .checkVersion("subversion")
+    .checkVersion("bfg", nameFancy = "BFG")
+    .checkVersion("git", nameFancy = "Git")
+    .checkVersion("htop")
+    .checkVersion("neofetch", nameFancy = "Neofetch")
+    .checkVersion("subversion", nameFancy = "Subversion")
     ## Shell tools =============================================================
     h2("Shell tools")
-    .checkVersion("the-silver-searcher")
-    .checkVersion(
-        name = "shellcheck",
-        nameFancy = "ShellCheck"
-    )
-    .checkInstalled("shunit2")
+    .checkVersion("fzf")
+    .checkVersion("the-silver-searcher", nameFancy = "The Silver Searcher")
+    .checkVersion("hadolint")
+    .checkVersion("shellcheck", nameFancy = "ShellCheck")
+    .checkVersion("shunit2", nameFancy = "shUnit2")
     ## Heavy dependencies ======================================================
     h2("Heavy dependencies")
-    .checkVersion("armadillo")
-    .checkVersion(
-        name = "proj",
-        nameFancy = "PROJ"
-    )
-    .checkVersion(
-        name = "gdal",
-        nameFancy = "GDAL"
-    )
-    .checkVersion(
-        name = "geos",
-        nameFancy = "GEOS"
-    )
-    .checkVersion(
-        name = "gsl",
-        nameFancy = "GSL"
-    )
-    .checkVersion(
-        name = "hdf5",
-        nameFancy = "HDF5"
-    )
+    .checkVersion("armadillo", nameFancy = "Armadillo")
+    .checkVersion("proj", nameFancy = "PROJ")
+    .checkVersion("gdal", nameFancy = "GDAL")
+    .checkVersion("geos", nameFancy = "GEOS")
+    .checkVersion("gsl", nameFancy = "GSL")
+    .checkVersion("hdf5", nameFancy = "HDF5")
     .checkVersion(
         name = "llvm",
         nameFancy = "LLVM",
         current = .currentMajorVersion("llvm"),
         expected = .expectedMajorVersion("llvm")
     )
-    .checkVersion(
-        name = "sqlite",
-        nameFancy = "SQLite"
-    )
-    .checkVersion("pandoc")
-    .checkVersion(
-        name = "pandoc-citeproc",
-        nameFancy = NULL
-    )
-    .checkVersion(
-        name = "tex",
-        nameFancy = "TeX"
-    )
+    .checkVersion("sqlite", nameFancy = "SQLite")
+    .checkVersion("pandoc", nameFancy = "Pandoc")
+    .checkVersion("pandoc-citeproc")
+    .checkVersion("tex", nameFancy = "TeX")
     ## OS-specific =============================================================
     switch(
         EXPR = platform,
         "linux" = {
             h2("Linux specific")
-            .checkVersion("aspera-connect")
+            .checkVersion("aspera-connect", nameFancy = "Aspera Connect")
             if (!isTRUE(isDocker)) {
-                .checkVersion("docker")
+                .checkVersion("docker", nameFancy = "Docker")
                 .checkVersion("docker-credential-pass")
             }
-            .checkVersion(
-                name = "gnupg",
-                nameFancy = "GnuPG"
-            )
-            .checkVersion("password-store")
-            .checkVersion("perl-file-rename")
-            .checkVersion(
-                name = "rstudio-server",
-                nameFancy = "RStudio Server"
-            )
+            .checkVersion("gnupg", nameFancy = "GnuPG")
+            .checkVersion("password-store", nameFancy = "Password Store")
+            .checkVersion("perl-file-rename", nameFancy = "Perl File Rename")
+            .checkVersion("rstudio-server", nameFancy = "RStudio Server")
         },
         "macos" = {
             h2("macOS specific")
-            .checkInstalled(
-                name = c("clang", "gcc")
-            )
-            .checkVersion("homebrew")
-            .checkVersion(
-                name = "tex",
-                nameFancy = "TeX Live"
-            )
-            .checkHomebrewCaskVersion(
-                name = "gpg-suite",
-                nameFancy = "GPG Suite"
-            )
+            .checkInstalled(c("clang", "gcc"))
+            .checkVersion("homebrew", nameFancy = "Homebrew")
+            .checkVersion("tex", nameFancy = "TeX Live")
+            .checkHomebrewCaskVersion("gpg-suite", nameFancy = "GPG Suite")
         }
     )
     ## High performance ========================================================
@@ -392,16 +321,13 @@ checkSystem <- function() {
         isTRUE(getOption("mc.cores") >= 3L)
     ) {
         h2("High performance")
-        ## > .checkVersion("bcbio-nextgen", nameFancy = NULL)
+        ## > .checkVersion("bcbio-nextgen")
         ## > .checkVersion("bcl2fastq")
-        .checkVersion("lmod")
-        .checkVersion("lua")
-        .checkVersion(
-            name = "luarocks",
-            nameFancy = "LuaRocks"
-        )
-        .checkVersion("shiny-server")
-        # > .checkVersion("singularity")
+        .checkVersion("lmod", nameFancy = "Lmod")
+        .checkVersion("lua", nameFancy = "Lua")
+        .checkVersion("luarocks", nameFancy = "LuaRocks")
+        .checkVersion("shiny-server", nameFancy = "Shiny Server")
+        # > .checkVersion("singularity", nameFancy = "Singularity")
     }
     ## Python packages =========================================================
     h2("Python packages")
