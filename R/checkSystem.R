@@ -272,7 +272,7 @@ checkSystem <- function() {
     .checkVersion("the-silver-searcher", nameFancy = "The Silver Searcher")
     .checkVersion("hadolint")
     .checkVersion("shellcheck", nameFancy = "ShellCheck")
-    .checkVersion("shunit2", nameFancy = "shUnit2")
+    .checkInstalled("shunit2")
     ## Heavy dependencies ======================================================
     h2("Heavy dependencies")
     .checkVersion("armadillo", nameFancy = "Armadillo")
