@@ -1,8 +1,5 @@
 ## NOTE Consider adding support for checking PATH priority here.
 
-## FIXME Need to add check for fzf
-## FIXME Need to add check for hadolint.
-
 
 
 #' Check system
