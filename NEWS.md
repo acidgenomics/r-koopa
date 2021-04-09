@@ -1,3 +1,9 @@
+## koopa 0.1.14 (2021-04-09)
+
+### Minor changes
+
+- Update system checks to reflect more minimal GNU config on macOS.
+
 ## koopa 0.1.13 (2021-04-06)
 
 ### Minor changes
