@@ -174,6 +174,15 @@ checkSystem <- function() {
     .checkVersion("fish", nameFancy = "Fish")
     ## GNU packages ============================================================
     h2("GNU packages")
+    .checkGNUVersion("autoconf")
+    .checkGNUVersion("automake")
+    .checkGNUVersion("gawk")
+    .checkGNUVersion("groff")
+    .checkGNUVersion("parallel")
+    .checkGNUVersion("patch")
+    .checkGNUVersion("stow")
+    .checkGNUVersion("texinfo")
+    .checkGNUVersion("wget")
     switch(
         EXPR = platform,
         "linux" = {
@@ -181,28 +190,17 @@ checkSystem <- function() {
             .checkGNUVersion("coreutils")
             .checkGNUVersion("findutils")
             .checkGNUVersion("gcc")
+            .checkGNUVersion("grep")
             .checkGNUVersion("libtool")
+            .checkGNUVersion("make")
             .checkGNUVersion("ncurses")
+            .checkGNUVersion("sed")
+            .checkGNUVersion("tar")
         },
         "macos" = {
             .checkInstalled("gcc-10")
         }
     )
-    .checkGNUVersion("autoconf")
-    .checkGNUVersion("autoconf")
-    .checkGNUVersion("automake")
-    .checkGNUVersion("automake")
-    .checkGNUVersion("gawk")
-    .checkGNUVersion("grep")
-    .checkGNUVersion("groff")
-    .checkGNUVersion("make")
-    .checkGNUVersion("parallel")
-    .checkGNUVersion("patch")
-    .checkGNUVersion("sed")
-    .checkGNUVersion("stow")
-    .checkGNUVersion("tar")
-    .checkGNUVersion("texinfo")
-    .checkGNUVersion("wget")
     ## Core packages ===========================================================
     h2("Core packages")
     .checkVersion("boost", nameFancy = "Boost")
@@ -210,11 +208,16 @@ checkSystem <- function() {
     .checkVersion("cmake", nameFancy = "CMake")
     .checkVersion("curl", nameFancy = "cURL")
     .checkVersion("harfbuzz", nameFancy = "Harfbuzz")
-    .checkVersion("icu", nameFancy = "ICU")
     .checkVersion("imagemagick", nameFancy = "ImageMagick")
     .checkVersion("openssh", nameFancy = "OpenSSH")
     .checkVersion("pkg-config")
     .checkVersion("rsync")
+    switch(
+        EXPR = platform,
+        "linux" = {
+            .checkVersion("icu", nameFancy = "ICU")
+        }
+    )
     ## Editors =================================================================
     h2("Editors")
     .checkVersion("emacs", nameFancy = "Emacs")
@@ -282,10 +285,15 @@ checkSystem <- function() {
         current = .currentMajorVersion("llvm"),
         expected = .expectedMajorVersion("llvm")
     )
-    .checkVersion("sqlite", nameFancy = "SQLite")
     .checkVersion("pandoc", nameFancy = "Pandoc")
     .checkVersion("pandoc-citeproc")
     .checkVersion("tex", nameFancy = "TeX")
+    switch(
+        EXPR = platform,
+        "linux" = {
+            .checkVersion("sqlite", nameFancy = "SQLite")
+        }
+    )
     ## OS-specific =============================================================
     switch(
         EXPR = platform,
