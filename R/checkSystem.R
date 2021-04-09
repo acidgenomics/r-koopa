@@ -279,7 +279,7 @@ checkSystem <- function() {
             .checkVersion("perl-file-rename", nameFancy = "Perl File Rename")
             .checkVersion("rstudio-server", nameFancy = "RStudio Server")
             .checkVersion("sqlite", nameFancy = "SQLite")
-            if (isTRUE(getOption("mc.cores") >= 3L) {
+            if (isTRUE(getOption("mc.cores") >= 3L)) {
                 h3("High performance")
                 .checkVersion("bcbio-nextgen")
                 .checkVersion("bcl2fastq")
