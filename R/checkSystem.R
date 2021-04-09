@@ -5,7 +5,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2021-01-04.
+#' @note Updated 2021-04-09.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -29,12 +29,16 @@ checkSystem <- function() {
     h2("Basic dependencies")
     .checkInstalled(
         name = c(
-            ## "[",
-            ## "basenc",
-            ## "chsh",  # lchsh on Fedora
-            ## "rename",
-            ## "top",
-            ## "uptime",
+            ## > "[",
+            ## > "basenc",
+            ## > "chsh",  # lchsh on Fedora
+            ## > "rename",
+            ## > "top",
+            ## > "uptime",
+            ## > "dir",  # not on macos
+            ## > "dircolors",  # not on macos
+            ## > "factor",  # not on macos
+            ## > "vdir",  # not on macos
             "b2sum",
             "base32",
             "base64",
@@ -55,15 +59,12 @@ checkSystem <- function() {
             "date",
             "dd",
             "df",
-            "dir",
-            "dircolors",
             "dirname",
             "du",
             "echo",
             "env",
             "expand",
             "expr",
-            "factor",
             "false",
             "find",
             "fmt",
@@ -152,7 +153,6 @@ checkSystem <- function() {
             "uniq",
             "unlink",
             "users",
-            "vdir",
             "wc",
             "wget",
             "which",
@@ -169,21 +169,24 @@ checkSystem <- function() {
     .checkVersion("fish")
     ## GNU packages ============================================================
     h2("GNU packages")
+    if (isTRUE(linux)) {
+        .checkGNUVersion("binutils")
+        .checkGNUVersion("coreutils")
+        .checkGNUVersion("findutils")
+    }
     .checkGNUVersion("autoconf")
     .checkGNUVersion("automake")
-    if (isTRUE(linux))
-        .checkGNUVersion("binutils")
-    .checkGNUVersion("coreutils")
-    .checkGNUVersion("findutils")
     .checkGNUVersion("gawk")
     ## > .checkGNUVersion("gcc")
     .checkGNUVersion("grep")
     .checkGNUVersion("groff")
-    if (isTRUE(linux))
+    if (isTRUE(linux)) {
         .checkGNUVersion("libtool")
+    }
     .checkGNUVersion("make")
-    if (isTRUE(linux))
+    if (isTRUE(linux)) {
         .checkGNUVersion("ncurses")
+    }
     .checkGNUVersion("parallel")
     .checkGNUVersion("patch")
     .checkGNUVersion("sed")
