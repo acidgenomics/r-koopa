@@ -17,5 +17,5 @@ snakeCase()
 Syntactic naming functions
 }
 \note{
-Updated 2020-01-04.
+Updated 2021-03-10.
 }

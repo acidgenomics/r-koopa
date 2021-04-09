@@ -50,6 +50,10 @@ NULL
             buildFile <- file.path(imageDir, "build.txt")
             if (file.exists(buildFile)) {
                 tags <- readLines(buildFile)
+                ## Ensure we ignore comments here.
+                keep <- grepl(pattern = "^[a-z0-9_.-]+$", x = tags)
+                tags <- tags[keep]
+                assert(isCharacter(tags))
             } else {
                 ## Or build alphabetically (default).
                 tags <- sort(list.dirs(

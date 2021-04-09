@@ -1,3 +1,72 @@
+## koopa 0.1.13 (2021-04-06)
+
+### Minor changes
+
+- `checkSystem`: Add fzf and hadolint system checks.
+
+## koopa 0.1.12 (2021-03-30)
+
+### Minor changes
+
+- `dockerPruneStaleTags`: Updated to use environment variables for DockerHub
+  credentials.
+
+## koopa 0.1.11 (2021-03-18)
+
+### Minor changes
+
+- `drat`: Changed archive mode to play nicer with AWS CloudFront.
+- `checkSystem`: Updated Ruby checks.
+
+## koopa 0.1.10 (2021-03-10)
+
+### New functions
+
+- Added `dockerPruneTags`, which helps prune old tags automatically.
+- Bug fix for prefix handling in syntactic rename functions.
+
+## koopa 0.1.9 (2021-03-02)
+
+### Minor changes
+
+- Added more package version checks: boost, cairo, harfbuzz, icu4c, imagemagick,
+  and node.
+
+## koopa 0.1.8 (2021-03-01)
+
+### Minor changes
+
+- Added file size check to `drat`.
+- Updated dependency packages.
+- Cleaned up NAMESPACE.
+
+## koopa 0.1.7 (2021-02-17)
+
+- `drat`: pkgdown documentation in docs is no longer removed.
+
+## koopa 0.1.6 (2021-02-16)
+
+- `dockerBuildAllTags`: Ignore lines that contain comments in `build.txt` files.
+
+## koopa 0.1.5 (2021-02-15)
+
+- Migrated `checkBinManConsistency` here from main koopa package.
+
+## koopa 0.1.4 (2021-02-15)
+
+- Added version check for GNU tar.
+- Updated dependency version cutoffs.
+
+## koopa 0.1.3 (2021-02-11)
+
+- Including checking for GNU binutils on macOS in addition to Linux.
+
+## koopa 0.1.2 (2021-02-06)
+
+- Improved internal argument parsing for syntactic functions.
+- `drat`: Added optional override flags: `--no-check`, `--no-pkgdown`,
+  and `--no-deploy`.
+
 ## koopa 0.1.1 (2021-02-04)
 
 - Updated internal bb8 dependency to renamed AcidDevTools package.

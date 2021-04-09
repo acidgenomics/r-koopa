@@ -1,6 +1,6 @@
 #' Check version
 #'
-#' @note Updated 2021-01-04.
+#' @note Updated 2021-04-06.
 #' @noRd
 #'
 #' @param name `character(1)`.
@@ -23,16 +23,18 @@
 #' .checkVersion("tmux")
 .checkVersion <- function(
     name,
-    nameFancy = capitalize(gsub("-", " ", name)),
+    nameFancy = NULL,
     current = .currentVersion(name),
     expected = .expectedVersion(name),
     op = c("==", ">="),
     required = TRUE
 ) {
-    if (is.null(nameFancy))
+    if (is.null(nameFancy)) {
         nameFancy <- name
-    if (identical(current, character()))
+    }
+    if (identical(current, character())) {
         current <- NA_character_
+    }
     assert(
         isString(name),
         isString(nameFancy),
@@ -95,6 +97,7 @@
 
 
 
+## Updated 2021-02-11.
 .checkGNUVersion <- function(name, ...) {
     .checkVersion(
         name = name,
@@ -105,6 +108,19 @@
 
 
 
+## Updated 2021-02-11.
+.checkHomebrewCaskVersion <- function(name, ...) {
+    .checkVersion(
+        name = name,
+        current = .currentHomebrewCaskVersion(name),
+        expected = .expectedHomebrewCaskVersion(name),
+        ...
+    )
+}
+
+
+
+## Updated 2021-02-11.
 .checkMacOSAppVersion <- function(name, ...) {
     .checkVersion(
         name = name,
@@ -116,11 +132,54 @@
 
 
 
-.checkHomebrewCaskVersion <- function(name, ...) {
+## Updated 2021-02-11.
+.checkPythonPackageVersion <- function(
+    name,
+    op = c("==", ">="),
+    required = TRUE
+) {
     .checkVersion(
         name = name,
-        current = .currentHomebrewCaskVersion(name),
-        expected = .expectedHomebrewCaskVersion(name),
-        ...
+        nameFancy = NULL,
+        current = .currentVersion(name),
+        expected = .expectedPythonPackageVersion(name),
+        op = match.arg(op),
+        required = required
+    )
+}
+
+
+
+## Updated 2021-02-11.
+.checkRubyPackageVersion <- function(
+    name,
+    op = c("==", ">="),
+    required = TRUE
+) {
+    .checkVersion(
+        name = name,
+        nameFancy = NULL,
+        current = .currentVersion(name),
+        expected = .expectedRubyPackageVersion(name),
+        op = match.arg(op),
+        required = required
+    )
+}
+
+
+
+## Updated 2021-02-11.
+.checkRustPackageVersion <- function(
+    name,
+    op = c("==", ">="),
+    required = TRUE
+) {
+    .checkVersion(
+        name = name,
+        nameFancy = NULL,
+        current = .currentVersion(name),
+        expected = .expectedRustPackageVersion(name),
+        op = match.arg(op),
+        required = required
     )
 }

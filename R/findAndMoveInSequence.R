@@ -1,19 +1,11 @@
 #' Find and move files in sequence
 #'
-#' @note Updated 2021-01-31.
-#' @export
+#' @name findAndMoveInSequence
+#' @note Updated 2021-03-01.
 #'
 #' @examples
 #' ## > findAndMoveInSequence()
-findAndMoveInSequence <- function() {
-    posArgs <- positionalArgs()
-    sourceDir <- realpath(posArgs[[1L]])
-    targetDir <- realpath(posArgs[[2L]])
-    .findAndMoveInSequence(
-        sourceDir = sourceDir,
-        targetDir = targetDir
-    )
-}
+NULL
 
 
 
@@ -60,4 +52,17 @@ findAndMoveInSequence <- function() {
         "Successfully renamed %d files.",
         length(sourceFiles)
     ))
+}
+
+
+
+#' @rdname findAndMoveInSequence
+#' @export
+findAndMoveInSequence <- function() {
+    pos <- positionalArgs()
+    args <- list(
+        "sourceDir" = realpath(pos[[1L]]),
+        "targetDir" = realpath(pos[[2L]])
+    )
+    do.call(what = .findAndMoveInSequence, args = args)
 }

@@ -1,14 +1,11 @@
 #' Unlink an application
 #'
+#' @name unlinkApp
 #' @note Updated 2021-01-31.
-#' @export
 #'
 #' @examples
 #' ## > unlinkApp(c("vim", "tmux"))
-unlinkApp <- function() {
-    x <- positionalArgs()
-    .unlinkApp(x)
-}
+NULL
 
 
 
@@ -49,4 +46,12 @@ unlinkApp <- function() {
             file.remove(trash)
         }
     ))
+}
+
+
+
+#' @rdname unlinkApp
+#' @export
+unlinkApp <- function() {
+    .unlinkApp(positionalArgs())
 }

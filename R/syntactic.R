@@ -1,7 +1,7 @@
 #' Syntactic naming functions
 #'
 #' @name syntactic
-#' @note Updated 2020-01-04.
+#' @note Updated 2021-03-10.
 NULL
 
 
@@ -9,21 +9,20 @@ NULL
 #' @rdname syntactic
 #' @export
 camelCase <- function() {
-    args <- parseArgs(
-        flags = c("prefix", "recursive", "strict"),
+    parse <- parseArgs(
+        flags = "recursive",
         positional = TRUE
     )
-    positional <- args[["positional"]]
-    prefix <- "prefix" %in% args[["flags"]]
-    recursive <- "recursive" %in% args[["flags"]]
-    strict <- "strict" %in% args[["flags"]]
-    syntactic::camelCase(
-        object = positional,
-        rename = TRUE,
-        recursive = recursive,
-        strict = strict,
-        prefix = prefix
+    flags <- parse[["flags"]]
+    positional <- parse[["positional"]]
+    args <- list(
+        "object" = positional,
+        "prefix" = FALSE,
+        "recursive" = isSubset("recursive", flags),
+        "rename" = TRUE,
+        "strict" = TRUE
     )
+    do.call(what = syntactic::camelCase, args = args)
 }
 
 
@@ -31,19 +30,19 @@ camelCase <- function() {
 #' @rdname syntactic
 #' @export
 kebabCase <- function() {
-    args <- parseArgs(
-        flags = c("prefix", "recursive"),
+    parse <- parseArgs(
+        flags = "recursive",
         positional = TRUE
     )
-    positional <- args[["positional"]]
-    prefix <- "prefix" %in% args[["flags"]]
-    recursive <- "recursive" %in% args[["flags"]]
-    syntactic::kebabCase(
-        object = positional,
-        rename = TRUE,
-        recursive = recursive,
-        prefix = prefix
+    flags <- parse[["flags"]]
+    positional <- parse[["positional"]]
+    args <- list(
+        "object" = positional,
+        "prefix" = FALSE,
+        "recursive" = isSubset("recursive", flags),
+        "rename" = TRUE
     )
+    do.call(what = syntactic::kebabCase, args = args)
 }
 
 
@@ -51,17 +50,17 @@ kebabCase <- function() {
 #' @rdname syntactic
 #' @export
 snakeCase <- function() {
-    args <- parseArgs(
-        flags = c("prefix", "recursive"),
+    parse <- parseArgs(
+        flags = "recursive",
         positional = TRUE
     )
-    positional <- args[["positional"]]
-    prefix <- "prefix" %in% args[["flags"]]
-    recursive <- "recursive" %in% args[["flags"]]
-    syntactic::snakeCase(
-        object = positional,
-        rename = TRUE,
-        recursive = recursive,
-        prefix = prefix
+    flags <- parse[["flags"]]
+    positional <- parse[["positional"]]
+    args <- list(
+        "object" = positional,
+        "prefix" = FALSE,
+        "recursive" = isSubset("recursive", flags),
+        "rename" = TRUE
     )
+    do.call(what = syntactic::snakeCase, args = args)
 }

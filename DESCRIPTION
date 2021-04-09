@@ -1,8 +1,8 @@
 Package: koopa
 Title: Shell Bootloader for Bioinformatics
 Description: Shell bootloader for bioinformatics.
-Version: 0.1.1
-Date: 2020-02-04
+Version: 0.1.13
+Date: 2021-04-06
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -18,28 +18,29 @@ URL:
     https://koopa.acidgenomics.com/
     https://github.com/acidgenomics/koopa/
 BugReports: https://github.com/acidgenomics/koopa/issues/
-License: GPL-3
+License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
-    AcidBase (>= 0.3.4),
-    AcidCLI (>= 0.0.5),
-    AcidDevTools (>= 0.3.0),
-    goalie (>= 0.4.14),
+    AcidBase (>= 0.3.13),
+    AcidCLI (>= 0.1.0),
+    AcidDevTools (>= 0.3.1),
+    goalie (>= 0.5.1),
     methods,
-    syntactic (>= 0.4.4),
-    utils
+    syntactic (>= 0.4.4)
 Suggests:
-    AcidGenomes (>= 0.2.0),
+    AcidGenomes (>= 0.2.7),
     BiocManager,
     covr,
     desc,
     devtools,
     drat,
+    jsonlite,
     lintr,
     pkgdown,
     remotes,
-    sessioninfo
+    sessioninfo,
+    testthat
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Additional_repositories: https://r.acidgenomics.com
