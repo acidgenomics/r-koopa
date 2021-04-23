@@ -1,7 +1,7 @@
 #' Build a package and commit to drat repo
 #'
 #' @name drat
-#' @note Updated 2021-03-18.
+#' @note Updated 2021-04-23.
 #'
 #' @return `logical(1)`.
 #'
@@ -84,7 +84,9 @@ NULL
                 )
                 shell(command = "git", args = c("push", "--force", "--tags"))
                 setwd(repoDir)
-                shell(command = "git", args = c("checkout", "master"))
+                ## Need to dynamically detect the default branch (i.e. "main"
+                ## or "master" here, rather than pinning).
+                ## > shell(command = "git", args = c("checkout", "main"))
                 shell(command = "git", args = c("fetch", "--all"))
                 shell(command = "git", args = "merge")
                 shell(command = "git", args = c("add", "./"))
