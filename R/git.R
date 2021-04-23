@@ -17,7 +17,8 @@
 gitDefaultBranch <- function(repo, remote = "origin") {
     assert(
         isADir(repo),
-        isString(remote)
+        isString(remote),
+        isSystemCommand("git")
     )
     wd <- getwd()
     setwd(repo)

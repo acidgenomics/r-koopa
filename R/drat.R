@@ -84,9 +84,8 @@ NULL
                 )
                 shell(command = "git", args = c("push", "--force", "--tags"))
                 setwd(repoDir)
-                ## Need to dynamically detect the default branch (i.e. "main"
-                ## or "master" here, rather than pinning).
-                ## > shell(command = "git", args = c("checkout", "main"))
+                branch <- gitDefaultBranch(repoDir)
+                shell(command = "git", args = c("checkout", branch))
                 shell(command = "git", args = c("fetch", "--all"))
                 shell(command = "git", args = "merge")
                 shell(command = "git", args = c("add", "./"))

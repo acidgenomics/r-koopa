@@ -1,3 +1,14 @@
+## koopa 0.1.15 (2021-04-23)
+
+### New functions
+
+- `gitDefaultBranch`: Detect the default branch of a git repository (e.g. "main"
+  or "master").
+
+### Minor changes
+
+- `drat`: Update to avoid hard-coding against default "main" or "master" branch.
+
 ## koopa 0.1.14 (2021-04-09)
 
 ### Minor changes
