@@ -1,3 +1,8 @@
+## Consider using git2r package here instead.
+## https://github.com/ropensci/git2r
+
+
+
 #' Default Git branch
 #'
 #' @note Updated 2021-04-23.
