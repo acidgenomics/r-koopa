@@ -253,7 +253,6 @@ checkSystem <- function() {
         expected = .expectedMajorVersion("llvm")
     )
     .checkVersion("pandoc", nameFancy = "Pandoc")
-    .checkVersion("pandoc-citeproc")
     .checkVersion("tex", nameFancy = "TeX")
     ## OS-specific =============================================================
     switch(
