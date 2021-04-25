@@ -1,3 +1,9 @@
+## koopa 0.1.16 (2021-04-25)
+
+### Minor changes
+
+- Removed check for deprecated `pandoc-citeproc` package.
+
 ## koopa 0.1.15 (2021-04-23)
 
 ### New functions
