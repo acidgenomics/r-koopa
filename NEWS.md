@@ -1,8 +1,9 @@
-## koopa 0.1.16 (2021-04-25)
+## koopa 0.1.16 (2021-04-30)
 
 ### Minor changes
 
-- Removed check for deprecated `pandoc-citeproc` package.
+- `checkSystem`: Removed check for deprecated `pandoc-citeproc` package.
+- `checkSystem`: Ensure that conda is available in the PATH for version check.
 
 ## koopa 0.1.15 (2021-04-23)
 
