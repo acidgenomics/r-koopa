@@ -1,8 +1,3 @@
-## NOTE Consider adding support for checking PATH priority here.
-## FIXME ADD condabin to PATH HERE.
-
-
-
 #' Check system
 #'
 #' @export
