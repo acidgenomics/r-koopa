@@ -309,7 +309,6 @@ checkSystem <- function() {
     )
     ## Python packages =========================================================
     h2("Python packages")
-    .checkPythonPackageVersion("pip")
     .checkPythonPackageVersion("black")
     .checkPythonPackageVersion("bpytop")
     .checkPythonPackageVersion("flake8")
