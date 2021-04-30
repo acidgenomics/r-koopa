@@ -1,11 +1,12 @@
 ## NOTE Consider adding support for checking PATH priority here.
+## FIXME ADD condabin to PATH HERE.
 
 
 
 #' Check system
 #'
 #' @export
-#' @note Updated 2021-04-09.
+#' @note Updated 2021-04-30.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -21,6 +22,15 @@ checkSystem <- function() {
     h1("Checking koopa installation.")
     koopa <- koopa()
     platform <- ifelse(test = isMacOS(), yes = "macos", no = "linux")
+    ## Modify system path ======================================================
+    koopaOpt <- file.path(dirname(dirname(koopa)), "opt")
+    path <- Sys.getenv("PATH")
+    path <- paste(
+        file.path(koopaOpt, "conda", "condabin"),
+        path,
+        sep = ":"
+    )
+    Sys.setenv("PATH" = path)
     ## Basic dependencies ======================================================
     h2("Basic dependencies")
     .checkInstalled(
