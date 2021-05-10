@@ -296,7 +296,7 @@ checkSystem <- function() {
         },
         "macos" = {
             h2("macOS specific")
-            .checkInstalled(c("clang", "gcc-10"))
+            .checkInstalled("clang")
             .checkVersion("homebrew", nameFancy = "Homebrew")
             .checkVersion("tex", nameFancy = "TeX Live")
             .checkHomebrewCaskVersion("gpg-suite", nameFancy = "GPG Suite")
