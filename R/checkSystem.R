@@ -1,12 +1,12 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2021-04-30.
+#' @note Updated 2021-05-11.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
 #' # Ignoring commonmarker-0.17.13 because its extensions are not built.
-#' Try: gem pristine commonmarker --version 0.17.13
+#' Try: `gem pristine commonmarker --version 0.17.13`.
 #'
 #' @examples
 #' ## > checkSystem()
@@ -228,7 +228,9 @@ checkSystem <- function() {
     .checkVersion("rustup", nameFancy = "Rust : rustup")
     ## Cloud APIs ==============================================================
     h2("Cloud APIs")
-    .checkInstalled(c("aws", "az", "gcloud"))
+    .checkVersion("aws-cli", nameFancy = "AWS CLI")
+    .checkVersion("azure-cli", nameFancy = "Azure CLI")
+    .checkVersion("google-cloud-sdk", nameFancy = "Google Cloud SDK")
     ## Tools ===================================================================
     h2("Tools")
     .checkVersion("bfg", nameFancy = "BFG")
