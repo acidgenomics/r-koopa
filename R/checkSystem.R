@@ -1,7 +1,7 @@
 #' Check system
 #'
 #' @export
-#' @note Updated 2021-05-11.
+#' @note Updated 2021-05-25.
 #'
 #' @details
 #' If you see this error, reinstall ruby, rbenv, and emacs:
@@ -195,12 +195,7 @@ checkSystem <- function() {
     .checkVersion("emacs", nameFancy = "Emacs")
     .checkVersion("neovim", nameFancy = "Neovim")
     .checkVersion("tmux", nameFancy = "Tmux")
-    .checkVersion(
-        name = "vim",
-        nameFancy = "Vim",
-        current = .currentMinorVersion("vim"),
-        expected = .expectedMinorVersion("vim")
-    )
+    .checkVersion("vim", nameFancy = "Vim")
     ## Languages ===============================================================
     h2("Primary languages")
     .checkVersion("python", nameFancy = "Python")
