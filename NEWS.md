@@ -1,14 +1,21 @@
 ## koopa 0.1.19 (2021-06-07)
 
-FIXME
+### Minor changes
+
+- Updated dependency version cutoffs.
 
 ## koopa 0.1.18 (2021-05-11)
 
-FIXME
+### Minor changes
+
+- Added back version-specific checks for AWS CLI, Azure CLI, and
+  Google Cloud SDK.
 
 ## koopa 0.1.17 (2021-05-09)
 
-FIXME
+### Minor changes
+
+- Updated system checks and improved installation instructions.
 
 ## koopa 0.1.16 (2021-04-30)
 
