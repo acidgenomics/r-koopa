@@ -39,8 +39,7 @@ Suggests:
     lintr (>= 2.0.1),
     pkgdown (>= 1.6.1),
     remotes (>= 2.4.0),
-    sessioninfo (>= 1.1.1),
-    testthat (>= 3.0.2)
+    sessioninfo (>= 1.1.1)
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Additional_repositories: https://r.acidgenomics.com
