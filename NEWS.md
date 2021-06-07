@@ -1,3 +1,15 @@
+## koopa 0.1.19 (2021-06-07)
+
+FIXME
+
+## koopa 0.1.18 (2021-05-11)
+
+FIXME
+
+## koopa 0.1.17 (2021-05-09)
+
+FIXME
+
 ## koopa 0.1.16 (2021-04-30)
 
 ### Minor changes
