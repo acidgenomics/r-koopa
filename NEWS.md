@@ -1,3 +1,9 @@
+## koopa 0.1.20 (2021-07-06)
+
+### Minor changes
+
+- Add system checks for pyenv and poetry.
+
 ## koopa 0.1.19 (2021-06-07)
 
 ### Minor changes

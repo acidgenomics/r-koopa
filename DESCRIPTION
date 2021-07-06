@@ -1,8 +1,8 @@
 Package: koopa
 Title: Shell Bootloader for Bioinformatics
 Description: Shell bootloader for bioinformatics.
-Version: 0.1.19
-Date: 2021-06-07
+Version: 0.1.20
+Date: 2021-07-06
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -22,15 +22,15 @@ License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
-    AcidBase (>= 0.3.13),
+    AcidBase (>= 0.3.14),
     AcidCLI (>= 0.1.1),
-    AcidDevTools (>= 0.3.14),
+    AcidDevTools (>= 0.3.15),
     goalie (>= 0.5.1),
     methods,
     syntactic (>= 0.4.5)
 Suggests:
-    AcidGenomes (>= 0.2.13),
-    BiocManager (>= 1.30.15),
+    AcidGenomes (>= 0.2.14),
+    BiocManager (>= 1.30.16),
     covr (>= 3.5.1),
     desc (>= 1.3.0),
     devtools (>= 2.4.2),

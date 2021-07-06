@@ -220,6 +220,8 @@ checkSystem <- function() {
     } else {
         .checkVersion("conda", nameFancy = "Miniconda")
     }
+    .checkVersion("poetry")
+    .checkVersion("pyenv")
     .checkVersion("rustup", nameFancy = "Rust : rustup")
     ## Cloud APIs ==============================================================
     h2("Cloud APIs")
